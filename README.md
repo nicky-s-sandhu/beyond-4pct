@@ -25,8 +25,31 @@ starting portfolio; "typical" = median retiree.
 - 25% international is the biggest single gain and survives stress tests.
 - These are in-sample optimums (no fees or taxes); a realistic target is 1–1.5 points lower.
 
-![Highest 30-year sustainable withdrawal rate by retirement start year](docs/img/safemax_by_start_year.png)
-![Highest zero-failure starting rate by international share of stocks](docs/img/intl_share_sweep.png)
+![Highest safe starting rate by retirement start year for the four zero-failure variants](docs/img/safemax_by_start_year_variants.png)
+
+Each line is the highest starting rate a retiree starting that year could have used; its lowest
+point is the safe rate in the table. For the guardrail variants "safe" means spending never fell
+below the $4 floor and the money lasted, so a high start in a good year is cut back, not sustained.
+
+## How the ±30% guardrails work
+
+Each January (8% plan): raise last year's spending by inflation and trim it 0.5%, then divide by the
+current portfolio. If that withdrawal rate is above **9.6%** (8% + 20%), cut spending **30%**; if it is
+below **6.4%** (8% − 20%), raise it **30%**; otherwise leave it. Spending never goes below the $4 floor
+(declining 0.5% a year) or above the 2× cap. "±30%" is the size of the move; the band is the trigger.
+
+![Year-by-year guardrail decisions for retirees starting in 1966 and 1982](docs/img/guardrails_explained.png)
+
+- **1966 (bad start):** cut in years 5 and 9, then held at the floor for 20 of 30 years; ends with $9 left.
+- **1982 (good start):** three raises to about $14.70 by year 18, two cuts after the 2000s crashes; ends with $89 left.
+- Across all 69 retirees: typically 3 cuts and 3 raises in 30 years, first cut around year 6;
+  about 68% of years see no change beyond inflation and the trim.
+- **±25% steps give the same 8.0% safe start** with gentler swings (about $0.13 a year less early
+  spending), a better fit for anyone who would find a 30% pay cut hard to live with.
+
+More charts: [Bengen replication](docs/img/safemax_by_start_year.png) ·
+[international share](docs/img/intl_share_sweep.png) · full write-up in
+[docs/beyond-the-4pct-rule.md](docs/beyond-the-4pct-rule.md).
 
 *Not financial advice: a historical study of US and developed-market returns, 1928–2025.*
 
@@ -91,6 +114,14 @@ python scripts/build_intl.py [JSTdatasetR6.csv]    # rebuild data/raw/intl_stock
 # The raw JST file is not in the repo: download JSTdatasetR6 from https://www.macrohistory.net/database/
 # into data/external/ (as CSV). The derived series data/raw/intl_stocks.csv is included.
 ```
+
+### Variant comparison and guardrail traces
+```bash
+python scripts/safemax_variants.py                 # safe start by start year, four variants
+python scripts/explain_guardrails.py               # 1966 and 1982 traces + how often the rule acts
+python scripts/explain_guardrails.py --years 1929,1973
+```
+Outputs in `output/variants/`: the two charts, per-year CSVs and per-retiree trace CSVs.
 
 ## Data
 | Series | Source | Notes |

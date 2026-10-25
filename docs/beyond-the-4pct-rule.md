@@ -16,6 +16,10 @@ Each row adds one change to the row above. Spending is in today's dollars per $1
 | 25% of stocks international | 8.0% | $7.42 | 0 |
 | Accept 95% success | 9.0% | $8.02 | 3 |
 
+![Highest safe starting rate by retirement start year for the four zero-failure variants](img/safemax_by_start_year_variants.png)
+
+*Each line shows the highest starting rate a retiree starting that year could have used; its lowest point is the variant's safe rate in the table. For the guardrail variants "safe" means spending never fell below the $4 floor and the money lasted, so a high start in a good year (14% in 1980, say) is quickly cut back toward the floor rather than sustained. Mid-1960s starts are the hardest for every variant.*
+
 The price of the higher start is variable income. For the 8% plan, the unluckiest 5% of retirees reach the floor by year 6 and stay there, and typical spending drifts down over time. A realistic target is probably 1–1.5 points below these optimized figures.
 
 ## Method and data
@@ -59,6 +63,43 @@ Adding a floor turns flexibility into a gain. On a 50/50 US portfolio starting a
 | Guardrails ±10%, floor at 80% of start | 1 | $2.31 | $4.91 |
 
 Small steps and a floor do not mix: cuts come too slowly, the floor props spending up, and the 1966 retiree runs dry in the last year. Larger steps (20–30%) with a floor worked best throughout.
+
+## How the ±30% guardrails work
+
+The guardrails change spending only when the withdrawal rate drifts well away from where it started, and then by 30% at once. In most years nothing happens beyond the inflation raise.
+
+Each January, for the 8% plan:
+
+1. **Planned spending:** last year's spending, raised by inflation, then trimmed 0.5%.
+2. **Check:** withdrawal rate = planned spending ÷ current portfolio.
+3. **Act only outside the band:** above 9.6% (the starting 8% plus 20%) spending is cut 30%; below 6.4% (8% minus 20%) it is raised 30%. In between, nothing changes.
+4. **Limits:** spending never goes below the $4 floor (itself declining 0.5% a year) or above the 2× cap, whatever the rule says.
+
+"±30%" is the size of the move; the 6.4–9.6% band is what triggers it.
+
+![Year-by-year guardrail decisions for retirees starting in 1966 and 1982](img/guardrails_explained.png)
+
+*8.0% start, 80% stocks (25% international), real spending −0.5% a year, $4 floor, 2× cap. Hollow circles: a cut or raise was triggered but the floor or cap stopped spending from moving.*
+
+- **1966, a bad start.** Spending was cut 30% in year 5 and again in year 9, which brought it to the floor. It stayed there for 20 of the 30 years while the withdrawal rate climbed to 34%; the floor blocked every further cut. The portfolio ended with $9 left: tight, but it never ran out.
+- **1982, a good start.** Spending was raised three times, to about $14.70 by year 18, then cut twice after the 2000s crashes. It still ended at $6.80 a year with $89 left.
+
+Across all 69 retirees on this plan:
+
+- Every retiree had at least one cut, typically three in 30 years, the first around year 6. Raises were as common, typically three.
+- About 68% of years had no change beyond inflation and the 0.5% trim; about 10% had a cut and 10% a raise.
+- 31 of the 69 retirees spent some years pinned at the floor.
+
+Large steps win because small ones react too slowly: the portfolio drains before the cuts add up, and the floor then holds spending too high. Above 25% the step size barely matters:
+
+| Guardrail step | Safe starting rate | Typical spending, years 1–10 |
+| --- | --- | --- |
+| ±10% | 7.0% | $6.85 |
+| ±20% | 7.7% | $7.17 |
+| ±25% | 8.0% | $7.29 |
+| ±30% | 8.0% | $7.42 |
+
+±25% gives the same 8.0% safe start with gentler swings, at a cost of about $0.13 a year of early spending. For someone who would find a 30% pay cut in one year hard to live with, it is the better choice.
 
 ## Allocation, front-loading, ceiling and leverage
 
@@ -131,6 +172,8 @@ The Python project (pandas, numpy, matplotlib) regenerates every number and char
 | `scripts/guardrails.py` | Guardrails vs Bengen across step sizes, with optional floor and ceiling |
 | `scripts/optimize.py` | Best stocks × step × ceiling × drift at a chosen success rate (`--success 0.95`) |
 | `scripts/intl_sweep.py` | Safe start vs international share, base and stress series |
+| `scripts/safemax_variants.py` | Highest safe start by retirement year for the four variants |
+| `scripts/explain_guardrails.py` | Year-by-year guardrail decisions for chosen retirees, plus how often the rule acts |
 | `scripts/build_intl.py` | Rebuilds the international return series from the JST dataset |
 
 Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 25% international in the experiment scripts (`--intl 0` for US-only).
