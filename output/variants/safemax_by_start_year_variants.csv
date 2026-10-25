@@ -1,0 +1,277 @@
+variant,start_year,max_rate
+"Bengen: constant real, 50/50 US",1928,0.056
+"Bengen: constant real, 50/50 US",1929,0.046
+"Bengen: constant real, 50/50 US",1930,0.05
+"Bengen: constant real, 50/50 US",1931,0.054
+"Bengen: constant real, 50/50 US",1932,0.067
+"Bengen: constant real, 50/50 US",1933,0.064
+"Bengen: constant real, 50/50 US",1934,0.054
+"Bengen: constant real, 50/50 US",1935,0.056
+"Bengen: constant real, 50/50 US",1936,0.048
+"Bengen: constant real, 50/50 US",1937,0.042
+"Bengen: constant real, 50/50 US",1938,0.055
+"Bengen: constant real, 50/50 US",1939,0.048
+"Bengen: constant real, 50/50 US",1940,0.049
+"Bengen: constant real, 50/50 US",1941,0.053
+"Bengen: constant real, 50/50 US",1942,0.066
+"Bengen: constant real, 50/50 US",1943,0.068
+"Bengen: constant real, 50/50 US",1944,0.065
+"Bengen: constant real, 50/50 US",1945,0.063
+"Bengen: constant real, 50/50 US",1946,0.056
+"Bengen: constant real, 50/50 US",1947,0.071
+"Bengen: constant real, 50/50 US",1948,0.079
+"Bengen: constant real, 50/50 US",1949,0.083
+"Bengen: constant real, 50/50 US",1950,0.077
+"Bengen: constant real, 50/50 US",1951,0.074
+"Bengen: constant real, 50/50 US",1952,0.073
+"Bengen: constant real, 50/50 US",1953,0.069
+"Bengen: constant real, 50/50 US",1954,0.072
+"Bengen: constant real, 50/50 US",1955,0.058
+"Bengen: constant real, 50/50 US",1956,0.052
+"Bengen: constant real, 50/50 US",1957,0.053
+"Bengen: constant real, 50/50 US",1958,0.058
+"Bengen: constant real, 50/50 US",1959,0.05
+"Bengen: constant real, 50/50 US",1960,0.049
+"Bengen: constant real, 50/50 US",1961,0.05
+"Bengen: constant real, 50/50 US",1962,0.045
+"Bengen: constant real, 50/50 US",1963,0.048
+"Bengen: constant real, 50/50 US",1964,0.045
+"Bengen: constant real, 50/50 US",1965,0.042
+"Bengen: constant real, 50/50 US",1966,0.041
+"Bengen: constant real, 50/50 US",1967,0.045
+"Bengen: constant real, 50/50 US",1968,0.043
+"Bengen: constant real, 50/50 US",1969,0.043
+"Bengen: constant real, 50/50 US",1970,0.049
+"Bengen: constant real, 50/50 US",1971,0.05
+"Bengen: constant real, 50/50 US",1972,0.048
+"Bengen: constant real, 50/50 US",1973,0.046
+"Bengen: constant real, 50/50 US",1974,0.055
+"Bengen: constant real, 50/50 US",1975,0.073
+"Bengen: constant real, 50/50 US",1976,0.068
+"Bengen: constant real, 50/50 US",1977,0.064
+"Bengen: constant real, 50/50 US",1978,0.073
+"Bengen: constant real, 50/50 US",1979,0.081
+"Bengen: constant real, 50/50 US",1980,0.087
+"Bengen: constant real, 50/50 US",1981,0.088
+"Bengen: constant real, 50/50 US",1982,0.1
+"Bengen: constant real, 50/50 US",1983,0.092
+"Bengen: constant real, 50/50 US",1984,0.089
+"Bengen: constant real, 50/50 US",1985,0.091
+"Bengen: constant real, 50/50 US",1986,0.081
+"Bengen: constant real, 50/50 US",1987,0.074
+"Bengen: constant real, 50/50 US",1988,0.08
+"Bengen: constant real, 50/50 US",1989,0.078
+"Bengen: constant real, 50/50 US",1990,0.071
+"Bengen: constant real, 50/50 US",1991,0.078
+"Bengen: constant real, 50/50 US",1992,0.07
+"Bengen: constant real, 50/50 US",1993,0.071
+"Bengen: constant real, 50/50 US",1994,0.07
+"Bengen: constant real, 50/50 US",1995,0.076
+"Bengen: constant real, 50/50 US",1996,0.065
+"+ guardrails ±30%, $4 floor, 80% stocks",1928,0.083
+"+ guardrails ±30%, $4 floor, 80% stocks",1929,0.057
+"+ guardrails ±30%, $4 floor, 80% stocks",1930,0.08
+"+ guardrails ±30%, $4 floor, 80% stocks",1931,0.099
+"+ guardrails ±30%, $4 floor, 80% stocks",1932,0.126
+"+ guardrails ±30%, $4 floor, 80% stocks",1933,0.142
+"+ guardrails ±30%, $4 floor, 80% stocks",1934,0.125
+"+ guardrails ±30%, $4 floor, 80% stocks",1935,0.125
+"+ guardrails ±30%, $4 floor, 80% stocks",1936,0.118
+"+ guardrails ±30%, $4 floor, 80% stocks",1937,0.092
+"+ guardrails ±30%, $4 floor, 80% stocks",1938,0.146
+"+ guardrails ±30%, $4 floor, 80% stocks",1939,0.124
+"+ guardrails ±30%, $4 floor, 80% stocks",1940,0.139
+"+ guardrails ±30%, $4 floor, 80% stocks",1941,0.146
+"+ guardrails ±30%, $4 floor, 80% stocks",1942,0.154
+"+ guardrails ±30%, $4 floor, 80% stocks",1943,0.156
+"+ guardrails ±30%, $4 floor, 80% stocks",1944,0.153
+"+ guardrails ±30%, $4 floor, 80% stocks",1945,0.144
+"+ guardrails ±30%, $4 floor, 80% stocks",1946,0.137
+"+ guardrails ±30%, $4 floor, 80% stocks",1947,0.144
+"+ guardrails ±30%, $4 floor, 80% stocks",1948,0.14
+"+ guardrails ±30%, $4 floor, 80% stocks",1949,0.142
+"+ guardrails ±30%, $4 floor, 80% stocks",1950,0.134
+"+ guardrails ±30%, $4 floor, 80% stocks",1951,0.125
+"+ guardrails ±30%, $4 floor, 80% stocks",1952,0.117
+"+ guardrails ±30%, $4 floor, 80% stocks",1953,0.11
+"+ guardrails ±30%, $4 floor, 80% stocks",1954,0.108
+"+ guardrails ±30%, $4 floor, 80% stocks",1955,0.094
+"+ guardrails ±30%, $4 floor, 80% stocks",1956,0.084
+"+ guardrails ±30%, $4 floor, 80% stocks",1957,0.088
+"+ guardrails ±30%, $4 floor, 80% stocks",1958,0.096
+"+ guardrails ±30%, $4 floor, 80% stocks",1959,0.076
+"+ guardrails ±30%, $4 floor, 80% stocks",1960,0.074
+"+ guardrails ±30%, $4 floor, 80% stocks",1961,0.082
+"+ guardrails ±30%, $4 floor, 80% stocks",1962,0.065
+"+ guardrails ±30%, $4 floor, 80% stocks",1963,0.082
+"+ guardrails ±30%, $4 floor, 80% stocks",1964,0.069
+"+ guardrails ±30%, $4 floor, 80% stocks",1965,0.06
+"+ guardrails ±30%, $4 floor, 80% stocks",1966,0.055
+"+ guardrails ±30%, $4 floor, 80% stocks",1967,0.078
+"+ guardrails ±30%, $4 floor, 80% stocks",1968,0.067
+"+ guardrails ±30%, $4 floor, 80% stocks",1969,0.069
+"+ guardrails ±30%, $4 floor, 80% stocks",1970,0.089
+"+ guardrails ±30%, $4 floor, 80% stocks",1971,0.105
+"+ guardrails ±30%, $4 floor, 80% stocks",1972,0.105
+"+ guardrails ±30%, $4 floor, 80% stocks",1973,0.1
+"+ guardrails ±30%, $4 floor, 80% stocks",1974,0.127
+"+ guardrails ±30%, $4 floor, 80% stocks",1975,0.158
+"+ guardrails ±30%, $4 floor, 80% stocks",1976,0.152
+"+ guardrails ±30%, $4 floor, 80% stocks",1977,0.144
+"+ guardrails ±30%, $4 floor, 80% stocks",1978,0.153
+"+ guardrails ±30%, $4 floor, 80% stocks",1979,0.147
+"+ guardrails ±30%, $4 floor, 80% stocks",1980,0.153
+"+ guardrails ±30%, $4 floor, 80% stocks",1981,0.151
+"+ guardrails ±30%, $4 floor, 80% stocks",1982,0.149
+"+ guardrails ±30%, $4 floor, 80% stocks",1983,0.146
+"+ guardrails ±30%, $4 floor, 80% stocks",1984,0.139
+"+ guardrails ±30%, $4 floor, 80% stocks",1985,0.137
+"+ guardrails ±30%, $4 floor, 80% stocks",1986,0.131
+"+ guardrails ±30%, $4 floor, 80% stocks",1987,0.124
+"+ guardrails ±30%, $4 floor, 80% stocks",1988,0.13
+"+ guardrails ±30%, $4 floor, 80% stocks",1989,0.125
+"+ guardrails ±30%, $4 floor, 80% stocks",1990,0.116
+"+ guardrails ±30%, $4 floor, 80% stocks",1991,0.123
+"+ guardrails ±30%, $4 floor, 80% stocks",1992,0.116
+"+ guardrails ±30%, $4 floor, 80% stocks",1993,0.121
+"+ guardrails ±30%, $4 floor, 80% stocks",1994,0.118
+"+ guardrails ±30%, $4 floor, 80% stocks",1995,0.131
+"+ guardrails ±30%, $4 floor, 80% stocks",1996,0.111
++ real spending −0.5%/yr,1928,0.09
++ real spending −0.5%/yr,1929,0.067
++ real spending −0.5%/yr,1930,0.085
++ real spending −0.5%/yr,1931,0.104
++ real spending −0.5%/yr,1932,0.131
++ real spending −0.5%/yr,1933,0.148
++ real spending −0.5%/yr,1934,0.131
++ real spending −0.5%/yr,1935,0.13
++ real spending −0.5%/yr,1936,0.125
++ real spending −0.5%/yr,1937,0.101
++ real spending −0.5%/yr,1938,0.152
++ real spending −0.5%/yr,1939,0.13
++ real spending −0.5%/yr,1940,0.144
++ real spending −0.5%/yr,1941,0.148
++ real spending −0.5%/yr,1942,0.16
++ real spending −0.5%/yr,1943,0.161
++ real spending −0.5%/yr,1944,0.158
++ real spending −0.5%/yr,1945,0.149
++ real spending −0.5%/yr,1946,0.142
++ real spending −0.5%/yr,1947,0.149
++ real spending −0.5%/yr,1948,0.142
++ real spending −0.5%/yr,1949,0.147
++ real spending −0.5%/yr,1950,0.14
++ real spending −0.5%/yr,1951,0.13
++ real spending −0.5%/yr,1952,0.122
++ real spending −0.5%/yr,1953,0.115
++ real spending −0.5%/yr,1954,0.113
++ real spending −0.5%/yr,1955,0.098
++ real spending −0.5%/yr,1956,0.089
++ real spending −0.5%/yr,1957,0.094
++ real spending −0.5%/yr,1958,0.101
++ real spending −0.5%/yr,1959,0.081
++ real spending −0.5%/yr,1960,0.08
++ real spending −0.5%/yr,1961,0.088
++ real spending −0.5%/yr,1962,0.075
++ real spending −0.5%/yr,1963,0.088
++ real spending −0.5%/yr,1964,0.078
++ real spending −0.5%/yr,1965,0.067
++ real spending −0.5%/yr,1966,0.063
++ real spending −0.5%/yr,1967,0.085
++ real spending −0.5%/yr,1968,0.076
++ real spending −0.5%/yr,1969,0.079
++ real spending −0.5%/yr,1970,0.097
++ real spending −0.5%/yr,1971,0.112
++ real spending −0.5%/yr,1972,0.113
++ real spending −0.5%/yr,1973,0.108
++ real spending −0.5%/yr,1974,0.132
++ real spending −0.5%/yr,1975,0.163
++ real spending −0.5%/yr,1976,0.157
++ real spending −0.5%/yr,1977,0.153
++ real spending −0.5%/yr,1978,0.158
++ real spending −0.5%/yr,1979,0.155
++ real spending −0.5%/yr,1980,0.158
++ real spending −0.5%/yr,1981,0.153
++ real spending −0.5%/yr,1982,0.154
++ real spending −0.5%/yr,1983,0.151
++ real spending −0.5%/yr,1984,0.141
++ real spending −0.5%/yr,1985,0.142
++ real spending −0.5%/yr,1986,0.136
++ real spending −0.5%/yr,1987,0.131
++ real spending −0.5%/yr,1988,0.135
++ real spending −0.5%/yr,1989,0.13
++ real spending −0.5%/yr,1990,0.123
++ real spending −0.5%/yr,1991,0.128
++ real spending −0.5%/yr,1992,0.121
++ real spending −0.5%/yr,1993,0.124
++ real spending −0.5%/yr,1994,0.125
++ real spending −0.5%/yr,1995,0.131
++ real spending −0.5%/yr,1996,0.12
++ 25% international stocks,1928,0.102
++ 25% international stocks,1929,0.084
++ 25% international stocks,1930,0.096
++ 25% international stocks,1931,0.108
++ 25% international stocks,1932,0.138
++ 25% international stocks,1933,0.139
++ 25% international stocks,1934,0.123
++ 25% international stocks,1935,0.125
++ 25% international stocks,1936,0.113
++ 25% international stocks,1937,0.095
++ 25% international stocks,1938,0.146
++ 25% international stocks,1939,0.135
++ 25% international stocks,1940,0.142
++ 25% international stocks,1941,0.143
++ 25% international stocks,1942,0.15
++ 25% international stocks,1943,0.15
++ 25% international stocks,1944,0.147
++ 25% international stocks,1945,0.142
++ 25% international stocks,1946,0.136
++ 25% international stocks,1947,0.15
++ 25% international stocks,1948,0.147
++ 25% international stocks,1949,0.151
++ 25% international stocks,1950,0.145
++ 25% international stocks,1951,0.137
++ 25% international stocks,1952,0.133
++ 25% international stocks,1953,0.126
++ 25% international stocks,1954,0.124
++ 25% international stocks,1955,0.106
++ 25% international stocks,1956,0.099
++ 25% international stocks,1957,0.099
++ 25% international stocks,1958,0.11
++ 25% international stocks,1959,0.095
++ 25% international stocks,1960,0.087
++ 25% international stocks,1961,0.092
++ 25% international stocks,1962,0.08
++ 25% international stocks,1963,0.093
++ 25% international stocks,1964,0.093
++ 25% international stocks,1965,0.092
++ 25% international stocks,1966,0.083
++ 25% international stocks,1967,0.1
++ 25% international stocks,1968,0.097
++ 25% international stocks,1969,0.094
++ 25% international stocks,1970,0.108
++ 25% international stocks,1971,0.13
++ 25% international stocks,1972,0.127
++ 25% international stocks,1973,0.118
++ 25% international stocks,1974,0.136
++ 25% international stocks,1975,0.157
++ 25% international stocks,1976,0.151
++ 25% international stocks,1977,0.15
++ 25% international stocks,1978,0.161
++ 25% international stocks,1979,0.15
++ 25% international stocks,1980,0.155
++ 25% international stocks,1981,0.15
++ 25% international stocks,1982,0.152
++ 25% international stocks,1983,0.146
++ 25% international stocks,1984,0.143
++ 25% international stocks,1985,0.142
++ 25% international stocks,1986,0.135
++ 25% international stocks,1987,0.126
++ 25% international stocks,1988,0.124
++ 25% international stocks,1989,0.122
++ 25% international stocks,1990,0.121
++ 25% international stocks,1991,0.127
++ 25% international stocks,1992,0.113
++ 25% international stocks,1993,0.122
++ 25% international stocks,1994,0.114
++ 25% international stocks,1995,0.122
++ 25% international stocks,1996,0.113
