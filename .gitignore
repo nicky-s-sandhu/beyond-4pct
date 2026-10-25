@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+# Third-party raw dataset: download from https://www.macrohistory.net/database/
+data/external/
+# Fresh downloads (scripts/reproduce.py --download)
+data/raw/*_downloaded.csv
