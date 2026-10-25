@@ -1,6 +1,7 @@
 [project]
-name = "bengen-4pct"
+name = "beyond-4pct"
 version = "0.1.0"
+license = {text = "MIT"}
 description = "Replication of Bengen (1994), 'Determining Withdrawal Rates Using Historical Data'"
 requires-python = ">=3.10"
 dependencies = ["pandas>=2.0", "numpy>=1.24", "matplotlib>=3.7", "requests>=2.31", "xlrd>=2.0"]

@@ -4,6 +4,8 @@ Re-runs William P. Bengen, "Determining Withdrawal Rates Using Historical Data"
 (*Journal of Financial Planning*, Oct 1994), then tests flexible spending rules, allocation,
 front-loading and international diversification on actual returns through 2025.
 
+**Full write-up with charts: [docs/beyond-the-4pct-rule.md](docs/beyond-the-4pct-rule.md)**
+
 ## Key findings
 
 69 overlapping 30-year retirements starting 1928–1996. Spending in real dollars per $100 of
@@ -22,6 +24,11 @@ starting portfolio; "typical" = median retiree.
 - Front-loading helps only if the minimum declines too. A spending ceiling never raises the safe rate.
 - 25% international is the biggest single gain and survives stress tests.
 - These are in-sample optimums (no fees or taxes); a realistic target is 1–1.5 points lower.
+
+![Highest 30-year sustainable withdrawal rate by retirement start year](docs/img/safemax_by_start_year.png)
+![Highest zero-failure starting rate by international share of stocks](docs/img/intl_share_sweep.png)
+
+*Not financial advice: a historical study of US and developed-market returns, 1928–2025.*
 
 ## Quick start
 ```bash
@@ -116,3 +123,9 @@ saves `*_downloaded.csv`, which are then preferred — diff them against the sna
   Damodaran only has 10-yr Treasuries, which lost more in 1966–81. The default `intermediate` proxy
   (½ T-bills + ½ 10-yr) approximates a ~5-yr duration and closes most of the gap; use `--bonds 10y` to see the raw effect.
 - Bengen's post-1992 averages came from Ibbotson 1926–92; ours are computed from this data (1928–92).
+
+## License
+
+Code: [MIT](LICENSE). Data keep their sources' terms: Damodaran (NYU Stern), US CPI, MSCI index
+returns, and the Jordà-Schularick-Taylor Macrohistory Database (not redistributed here; the derived
+series in `data/raw/intl_stocks.csv` is built from it by `scripts/build_intl.py`).
