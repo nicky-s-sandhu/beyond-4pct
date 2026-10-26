@@ -20,6 +20,9 @@ MSCI World ex USA: annual USD total returns, 1970-2025 (upmyinterest.com table;
 cross-checked against MSCI's official EAFE factsheet for 2012-2025, within ~2pp
 per year, the gap being Canada).
 
+Licence: the JST data, and so data/raw/intl_stocks.csv, are CC BY-NC-SA 4.0
+(non-commercial, share alike, attribution). See data/raw/LICENSE-intl_stocks.md.
+
 Usage:
     python scripts/build_intl.py [path/to/JSTdatasetR6.csv]
 JST data: https://www.macrohistory.net/database/

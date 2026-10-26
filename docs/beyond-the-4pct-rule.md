@@ -36,7 +36,7 @@ Every result comes from 69 overlapping 30-year retirements starting each January
 | US stocks | Damodaran, S&P 500 total return, 1928–2025 | |
 | Bonds | ½ 3-month T-bills + ½ 10-year Treasury (Damodaran) | Proxy for Bengen's intermediate-term government bonds |
 | Inflation | US CPI-U, December to December | |
-| International stocks, 1928–69 | Jordà-Schularick-Taylor Macrohistory R6, 15 developed countries in USD, weighted by real GDP | Wartime gaps skipped; a stress version fills them with heavy losses |
+| International stocks, 1928–69 | Jordà-Schularick-Taylor Macrohistory R6 (CC BY-NC-SA 4.0), 15 developed countries in USD, weighted by real GDP | Wartime gaps skipped; a stress version fills them with heavy losses |
 | International stocks, 1970–2025 | MSCI World ex USA, USD total return | Within ~2 points a year of MSCI EAFE |
 
 ## Bengen's result replicates
@@ -182,7 +182,11 @@ Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 2
 
 - [Damodaran, Historical Returns on Stocks, Bonds and Bills](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html)
 - [US Inflation Calculator, historical inflation rates](https://www.usinflationcalculator.com/inflation/historical-inflation-rates/)
-- [Jordà-Schularick-Taylor Macrohistory Database R6 (copy used)](https://github.com/ejroebuck2025/JST_data_analysis)
+- [Jordà-Schularick-Taylor Macrohistory Database R6](https://www.macrohistory.net/database/) ([copy used](https://github.com/ejroebuck2025/JST_data_analysis)), licensed CC BY-NC-SA 4.0. Cite: Jordà, Schularick and Taylor (2017), "Macrofinancial History and the New Business Cycle Facts", *NBER Macroeconomics Annual 2016*, vol. 31; and Jordà, Knoll, Kuvshinov, Schularick and Taylor (2019), "The Rate of Return on Everything, 1870–2015", *Quarterly Journal of Economics* 134(3)
 - [MSCI World ex USA annual returns](https://www.upmyinterest.com/msci-world-ex-us/)
 - [MSCI EAFE index factsheet](https://www.msci.com/documents/10199/a8a3ef21-f61a-4a4e-82aa-81c24481b783)
 - William P. Bengen, "Determining Withdrawal Rates Using Historical Data", Journal of Financial Planning, October 1994
+
+### Licence
+
+The international figures and charts in this write-up use data derived from the JST Macrohistory Database and are shared under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): non-commercial use only, with attribution, under the same licence. The code is MIT-licensed.

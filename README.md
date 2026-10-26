@@ -130,7 +130,7 @@ Outputs in `output/variants/`: the two charts, per-year CSVs and per-retiree tra
 | Bonds | Damodaran, 10-yr US Treasury total return | 1928– |
 | Bills | Damodaran, 3-month T-bill | used for the intermediate-bond proxy |
 | Inflation | CPI-U NSA, Dec→Dec (FRED `CPIAUCNS`) | |
-| International stocks | 1928–69: JST Macrohistory R6, 15 developed countries, USD, real-GDP weighted; 1970–2025: MSCI World ex USA (USD total return) | `data/raw/intl_stocks.csv` |
+| International stocks | 1928–69: JST Macrohistory R6 (CC BY-NC-SA 4.0), 15 developed countries, USD, real-GDP weighted; 1970–2025: MSCI World ex USA (USD total return) | `data/raw/intl_stocks.csv` |
 
 International notes: JST lacks equity data for Canada and Ireland; Germany 1949 uses the official DM
 parity because JST's exchange rate straddles the 1948 currency reform; country-years with missing
@@ -157,6 +157,17 @@ saves `*_downloaded.csv`, which are then preferred — diff them against the sna
 
 ## License
 
-Code: [MIT](LICENSE). Data keep their sources' terms: Damodaran (NYU Stern), US CPI, MSCI index
-returns, and the Jordà-Schularick-Taylor Macrohistory Database (not redistributed here; the derived
-series in `data/raw/intl_stocks.csv` is built from it by `scripts/build_intl.py`).
+- **Code:** [MIT](LICENSE).
+- **`data/raw/intl_stocks.csv`:** derived from the Jordà-Schularick-Taylor Macrohistory Database, so it
+  is licensed **[CC BY-NC-SA 4.0](data/raw/LICENSE-intl_stocks.md)**: non-commercial use only, share
+  alike, with attribution. Results and charts that use the international series (the `--intl` options,
+  `output/optimize`, `output/intl`, `output/variants`, and the international figures in the write-up)
+  are shared under the same terms.
+- **Other data** keep their sources' terms: Damodaran (NYU Stern) returns, US CPI, and MSCI index returns.
+
+If you use the international data, cite:
+
+- Jordà, Schularick and Taylor (2017), "Macrofinancial History and the New Business Cycle Facts",
+  *NBER Macroeconomics Annual 2016*, vol. 31.
+- Jordà, Knoll, Kuvshinov, Schularick and Taylor (2019), "The Rate of Return on Everything, 1870–2015",
+  *Quarterly Journal of Economics* 134(3).
