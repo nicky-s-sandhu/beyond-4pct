@@ -140,6 +140,72 @@ Higher starts front-load more than the plan's 0.5% drift suggests:
 
 The most aggressive plan without leverage was 100% stocks with ±25% steps: a 9.2% start and $8.44 typical first-decade spending, with the 1928 and 1929 starts failing.
 
+## What it feels like: how often spending is cut
+
+The higher starting rates are paid for with frequent deep cuts: most retirees on the aggressive plans lived through a cut of 30% or more, while Bengen's 4% never cut at all.
+
+Each retiree is placed in a level by their deepest real spending cut, measured two ways:
+
+- **Below the plan:** the deepest drop below planned spending. For the declining plans the planned 0.5% annual trim is not counted as a cut.
+- **From the best year:** the deepest drop from the highest spending reached so far, so giving back earlier raises counts.
+
+Levels: none (under 5%), mild (5–15%), moderate (15–30%), severe (30–50%), extreme (50% or more), and ran out of money. Shares are of the 69 historical retirees; because the 30-year windows overlap, they are frequencies, not true probabilities.
+
+![How often each level of spending cut happened, by strategy](img/pain_levels.png)
+
+*On the 8% plans the $4 floor is exactly 50% below plan, so "extreme" there means the retiree hit the floor.*
+
+| Strategy | Typical spending, yrs 1–10 | Cut ≥30% below plan | Cut ≥30% from best year | Years ≥15% below plan (median) |
+| --- | --- | --- | --- | --- |
+| Bengen 4.0% | $4.00 | 0% | 0% | 0 |
+| Bengen 5.0% | $5.00 | 25% (ran out) | 25% (ran out) | 0 |
+| Guardrails, US, 5.5% | $5.67 | 0% | 58% | 6 |
+| + real spending −0.5%/yr, 6.3% | $6.29 | 57% | 97% | 6 |
+| + 25% international, 8.0% | $7.42 | 83% | 100% | 14 |
+| Same with ±25% steps, 8.0% | $7.28 | 70% | 94% | 13 |
+| 95% success plan, 9.0% | $8.02 | 97% | 100% | 18 |
+
+*"Cut ≥30%" includes retirees who ran out of money.*
+
+- **Rigid spending hurts differently.** Bengen at 5% never cuts, but a quarter of retirees ran out of money, usually in the last five years. Guardrails trade that rare total loss for common partial cuts.
+- **The US guardrails plan at 5.5% is the gentlest step up.** No retiree fell more than 27% below plan, because the $4 floor sits close to the $5.50 start; the cost is about 6 years spent 15% or more below plan.
+- **The 8% plan doubles spending, but nearly half of retirees hit the floor**, a 50% cut, and a typical retiree spends 14 of 30 years at least 15% below plan.
+- **Giving back raises is almost universal.** On the flexible plans nearly everyone at some point loses 30% or more from their best year, usually by losing earlier raises. Anyone who lets their lifestyle rise with every raise will feel that as a real cut.
+- **±25% steps soften it a little:** fewer severe cuts (70% against 83%) and one year less below plan, for $0.14 a year less early spending.
+
+## Does a cash bucket help?
+
+A cash bucket used in down markets barely moves the safe starting rate: about +0.15–0.2 points on the 8% plan and nothing on Bengen's rule. It slightly softens the worst outcomes.
+
+The rule tested:
+
+1. **Funding:** cash comes out of bonds (80/20 becomes 80/10/10) and earns the T-bill rate.
+2. **Trigger:** a downturn is when stocks are 10% or more below their previous peak.
+3. **In a downturn:** spending comes from cash first, then bonds, for up to 5 years; stocks are not sold and the portfolio is not rebalanced.
+4. **Refill:** afterwards, cash is topped up by a fifth of its target in each year stocks rose.
+
+To separate the timing rule from simply holding cash, it is compared with no cash and with a static 10% cash share rebalanced every year.
+
+![Change in the safe starting rate from a cash bucket, by cash share](img/cash_bucket.png)
+
+| | No cash | Static 10% cash | 10% cash bucket |
+| --- | --- | --- | --- |
+| **Bengen, 50% stocks:** safe start | 4.16% | 4.18% | 4.14% |
+| **8% plan:** safe start, no failures | 8.06% | 8.12% | 8.20% |
+| **8% plan:** safe start, 95% success | 9.02% | 8.74% | 9.22% |
+| **8% plan at 8%:** retirees cut ≥30% below plan | 77% | 78% | 74% |
+| **8% plan at 8%:** worst ending balance | $2 | $4 | $6 |
+| **8% plan at 8%:** median ending balance | $62 | $60 | $67 |
+| **8% plan at 8%:** typical spending, yrs 1–10 | $7.42 | $7.36 | $7.36 |
+
+Why it barely helps:
+
+- **10% is not much money.** On the 8% plan it covers about 1.25 years of spending; the bad stretches lasted many years.
+- **It misses the worst retirees.** The 1966 retiree's damage came in the 1970s, long after the first dip had drained the cash. Varying the cash from 5% to 20% of the portfolio, or the trigger from 0% to 20% below peak, never added more than about 0.35 points.
+- **Rebalancing already does the job.** In a down year annual rebalancing buys stocks rather than selling them, so the bucket's gain over plain cash is about 0.1 point.
+
+This matches the published research. [Estrada (2018)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth) found buckets did worse than a static mix across 21 countries, and [Woerheide and Nanigan](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/) found cash buffers raised failure rates. [Early Retirement Now](https://earlyretirementnow.com/2021/09/14/bucket-strategies-swr-series-part-48/) found buckets help only with 6–10+ years of spending in cash, set up at a market peak. A bucket's main value is behavioural: not having to sell stocks in a crash, at almost no cost.
+
 ## Caveats and takeaways
 
 The optimized rates fit one history and should be read as an upper bound, not a plan.
@@ -151,7 +217,7 @@ The optimized rates fit one history and should be read as an upper bound, not a 
 - **Data proxies.** Bonds are a T-bill/10-year blend; international returns splice JST (1928–69) to MSCI (1970 on).
 - **No fees or taxes.** A 0.5–1% annual cost would lower every rate.
 - **Fixed 30-year horizon** and no other income such as pensions or Social Security.
-- **Variable income.** About one retiree-year in five is spent at the floor.
+- **Variable income.** About one retiree-year in five is spent at the floor, and on the 8% plan most retirees live through a cut of 30% or more.
 
 **Takeaways**
 
@@ -159,7 +225,7 @@ The optimized rates fit one history and should be read as an upper bound, not a 
 2. If spending can flex, a hard floor plus large guardrail steps is what makes a higher start safe.
 3. Hold roughly 70–80% stocks, with about a quarter abroad.
 4. Front-load only by letting the minimum fall too; a ceiling is an estate decision, not a safety tool.
-5. Avoid leverage.
+5. Avoid leverage. A cash bucket is harmless but adds little; hold one for peace of mind, not a higher rate.
 6. A realistic starting rate under these rules is roughly 6.5–7%, 1–1.5 points below the optimized 8%.
 
 ## Reproducing the results
@@ -174,6 +240,8 @@ The Python project (pandas, numpy, matplotlib) regenerates every number and char
 | `scripts/intl_sweep.py` | Safe start vs international share, base and stress series |
 | `scripts/safemax_variants.py` | Highest safe start by retirement year for the four variants |
 | `scripts/explain_guardrails.py` | Year-by-year guardrail decisions for chosen retirees, plus how often the rule acts |
+| `scripts/pain_analysis.py` | How often each level of spending cut happens, by strategy |
+| `scripts/cash_bucket.py` | Cash bucket vs no cash and static cash, with cash-size and trigger sensitivity |
 | `scripts/build_intl.py` | Rebuilds the international return series from the JST dataset |
 
 Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 25% international in the experiment scripts (`--intl 0` for US-only).
@@ -186,6 +254,9 @@ Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 2
 - [MSCI World ex USA annual returns](https://www.upmyinterest.com/msci-world-ex-us/)
 - [MSCI EAFE index factsheet](https://www.msci.com/documents/10199/a8a3ef21-f61a-4a4e-82aa-81c24481b783)
 - William P. Bengen, "Determining Withdrawal Rates Using Historical Data", Journal of Financial Planning, October 1994
+- [Early Retirement Now, Retirement Bucket Strategies (SWR Series Part 48)](https://earlyretirementnow.com/2021/09/14/bucket-strategies-swr-series-part-48/)
+- [Kitces, Research Reveals Cash Reserve Strategies Don't Work Unless You're a Good Market Timer](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/)
+- [Estrada, "Does the Bucket Approach Destroy Wealth?" (Advisor Perspectives)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth)
 
 ### Licence
 

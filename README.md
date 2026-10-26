@@ -47,6 +47,47 @@ below **6.4%** (8% − 20%), raise it **30%**; otherwise leave it. Spending neve
 - **±25% steps give the same 8.0% safe start** with gentler swings (about $0.13 a year less early
   spending), a better fit for anyone who would find a 30% pay cut hard to live with.
 
+## What it feels like: how often spending is cut
+
+Higher starting rates are paid for with frequent deep cuts. Each retiree is placed by their deepest
+real spending cut: below the plan (planned 0.5% trims excluded), and from their best year so far.
+Shares are of the 69 historical retirees (overlapping windows, so frequencies, not forecasts).
+
+![How often each level of spending cut happened, by strategy](docs/img/pain_levels.png)
+
+| Strategy | Typical spending, yrs 1–10 | Cut ≥30% below plan | Cut ≥30% from best year |
+|---|---|---|---|
+| Bengen 4.0% | $4.00 | 0% | 0% |
+| Bengen 5.0% | $5.00 | 25% (ran out) | 25% (ran out) |
+| Guardrails, US, 5.5% | $5.67 | 0% | 58% |
+| + 25% international, 8.0% | $7.42 | 83% | 100% |
+| 95% success plan, 9.0% | $8.02 | 97% | 100% |
+
+- Rigid spending trades cuts for a rare total loss: Bengen at 5% ran out for a quarter of retirees.
+- On the 8% plan nearly half of retirees hit the floor (a 50% cut below plan), and a typical retiree
+  spends 14 of 30 years at least 15% below plan. Nearly everyone gives back 30%+ from their best year.
+- The US guardrails plan at 5.5% is the gentlest step up: no cut ever deeper than 27% below plan.
+
+## Does a cash bucket help?
+
+Barely. A 10% cash bucket (taken from bonds) is spent first, then bonds, while stocks are 10%+
+below their peak, for up to 5 years without selling stocks, then refilled by a fifth of its target
+in each up year.
+
+![Change in the safe starting rate from a cash bucket, by cash share](docs/img/cash_bucket.png)
+
+| | No cash | Static 10% cash | 10% cash bucket |
+|---|---|---|---|
+| Bengen 50/50: safe start | 4.16% | 4.18% | 4.14% |
+| 8% plan: safe start, no failures | 8.06% | 8.12% | 8.20% |
+| 8% plan: safe start, 95% success | 9.02% | 8.74% | 9.22% |
+| 8% plan at 8%: cut ≥30% below plan | 77% | 78% | 74% |
+
+10% covers only about 1.25 years of spending on the 8% plan, the 1966 retiree's damage came long
+after the cash was gone, and annual rebalancing already buys stocks in down years. This matches
+published research (Estrada 2018; Woerheide & Nanigan; Early Retirement Now Part 48). It slightly
+softens the worst outcomes, so it is a reasonable comfort tool, not a way to raise the safe rate.
+
 More charts: [Bengen replication](docs/img/safemax_by_start_year.png) ·
 [international share](docs/img/intl_share_sweep.png) · full write-up in
 [docs/beyond-the-4pct-rule.md](docs/beyond-the-4pct-rule.md).
@@ -122,6 +163,13 @@ python scripts/explain_guardrails.py               # 1966 and 1982 traces + how 
 python scripts/explain_guardrails.py --years 1929,1973
 ```
 Outputs in `output/variants/`: the two charts, per-year CSVs and per-retiree trace CSVs.
+
+### Spending pain and cash bucket
+```bash
+python scripts/pain_analysis.py                    # cut-severity levels by strategy -> output/pain/
+python scripts/cash_bucket.py                      # 10% bucket vs no cash vs static cash -> output/bucket/
+python scripts/cash_bucket.py --cash 0.15 --threshold 0.2 --max-years 5 --refill-years 5
+```
 
 ## Data
 | Series | Source | Notes |
