@@ -1,0 +1,8 @@
+{
+  "max_giveback": 0.1,
+  "random": 4000,
+  "refine": 3000,
+  "seed": 7,
+  "train": "1928-1996",
+  "name": "main"
+}
