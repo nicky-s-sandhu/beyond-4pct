@@ -69,7 +69,8 @@ def windows(df: pd.DataFrame, intl: float, horizon: int = 30):
 
 
 def simulate(p: Params, S_r, B_r, C_r, infl):
-    """Returns dict of arrays: real spending (n, T), depleted (n,), final real balance (n,)."""
+    """Returns dict of arrays: real spending (n, T), depleted (n,), final real balance (n,),
+    real year-end balance (n, T)."""
     n, T = S_r.shape
     cash = p.cash if p.cash > 0 else 0.0
     bonds_w = max(1.0 - p.stocks - cash, 0.0)
@@ -83,6 +84,7 @@ def simulate(p: Params, S_r, B_r, C_r, infl):
     price = np.ones(n)
     spend = np.full(n, p.rate)
     reals = np.empty((n, T))
+    balances = np.empty((n, T))
     depleted = np.zeros(n, dtype=bool)
     hi_g, lo_g = p.rate * (1 + p.band), p.rate * (1 - p.band)
     dr = p.drifts(T)
@@ -136,8 +138,9 @@ def simulate(p: Params, S_r, B_r, C_r, infl):
         B = np.where(use_bucket, Bb, Bn)
         C = np.where(use_bucket, Cb, Cn)
         reals[:, t] = take / price
+        balances[:, t] = (S + B + C) / (price * (1 + infl[:, t]))
     final = (S + B + C) / (price * (1 + infl[:, T - 1]))
-    return {"reals": reals, "depleted": depleted, "final": final}
+    return {"reals": reals, "depleted": depleted, "final": final, "balances": balances}
 
 
 def metrics(p: Params, out, gamma: float = 3.0, subsistence: float = 0.01, weights=None):

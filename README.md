@@ -126,6 +126,17 @@ Outputs land in `output/`: `results.md`, `safemax_30yr_50_50.csv`, and three cha
 
 Options: `--timing start|end` (default `end`), `--bonds intermediate|10y` (default `intermediate`).
 
+## Interactive dashboard
+Tune the recommended plan and watch all 69 historical retirements update live (Dash + Plotly; each change re-simulates in a few milliseconds).
+```bash
+pip install -e .
+pip install -r app/requirements.txt
+python app/dashboard.py                  # then open http://127.0.0.1:8050
+```
+Controls cover the starting rate, planned decline, floor and cap, guardrail band and cut/raise sizes, stock and international mix, the optional cash bucket, and the data and scoring choices. Presets load the recommended plan, Bengen's 4% rule and the earlier 8% plan. Every tile shows the difference from the recommended plan, and a warning appears when a setting breaks the 10% extreme-cut limit.
+
+![Dashboard with the earlier 8% plan loaded, compared against the recommended plan](docs/img/dashboard.png)
+
 ## Experiments
 
 ### Guardrails (`scripts/guardrails.py`)
