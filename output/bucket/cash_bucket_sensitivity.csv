@@ -1,0 +1,37 @@
+strategy,cash,rule,safe_rate
+"Bengen: constant real, 50% US stocks",0.05,Static cash,0.0415
+"Bengen: constant real, 50% US stocks",0.05,"Bucket, trigger 0% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.05,"Bucket, trigger 10% below peak",0.041
+"Bengen: constant real, 50% US stocks",0.05,"Bucket, trigger 20% below peak",0.041
+"Bengen: constant real, 50% US stocks",0.1,Static cash,0.0415
+"Bengen: constant real, 50% US stocks",0.1,"Bucket, trigger 0% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.1,"Bucket, trigger 10% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.1,"Bucket, trigger 20% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.15,Static cash,0.042
+"Bengen: constant real, 50% US stocks",0.15,"Bucket, trigger 0% below peak",0.042
+"Bengen: constant real, 50% US stocks",0.15,"Bucket, trigger 10% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.15,"Bucket, trigger 20% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.2,Static cash,0.0415
+"Bengen: constant real, 50% US stocks",0.2,"Bucket, trigger 0% below peak",0.0425
+"Bengen: constant real, 50% US stocks",0.2,"Bucket, trigger 10% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.2,"Bucket, trigger 20% below peak",0.0415
+"Bengen: constant real, 50% US stocks",0.3,Static cash,0.0415
+"Bengen: constant real, 50% US stocks",0.3,"Bucket, trigger 0% below peak",0.042
+"Bengen: constant real, 50% US stocks",0.3,"Bucket, trigger 10% below peak",0.041
+"Bengen: constant real, 50% US stocks",0.3,"Bucket, trigger 20% below peak",0.0415
+"8% plan: guardrails ±30%, 80% stocks",0.05,Static cash,0.0805
+"8% plan: guardrails ±30%, 80% stocks",0.05,"Bucket, trigger 0% below peak",0.0805
+"8% plan: guardrails ±30%, 80% stocks",0.05,"Bucket, trigger 10% below peak",0.0815
+"8% plan: guardrails ±30%, 80% stocks",0.05,"Bucket, trigger 20% below peak",0.081
+"8% plan: guardrails ±30%, 80% stocks",0.1,Static cash,0.081
+"8% plan: guardrails ±30%, 80% stocks",0.1,"Bucket, trigger 0% below peak",0.081
+"8% plan: guardrails ±30%, 80% stocks",0.1,"Bucket, trigger 10% below peak",0.082
+"8% plan: guardrails ±30%, 80% stocks",0.1,"Bucket, trigger 20% below peak",0.0815
+"8% plan: guardrails ±30%, 80% stocks",0.15,Static cash,0.0815
+"8% plan: guardrails ±30%, 80% stocks",0.15,"Bucket, trigger 0% below peak",0.0825
+"8% plan: guardrails ±30%, 80% stocks",0.15,"Bucket, trigger 10% below peak",0.082
+"8% plan: guardrails ±30%, 80% stocks",0.15,"Bucket, trigger 20% below peak",0.0815
+"8% plan: guardrails ±30%, 80% stocks",0.2,Static cash,0.081
+"8% plan: guardrails ±30%, 80% stocks",0.2,"Bucket, trigger 0% below peak",0.0845
+"8% plan: guardrails ±30%, 80% stocks",0.2,"Bucket, trigger 10% below peak",0.0825
+"8% plan: guardrails ±30%, 80% stocks",0.2,"Bucket, trigger 20% below peak",0.082

@@ -130,3 +130,25 @@ def test_with_intl_mixes_stocks_only():
     m = data.with_intl(df, 0.25)
     assert ((m.stocks - (0.75 * df.stocks + 0.25 * df.intl)).abs() < 1e-12).all()
     assert (m.bonds == df.bonds).all() and data.with_intl(df, 0) is df
+
+
+# ---- cash bucket
+from bengen import bucket as bk
+
+
+def test_bucket_engine_matches_without_cash():
+    df = data.with_intl(_hist(), 0.25)
+    for y in (1929, 1966, 1973):
+        sl = df.loc[y:y + 29]
+        rets = list(st.portfolio_returns(df, 0.8).loc[y:y + 29])
+        a = st.fast_guardrails(rets, list(sl.inflation), 0.08, 0.3, 0.2, 0.5, 2.0, "end", -0.005, 10, -0.005)
+        r = bk.run(list(sl.stocks), list(sl.bonds), list(sl.bills), list(sl.inflation), 0.08, 0.8, cash=0.0,
+                   bucket=False, step=0.3, floor=0.5, ceiling=2.0, drift=-0.005)
+        assert a[0] == r["depleted"] and abs(a[2] - sum(r["reals"]) / 30) < 1e-12 and abs(a[3] - r["final"]) < 1e-12
+
+
+def test_bucket_never_sells_stocks_in_first_downturn_year():
+    # flat bonds/cash, stocks fall 30% in year 1: spending must come from cash, stocks keep 70% of value
+    s, b, c, inf = [-0.3] + [0.05] * 29, [0.0] * 30, [0.0] * 30, [0.0] * 30
+    r = bk.run(s, b, c, inf, 0.04, 0.8, cash=0.10, bucket=True)
+    assert not r["depleted"] and r["bucket_years"] >= 1
