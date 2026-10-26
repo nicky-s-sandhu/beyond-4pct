@@ -1,0 +1,13 @@
+experiment,status,why,start,early,big_drop,ran_out,lifetime
+Bengen 4%,baseline,Never cuts; lowest spending,0.04,4.0,0.0,0,4.000000000000001
+Bengen 5%,rejected,A quarter of retirees run out,0.05,5.0,0.2463768115942029,17,5.000000000000001
+"Guardrails, no floor",rejected,Cuts compound; worst retirees near $2,0.05,5.0,0.4927536231884058,0,4.9065365000000005
+Previous 8% plan,rejected,45% of retirees cut to the floor,0.08,7.421710753708781,0.8695652173913043,0,6.560978137224238
+8% plan + cash bucket,rejected,Barely changes anything,0.08,7.36239929621258,0.8695652173913043,0,6.574519028768069
+Smooth-score ratchet,rejected,Back-loaded; 45% international,0.048,5.683965927752128,0.0,0,7.823581920118097
+"Smile, big raises",rejected,Most retirees give back raises,0.06404475832729298,7.489343385857825,0.5217391304347826,1,7.234494445954423
+"Smile, tiny both ways",rejected,Lower early spending; deep cuts below plan,0.06627914281681402,6.594209441235564,0.37681159420289856,2,6.487938862761215
+Mirror smile,rejected,Median path flat; late run-outs,0.06798131717419231,6.916584302020102,0.37681159420289856,2,6.98794584322887
+"75% floor, raises ≤5%",rejected,5 retirees run out,0.06160389203125489,6.256802954530389,0.07246376811594203,5,6.29393154544592
+"75% floor, raises ≤10%",rejected,4 retirees run out,0.06135603767606726,6.354077595244726,0.057971014492753624,4,6.272641139831427
+"Recommended: 75% floor, raises ≤15%",recommended,1 retiree runs out; no drop below 75%,0.060847697222110385,6.569913854420194,0.014492753623188406,1,6.651693626438064

@@ -152,3 +152,34 @@ def test_bucket_never_sells_stocks_in_first_downturn_year():
     s, b, c, inf = [-0.3] + [0.05] * 29, [0.0] * 30, [0.0] * 30, [0.0] * 30
     r = bk.run(s, b, c, inf, 0.04, 0.8, cash=0.10, bucket=True)
     assert not r["depleted"] and r["bucket_years"] >= 1
+
+
+# ---- vectorised engine
+from bengen import vec
+
+
+def test_vec_matches_bucket_engine():
+    df = _hist()
+    p = vec.Params(rate=0.08, stocks=0.8, intl=0.25, cut_step=0.3, raise_step=0.3, floor=0.5, ceiling=2.0,
+                   drift=-0.005, cash=0.1, bucket=True)
+    starts, S, B, C, I = vec.windows(df, p.intl)
+    out = vec.simulate(p, S, B, C, I)
+    for k in (1, 38, 45):  # 1929, 1966, 1973
+        r = bk.run(list(S[k]), list(B[k]), list(C[k]), list(I[k]), p.rate, p.stocks, cash=0.1, bucket=True,
+                   step=0.3, floor=0.5, ceiling=2.0, drift=-0.005)
+        assert r["depleted"] == out["depleted"][k]
+        assert max(abs(a - b) for a, b in zip(r["reals"], out["reals"][k])) < 1e-12
+
+
+def test_flat_floor_holds_at_75pct_of_first_year():
+    df = _hist()
+    p = vec.Params(rate=0.0608, stocks=0.8, intl=0.28, band=0.002, cut_step=0.05, raise_step=0.136, floor=0.75,
+                   floor_flat=True, drift=-0.0246)
+    out = vec.simulate(p, *vec.windows(df, p.intl)[1:])
+    alive = ~out["depleted"]
+    assert (out["reals"][alive] >= 0.75 * p.rate - 1e-12).all()
+
+
+def test_survival_weights_decline():
+    w = vec.survival_weights()
+    assert w[0] == 1.0 and (w[1:] <= w[:-1]).all() and 0.1 < w[-1] < 0.5

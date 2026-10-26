@@ -22,6 +22,8 @@ Each row adds one change to the row above. Spending is in today's dollars per $1
 
 The price of the higher start is variable income. For the 8% plan, the unluckiest 5% of retirees reach the floor by year 6 and stay there, and typical spending drifts down over time. A realistic target is probably 1–1.5 points below these optimized figures.
 
+**Recommended plan.** Measured by how retirees actually experience spending, the 8% plan cuts too deep: 45% of retirees end up 50% below plan. After searching many alternatives (see [Experiments that didn't make the cut](#experiments-that-didnt-make-the-cut)), the plan we recommend starts at 6.1%, plans for real spending to fall 2.5% a year, and never lets spending go below 75% of the first year. Each year it cuts 5% or raises up to 13.6%, depending on the withdrawal rate. Typical spending is $6.57 a year in the first decade, 64% more than Bengen's $4, and only 1 of 69 historical retirees ran out (the 1929 start, in year 26). Late-life long-term care is best funded from a separate pot. Details in [Recommended plan](#recommended-plan-declining-spending-with-a-75-floor).
+
 ## Method and data
 
 Every result comes from 69 overlapping 30-year retirements starting each January from 1928 to 1996, run on actual annual returns. A retiree succeeds if real spending never drops below the floor and the money never runs out.
@@ -206,6 +208,56 @@ Why it barely helps:
 
 This matches the published research. [Estrada (2018)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth) found buckets did worse than a static mix across 21 countries, and [Woerheide and Nanigan](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/) found cash buffers raised failure rates. [Early Retirement Now](https://earlyretirementnow.com/2021/09/14/bucket-strategies-swr-series-part-48/) found buckets help only with 6–10+ years of spending in cash, set up at a market peak. A bucket's main value is behavioural: not having to sell stocks in a crash, at almost no cost.
 
+## Recommended plan: declining spending with a 75% floor
+
+The recommended plan trades some early spending for almost no big drops: typical spending of $6.57 a year in years 1–10, no retiree's spending ever more than 25% below the first year, and 1 of 69 running out.
+
+**The rule**, per $100 of starting portfolio:
+
+1. **Start** at $6.08 (a 6.1% withdrawal) with 80% stocks, 28% of them international, and 20% bonds.
+2. **Plan** for real spending to fall 2.5% a year: each year's planned spending is last year's raised by inflation, minus 2.5%.
+3. **Adjust** against the starting withdrawal rate: if planned spending is more than 6.1% of the current portfolio, cut it 5%; if less, raise it up to 13.6%.
+4. **Floor:** spending never goes below 75% of the first year in real terms ($4.56). Pay for late-life long-term care from a separate fund rather than from this portfolio.
+
+The band is so narrow (±0.2%) that the rule acts nearly every year: about 45% of years bring a cut and 33% a raise. Because the plan declines 2.5% a year, it falls below the floor around year 12, after which the floor sets the minimum.
+
+![Cut severity and decade spending for declining-spending plans with a 75% floor](img/recommended_pain.png)
+
+| Plan | Score | Start | Typical yrs 1–10 / 11–20 / 21–30 | Ran out (of 69) | Give back ≥30% from best year |
+| --- | --- | --- | --- | --- | --- |
+| Bengen 4% | $4.00 | 4.0% | $4.00 / $4.00 / $4.00 | 0 | 0% |
+| Previous 8% plan | $5.73 | 8.0% | $7.42 / $6.31 / $5.42 | 0 | 100% |
+| 75% floor, raises ≤5% | $5.83 | 6.2% | $6.26 / $6.26 / $6.21 | 5 | 20% |
+| 75% floor, raises ≤10% | $5.91 | 6.1% | $6.35 / $6.35 / $5.72 | 4 | 49% |
+| **Recommended: 75% floor, raises ≤15%** | **$6.01** | **6.1%** | **$6.57 / $6.52 / $6.01** | **1** | 84% |
+
+*Score: certainty-equivalent spending with risk aversion 3, each year weighted by the chance that at least one of a 65-year-old couple is alive ([SSA 2022 period life table](https://www.ssa.gov/oact/STATS/table4c6_2022_TR2025.html)); it rewards spending that is high, steady and early. Optimised under three hard rules: international at most 30% of stocks, at most 10% of retirees cut 50%+ below plan or running out, and typical spending never rising from one decade to the next. Best of three search runs.*
+
+![Spending over 30 years for the previous 8% plan and the declining plans](img/recommended_paths.png)
+
+- **Bigger raises make the plan safer, not riskier.** Raises build a cushion in good years. With raises capped at 5% or 10%, the floor blocks the cuts that would have saved the 1929, 1937, 1965 and 1966 retirees, and 4–5 run out late in retirement.
+- **The cost is give-backs.** 84% of retirees at some point spend 30% less than their best year, as raises are trimmed back toward the declining plan. Cuts below the starting level stop at 25%, because of the floor.
+- **It is sensitive to its exact settings.** It uses nearly the whole allowance of failures, so only about one in five small random nudges keeps every limit; round the start rate down in practice. The overall shape holds up when the search is rerun for a single person, risk aversion 2 or 5, or pessimistic international data. With US stocks only, the best start drops to 5.5%.
+
+## Experiments that didn't make the cut
+
+Each idea below was tested on the same 69 retirements and set aside; the chart places them all on two plain measures.
+
+![Every strategy tried: early spending against the share of retirees with a 30%+ drop](img/experiment_map.png)
+
+| Experiment | What we tried | Why it was set aside |
+| --- | --- | --- |
+| Higher fixed rate | Bengen's rule at 5% | A quarter of retirees ran out of money |
+| Guardrails without a floor | ±10% steps on a ±20% band | Cuts compound; the worst retirees fell to about $2 |
+| Leverage | 125–200% stocks, borrowing at T-bills + 1% | Failed 4–16 of 69 retirees at any starting rate |
+| Spending ceiling | Caps of 1–3× the plan | Never raised the safe starting rate; only grows the estate |
+| Cash bucket | 10% cash spent first in downturns, refilled later | Moved the safe start by at most 0.2 points |
+| Smooth-score ratchet | Optimised for steady spending: 4.8% start, never cut, raise 13% when ahead | Back-loads spending (yrs 1–10 $5.68, yrs 21–30 $10); needed 45% international |
+| Spending smile, big raises | Plan declines by decade; cuts ≤5%, raises up to 32% | 91% of retirees give back 30%+ of their best year |
+| Spending smile, tiny both ways | Cuts and raises both ≤5% | Lower early spending ($6.59) and 22% of retirees 30%+ below plan |
+| Mirror smile | Plan dips for 20 years, then rises at the same rate | Typical spending stayed flat; the late rise ran 2 retirees out of money |
+| 75% floor with small raises | As recommended, raises ≤5% or ≤10% | 4–5 retirees ran out late; small raises never build a cushion |
+
 ## Caveats and takeaways
 
 The optimized rates fit one history and should be read as an upper bound, not a plan.
@@ -226,7 +278,8 @@ The optimized rates fit one history and should be read as an upper bound, not a 
 3. Hold roughly 70–80% stocks, with about a quarter abroad.
 4. Front-load only by letting the minimum fall too; a ceiling is an estate decision, not a safety tool.
 5. Avoid leverage. A cash bucket is harmless but adds little; hold one for peace of mind, not a higher rate.
-6. A realistic starting rate under these rules is roughly 6.5–7%, 1–1.5 points below the optimized 8%.
+6. For the smoothest experience, use the recommended plan: start near 6%, plan a 2.5% annual real decline, cut 5% or raise up to about 14% each year, and never go below 75% of the first year. Keep a separate fund for long-term care.
+7. A realistic starting rate under these rules is roughly 6.5–7%, 1–1.5 points below the optimized 8%.
 
 ## Reproducing the results
 
@@ -242,6 +295,9 @@ The Python project (pandas, numpy, matplotlib) regenerates every number and char
 | `scripts/explain_guardrails.py` | Year-by-year guardrail decisions for chosen retirees, plus how often the rule acts |
 | `scripts/pain_analysis.py` | How often each level of spending cut happens, by strategy |
 | `scripts/cash_bucket.py` | Cash bucket vs no cash and static cash, with cash-size and trigger sensitivity |
+| `scripts/decline_optimize.py`, `scripts/decline_charts.py` | Recommended plan: declining spending with a 75% floor and capped raises, optimised and charted |
+| `scripts/experiment_map.py` | Every strategy tried on one chart: early spending vs big drops |
+| `scripts/smooth_optimize.py`, `smile_optimize.py` (+ charts) | The smooth-score and spending-smile experiments |
 | `scripts/build_intl.py` | Rebuilds the international return series from the JST dataset |
 
 Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 25% international in the experiment scripts (`--intl 0` for US-only).
@@ -257,6 +313,8 @@ Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 2
 - [Early Retirement Now, Retirement Bucket Strategies (SWR Series Part 48)](https://earlyretirementnow.com/2021/09/14/bucket-strategies-swr-series-part-48/)
 - [Kitces, Research Reveals Cash Reserve Strategies Don't Work Unless You're a Good Market Timer](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/)
 - [Estrada, "Does the Bucket Approach Destroy Wealth?" (Advisor Perspectives)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth)
+- [Social Security Administration, Actuarial Life Table (2022 period, 2025 Trustees Report)](https://www.ssa.gov/oact/STATS/table4c6_2022_TR2025.html)
+- [Kitces on Blanchett's retirement spending smile](https://www.kitces.com/?p=14475) and [safe withdrawal rates with decreasing spending](https://www.kitces.com/blog/safe-withdrawal-rates-with-decreasing-retirement-spending/)
 
 ### Licence
 

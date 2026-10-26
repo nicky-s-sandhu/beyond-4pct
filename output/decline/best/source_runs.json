@@ -1,0 +1,8 @@
+{
+  "Bengen 4% (50/50 US)": "seed21",
+  "Previous 8% plan": "seed21",
+  "Cuts <=5%, raises <=5%": "seed22",
+  "Cuts <=5%, raises <=10%": "seed21",
+  "Cuts <=5%, raises <=15%": "seed22",
+  "Any cuts, raises <=10%": "seed22"
+}

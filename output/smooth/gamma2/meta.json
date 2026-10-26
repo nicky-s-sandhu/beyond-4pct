@@ -1,0 +1,9 @@
+{
+  "gamma": 2.0,
+  "max_extreme": 0.08695652173913043,
+  "samples": 6000,
+  "seed": 7,
+  "n": 69,
+  "max_intl": 0.5,
+  "intl_stress": false
+}

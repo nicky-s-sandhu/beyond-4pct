@@ -6,6 +6,26 @@ front-loading and international diversification on actual returns through 2025.
 
 **Full write-up with charts: [docs/beyond-the-4pct-rule.md](docs/beyond-the-4pct-rule.md)**
 
+## Recommended plan
+
+Declining spending with a 75% floor: typical spending of **$6.57 a year in years 1–10 per $100**
+saved (64% more than Bengen's $4), no retiree ever more than 25% below their first year, and 1 of 69
+historical retirees running out (the 1929 start, in year 26).
+
+1. Start at a **6.1%** withdrawal with **80% stocks** (28% of them international) and 20% bonds.
+2. Plan for real spending to **fall 2.5% a year**.
+3. Each year, if planned spending is above 6.1% of the portfolio, **cut 5%**; if below, **raise up to 13.6%**.
+4. Never go below **75% of first-year spending**. Fund late-life long-term care from a separate pot.
+
+![Every strategy tried: early spending against the share of retirees with a 30%+ drop](docs/img/experiment_map.png)
+
+The chart places every strategy we tried on two plain measures. Ideas that didn't make the cut:
+a higher fixed rate (5%: a quarter ran out), guardrails without a floor (cuts compound), leverage,
+spending ceilings, a cash bucket (≤0.2 points), a smooth-score ratchet (back-loaded, needed 45%
+international), spending-smile plans (big give-backs or flat), and the 75% floor with small raises
+(4–5 ran out). The reasons are in the [write-up](docs/beyond-the-4pct-rule.md#experiments-that-didnt-make-the-cut).
+Optimised on 69 overlapping windows, so round the start down in practice.
+
 ## Key findings
 
 69 overlapping 30-year retirements starting 1928–1996. Spending in real dollars per $100 of
@@ -170,6 +190,22 @@ python scripts/pain_analysis.py                    # cut-severity levels by stra
 python scripts/cash_bucket.py                      # 10% bucket vs no cash vs static cash -> output/bucket/
 python scripts/cash_bucket.py --cash 0.15 --threshold 0.2 --max-years 5 --refill-years 5
 ```
+
+### Recommended plan and other optimisations
+`src/bengen/vec.py` simulates all 69 retirees at once (about 2.6 ms per plan), with separate cut and
+raise sizes, a floor and cap, a phased spending plan and an optional cash bucket. The optimisers maximise
+certainty-equivalent spending (risk aversion 3, years weighted by a couple's survival from the SSA
+2022 life table in `data/raw/ssa_period_life_2022.csv`) under hard limits on extreme cuts.
+```bash
+python scripts/decline_optimize.py                 # recommended family: declining plan, 75% floor, raise caps
+python scripts/decline_optimize.py --seed 22 --name seed22   # extra seeds; best per family kept in output/decline/best
+python scripts/decline_charts.py                   # charts for the recommended plan
+python scripts/experiment_map.py                   # every strategy on one chart
+python scripts/smooth_optimize.py && python scripts/smooth_charts.py       # smooth-score experiment
+python scripts/smile_optimize.py && python scripts/smile_charts.py         # spending-smile experiment
+python scripts/smile_optimize.py --shape mirror --name mirror && python scripts/smile_mirror_charts.py
+```
+The `decline/best` folder merges the best of three seeds; rerunning reproduces it with seeds 21–23.
 
 ## Data
 | Series | Source | Notes |
