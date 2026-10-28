@@ -39,17 +39,7 @@ def bootstrap(n=5000, T=30, block=10, seed=7):
     yrs = df.index.values
     arr = {k: df[k].values for k in ("stocks", "intl", "bonds", "inflation")}
     arr["cape"] = cape.reindex(yrs).values
-    rng = np.random.default_rng(seed)
-    N = len(yrs)
-    idx = np.empty((n, T), dtype=int)
-    for i in range(n):
-        t = 0
-        while t < T:
-            start = rng.integers(N)
-            L = rng.geometric(1 / block)
-            for k in range(min(L, T - t)):
-                idx[i, t] = (start + k) % N
-                t += 1
+    idx = alt.bootstrap_index(len(yrs), n, T, block, seed)
     D = ao.Data.__new__(ao.Data)
     D.starts = list(range(n))
     D.US, D.INTL, D.B, D.I, D.K = (arr[k][idx] for k in ("stocks", "intl", "bonds", "inflation", "cape"))

@@ -8,23 +8,38 @@ front-loading and international diversification on actual returns through 2025.
 
 ## Recommended plan
 
-Declining spending with a 75% floor: typical spending of **$6.57 a year in years 1–10 per $100**
-saved (64% more than Bengen's $4), no retiree ever more than 25% below their first year, and 1 of 69
-historical retirees running out (the 1929 start, in year 26).
+Spend the way retirees actually do, cap the good years, and keep the chance of running out near 2%.
+Per $1 million saved, in today's dollars:
 
-1. Start at a **6.1%** withdrawal with **80% stocks** (28% of them international) and 20% bonds.
-2. Plan for real spending to **fall 2.5% a year**.
-3. Each year, if planned spending is above 6.1% of the portfolio, **cut 5%**; if below, **raise up to 13.6%**.
-4. Never go below **75% of first-year spending**. Fund late-life long-term care from a separate pot.
+1. Start at **$65,000 (6.5%)** with **80% stocks** (30% of them international) and 20% bonds.
+2. Plan for spending to follow **retirees' observed pattern** (Blanchett 2014): about −1% a year after
+   inflation, gentlest in the 60s and late 80s, steepest around age 78 (−27% over 30 years).
+3. Each year compare planned spending with the portfolio. If the withdrawal rate is more than 22% above
+   the 6.5% start (above 7.9%), **cut 8.5%**; if more than 22% below (under 5.1%), **raise up to 15%**.
+4. Never spend more than **10% above the planned path**, and never less than **$27,300** (42% of year 1).
+   Money left over is the reserve for late-life long-term care.
 
-![Every strategy tried: early spending against the share of retirees with a 30%+ drop](docs/img/experiment_map.png)
+![Spending across 5,000 reshuffled-history retirements: earlier plan vs recommended plan](docs/img/plan_compare.png)
 
-The chart places every strategy we tried on two plain measures. Ideas that didn't make the cut:
-a higher fixed rate (5%: a quarter ran out), guardrails without a floor (cuts compound), leverage,
-spending ceilings, a cash bucket (≤0.2 points), a smooth-score ratchet (back-loaded, needed 45%
-international), spending-smile plans (big give-backs or flat), and the 75% floor with small raises
-(4–5 ran out). The reasons are in the [write-up](docs/beyond-the-4pct-rule.md#experiments-that-didnt-make-the-cut).
-Optimised on 69 overlapping windows, so round the start down in practice.
+| Per $1M saved | Recommended plan | Earlier plan (6.1%, 75% floor) | Bengen 4% |
+|---|---|---|---|
+| First-year spending | $65,000 | $61,000 | $40,000 |
+| Floor (never below) | $27,300 | $45,750 | none |
+| Typical spending, year 1 / 10 / 20 / 30 | $65,000 / $59,800 / $56,100 / $52,100 | $61,000 / $62,600 / $59,500 / $50,700 | $40,000 flat |
+| Ran out: 69 real retirements (no fee / 0.25% / 0.5% fee) | 0 / 0 / 0 | 1 / 6 / 9 | 0 / 0 / 1 |
+| Ran out: 5,000 reshuffled retirements (no fee / 0.25% fee) | **2.0% / 2.8%** | 13.7% / 16.3% | 4.9% / 6.2% |
+| Ever spend below $30,000 (reshuffled) | 23% | 14% | 5% |
+| Typical balance at year 30 (reshuffled) | $1.09M | $0.73M | $1.23M |
+
+Typical = median retiree. "Reshuffled" retirements stitch together random runs of real years (10 on
+average) from 1928–2025, so they include plenty of bad sequences that never happened but could have.
+
+The trade-off: the earlier plan promised never to fall below $45,750 but drained the account in about
+1 retirement in 7 when history didn't repeat itself exactly. The recommended plan's floor is lower, so
+about 1 in 4 retirees have a lean stretch below $30,000 after a bad start, but only 1 in 50 runs out.
+Its smooth-spending score is slightly lower ($4.87 vs $5.00 per $100, reshuffled) because the cap leaves
+good-year money invested. Why the plan changed, and the other strategies tried, are in
+[Testing beyond history](#testing-beyond-history-why-the-plan-changed).
 
 ## Key findings
 
@@ -114,6 +129,57 @@ More charts: [Bengen replication](docs/img/safemax_by_start_year.png) ·
 
 *Not financial advice: a historical study of US and developed-market returns, 1928–2025.*
 
+## Testing beyond history: why the plan changed
+
+The earlier plan (6.1% start, 75% floor) was tuned on the same 69 overlapping retirements it was
+scored on, which hold only about three truly independent 30-year periods. Three checks showed it was
+fitted too closely:
+
+- **Fees:** a 0.25% yearly fee raised its run-outs from 1 to 6 of 69 (all 1929 and 1960s starts).
+- **Reshuffled history:** across 5,000 block-bootstrapped retirements, 13.7% ran out.
+- **Split sample:** the same rule tuned on 1928–61 starts ran out for 10 of the 35 later retirees.
+
+The weak point was the floor: $45,750 per $1M, never cut, is above the roughly $40,000 that history
+has supported as spending that never falls, and buying it as a real guarantee (a 30-year TIPS ladder
+at about 2%) would cost more than the whole portfolio.
+
+**Strategies from the literature.** On the same engine and score: amortization rules (Bogleheads' ABW
+and VPW, TPAW-style), a CAPE-aware amortization rule and Early Retirement Now's CAPE rule, Vanguard's
+dynamic spending rule, a rising-stock glidepath, and a TIPS-ladder floor with stock upside. Several
+looked better in history (CAPE amortization +9%, glidepath +8%) and then lost most of their edge,
+or ran out more, out of history.
+
+![Scores in real history vs across reshuffled history, by strategy](docs/img/history_vs_bootstrap.png)
+
+- With a hard floor, our rule (planned path, cuts and raises outside a band, floor) beat every
+  alternative once tuned on reshuffled history.
+- Amortization without a hard floor scored about 7% higher out of history but left a third of
+  retirees below $39,000 at some point; CAPE added only about 1.5% more.
+- A rising glidepath added about 0.4% once tuned robustly; the TIPS-ladder floor can't fund a
+  useful floor at today's real yields.
+
+**How the plan was set.** All settings, including the floor, were tuned on 2,000 reshuffled
+retirements to maximise the smooth-spending score with at most 2% running out, then checked on 5,000
+fresh ones, on real history and with fees. Caps of 1%, 2%, 3% and 5% were tried; 2% gave most of the
+safety without pushing the floor too low (at 1% it falls to about $21,000–24,000). Spending follows
+Blanchett's age curve (−0.96% a year on average in household data; J.P. Morgan finds spending more
+than 30% lower at 85 than at 60). Without a cap, good markets pushed typical spending *up* over time,
+against that curve; capping it at 10% above the planned path keeps the smile and lets the plan start
+$7,000 higher than an uncapped version.
+
+```bash
+python scripts/alt_optimize.py --boot 2000 --max-out 0.02 --families "Our rule, floor tuned, Blanchett spending curve" --set ceiling=1.1 --name cap110
+python scripts/alt_robust.py final         # fees, reshuffled history, other settings
+python scripts/alt_charts.py               # charts in output/alt/
+python scripts/plan_summary.py             # the table above
+```
+
+Sources: Blanchett, "Exploring the Retirement Consumption Puzzle", *Journal of Financial Planning*
+(May 2014); J.P. Morgan Asset Management, *Retirement by the Numbers*; Kitces and Income Lab on
+risk-based guardrails; Early Retirement Now, SWR series parts 18, 19 and 54; Advisor Perspectives,
+"Beyond the 4% Rule: Flexible Withdrawal Strategies Using Certainty-Equivalent Spending" (2021);
+Vanguard's dynamic spending rule; Morningstar, safe withdrawal rate research (2026).
+
 ## Quick start
 ```bash
 python -m venv .venv && source .venv/bin/activate
@@ -133,9 +199,9 @@ pip install -e .
 pip install -r app/requirements.txt
 python app/dashboard.py                  # then open http://127.0.0.1:8050
 ```
-Controls cover the starting rate, planned decline, floor and cap, guardrail band and cut/raise sizes, stock and international mix, the optional cash bucket, and the data and scoring choices. Presets load the recommended plan, Bengen's 4% rule and the earlier 8% plan. Every tile shows the difference from the recommended plan, and a warning appears when a setting breaks the 10% extreme-cut limit.
+Controls cover the starting rate, the planned spending path (Blanchett's curve or a fixed yearly change), floor and cap, guardrail band and cut/raise sizes, stock and international mix, the optional cash bucket, and the data and scoring choices. Presets load the recommended plan, the earlier 6.1% plan, Bengen's 4% rule and the 8% plan. Every tile shows the difference from the recommended plan, including the share of 5,000 reshuffled-history retirements that run out; a warning appears when that is above the plan's 2% target.
 
-![Dashboard with the earlier 8% plan loaded, compared against the recommended plan](docs/img/dashboard.png)
+![Dashboard with the earlier 6.1% plan loaded, compared against the recommended plan](docs/img/dashboard.png)
 
 ## Experiments
 
@@ -217,6 +283,9 @@ python scripts/smile_optimize.py && python scripts/smile_charts.py         # spe
 python scripts/smile_optimize.py --shape mirror --name mirror && python scripts/smile_mirror_charts.py
 ```
 The `decline/best` folder merges the best of three seeds; rerunning reproduces it with seeds 21–23.
+The current recommended plan comes from `scripts/alt_optimize.py` (see
+[Testing beyond history](#testing-beyond-history-why-the-plan-changed)); `src/bengen/alt.py` holds the
+alternative strategies and the reshuffled-history (block bootstrap) sampler.
 
 ## Data
 | Series | Source | Notes |

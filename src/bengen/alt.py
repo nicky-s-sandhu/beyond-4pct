@@ -33,6 +33,8 @@ from dataclasses import dataclass, asdict, replace
 
 import numpy as np
 
+from .vec import blanchett_change  # Blanchett (2014) spending curve
+
 
 @dataclass
 class Alt:
@@ -90,11 +92,23 @@ class Alt:
         return self.ladder * float(np.sum((1 + y) ** -np.arange(1, T + 1)))
 
 
-def blanchett_change(age, expenditure=75000.0):
-    """Real change in spending from `age` to age + 1: Blanchett (2014), 'Exploring the Retirement Consumption
-    Puzzle', Journal of Financial Planning 27(5), equation 1. Averages about -1%/yr from 65 to 95, smallest
-    at the start and end of retirement (the 'spending smile'), steepest around age 78."""
-    return 0.00008 * age ** 2 - 0.0125 * age - 0.00661 * np.log(expenditure) + 0.546
+
+
+def bootstrap_index(n_years, n=5000, T=30, block=10, seed=7):
+    """Year indices for a stationary block bootstrap: n synthetic T-year retirements stitched from runs of
+    consecutive historical years (geometric lengths, mean `block`), wrapping around the end of the data.
+    Use the same indices for every series so stocks, bonds, bills and inflation move together."""
+    rng = np.random.default_rng(seed)
+    idx = np.empty((n, T), dtype=int)
+    for i in range(n):
+        t = 0
+        while t < T:
+            start = rng.integers(n_years)
+            L = rng.geometric(1 / block)
+            for k in range(min(L, T - t)):
+                idx[i, t] = (start + k) % n_years
+                t += 1
+    return idx
 
 
 def _annuity(r, g, n):

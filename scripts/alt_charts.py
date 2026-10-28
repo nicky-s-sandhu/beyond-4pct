@@ -142,9 +142,46 @@ def paths():
     fig.savefig(OUT / "paths_bootstrap.png", dpi=150)
 
 
+def plan_compare():
+    """Earlier plan vs recommended plan across 5,000 reshuffled-history retirements (per $1M saved)."""
+    sys.path.insert(0, str(ROOT / "app"))
+    import model
+    from bengen import vec
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.6), sharey=True)
+    yrs = np.arange(1, 31)
+    for ax, name, title in zip(axes, ["Earlier plan (6.1% start, 75% floor)", "Recommended plan"],
+                               ["Earlier plan: 6.1% start, floor at 75% of year 1",
+                                "Recommended: Blanchett curve, cap +10%, 2% risk target"]):
+        s = model.PRESETS[name]
+        p = model.to_params(s)
+        US, INTL, B, C, I = model._boot(s["bonds"], s["intl_series"])
+        out = vec.simulate(p, (1 - p.intl) * US + p.intl * INTL, B, C, I)
+        R = out["reals"] * 1e3  # $k per $1M
+        plan = p.plan(30) * 1e3
+        lo, med, hi = (np.percentile(R, q, axis=0) for q in (10, 50, 90))
+        ax.fill_between(yrs, lo, hi, color="#86b6ef", alpha=0.5, lw=0, label="10th–90th percentile")
+        ax.plot(yrs, med, color=ACCENT, lw=2.5, label="Median")
+        ax.plot(yrs, np.percentile(R, 5, axis=0), color=BAD, lw=1.5, ls="--", label="5th percentile")
+        ax.plot(yrs, plan, color=MUTED, lw=1.2, ls=":", label="Planned path")
+        if p.ceiling:
+            ax.plot(yrs, plan * p.ceiling, color=MUTED, lw=1, label="Cap")
+        floor = p.floor * p.rate * 1e3
+        ax.axhline(floor, color=INK, lw=1, ls=(0, (6, 3)), label="Floor")
+        ax.set_title(f"{title}\nran out: {out['depleted'].mean():.1%} of 5,000", loc="left", fontsize=10, color=INK)
+        ax.set_xlabel("Year of retirement")
+        ax.grid(axis="y", color=GRID, lw=0.8)
+        ax.set_ylim(0, 130)
+    axes[0].set_ylabel(r"Real spending per \$1M saved (\$ thousands)")
+    axes[1].legend(loc="upper right", frameon=False, fontsize=8, ncol=2)
+    fig.suptitle("Spending across 5,000 retirements reshuffled from real history", x=0.01, ha="left", fontsize=12)
+    fig.tight_layout()
+    fig.savefig(OUT / "plan_compare.png", dpi=150)
+
+
 if __name__ == "__main__":
     import pandas as pd
     df = pd.read_csv(OUT / "final_robust.csv")
     dumbbell(df)
     frontier(df)
     paths()
+    plan_compare()

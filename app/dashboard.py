@@ -24,9 +24,10 @@ INK, MUTED, GRID, ACCENT, BAD, GOOD = "#0b0b0b", "#52514e", "#e5e4df", "#2a78d6"
 SLIDERS = {
     "Spending": [
         ("rate", "Starting withdrawal rate (%)", 2.0, 10.0, 0.1, "First-year spending as % of the portfolio"),
-        ("drift", "Planned real change per year (%)", -4.0, 1.0, 0.1, "Negative = spending planned to decline"),
-        ("floor", "Spending floor (%)", 0, 100, 5, "Never spend below this; 0 = no floor"),
-        ("ceiling", "Spending cap (× plan)", 0.0, 3.0, 0.1, "0 = no cap"),
+        ("drift", "Fixed real change per year (%)", -4.0, 1.0, 0.1,
+         "Used when the spending path is a fixed yearly change"),
+        ("floor", "Spending floor (%)", 0, 100, 1, "Never spend below this; 0 = no floor"),
+        ("ceiling", "Spending cap (× plan)", 0.0, 3.0, 0.05, "1.1 = never more than 10% above the plan; 0 = no cap"),
     ],
     "Yearly adjustments": [
         ("band", "No-change band (± % of start rate)", 0.0, 30.0, 0.1, "Adjust only when the withdrawal rate "
@@ -46,6 +47,8 @@ SLIDERS = {
     ],
 }
 RADIOS = [
+    ("curve", "Planned spending path", [("blanchett", "Retirees' actual pattern (Blanchett 2014, about −1%/yr)"),
+                                        ("fixed", "Fixed yearly change (slider below)")]),
     ("floor_mode", "Floor measured against", [("fixed", "First-year spending"), ("plan", "The declining plan")]),
     ("bonds", "Bonds", [("intermediate", "Intermediate (½ bills + ½ 10-yr)"), ("10y", "10-year Treasury")]),
     ("intl_series", "International data", [("intl", "Base"), ("intl_stress", "Pessimistic (war losses)")]),
@@ -88,9 +91,10 @@ def controls():
         blocks.append(html.H3(group, style={"fontSize": 14, "margin": "18px 0 10px", "color": ACCENT}))
         blocks += [slider(*it) for it in items]
         if group == "Spending":
-            blocks.append(radio(*RADIOS[0]))
+            blocks.insert(len(blocks) - 4, radio(*RADIOS[0]))
+            blocks.append(radio(*RADIOS[1]))
     blocks.append(html.H3("Data and scoring", style={"fontSize": 14, "margin": "18px 0 10px", "color": ACCENT}))
-    blocks += [radio(*r) for r in RADIOS[1:]]
+    blocks += [radio(*r) for r in RADIOS[2:]]
     blocks.append(html.Div([
         html.Div("Risk aversion (how much cuts count)", style={"fontWeight": 500}),
         dcc.Slider(id="gamma", min=1.5, max=6, step=0.5, value=model.RECOMMENDED["gamma"],
@@ -120,7 +124,8 @@ app.layout = html.Div([
     html.Div([
         html.H1("Withdrawal plan explorer", style={"fontSize": 22, "margin": 0}),
         html.Div("Tune the recommended plan and see how it would have done for every 30-year retirement starting "
-                 "1928–1996. Dollar figures are real spending per $100 of starting portfolio.",
+                 "1928–1996, and how often it would run out across 5,000 retirements reshuffled from real history. "
+                 "Dollar figures are real spending per $100 of starting portfolio.",
                  style={"color": MUTED, "fontSize": 13, "marginTop": 4}),
     ], style={"padding": "14px 20px", "borderBottom": f"1px solid {GRID}"}),
     html.Div([
@@ -180,21 +185,21 @@ def update(*values):
              delta(m["typical_11_20"], rm["typical_11_20"], money)),
         tile("Typical spending, yrs 21–30", money(m["typical_21_30"]),
              delta(m["typical_21_30"], rm["typical_21_30"], money)),
-        tile("Ran out of money", f"{m['ran_out']} of {len(r.starts)}",
+        tile("Ran out, real history", f"{m['ran_out']} of {len(r.starts)}",
              delta(m["ran_out"], rm["ran_out"], lambda v: f"{v:.0f}", higher_is_better=False),
              color=BAD if m["ran_out"] else INK),
-        tile("Big drop: ≥30% below year 1", f"{m['big_drop_share']:.0%}",
-             delta(m["big_drop_share"] * 100, rm["big_drop_share"] * 100, lambda v: f"{v:.0f} pts",
-                   higher_is_better=False)),
+        tile("Ran out, reshuffled history", f"{m['boot_run_out']:.1%}",
+             delta(m["boot_run_out"] * 100, rm["boot_run_out"] * 100, lambda v: f"{v:.1f} pts",
+                   higher_is_better=False), color=BAD if m["boot_run_out"] > model.MAX_RUN_OUT + 0.0005 else INK),
         tile("Gave back ≥30% from best year", f"{m['give_back_share']:.0%}",
              delta(m["give_back_share"] * 100, rm["give_back_share"] * 100, lambda v: f"{v:.0f} pts",
                    higher_is_better=False)),
         tile("Median ending balance", f"${m['median_final']:.0f}", "per $100 started, real"),
     ]
     warn = None
-    if m["extreme_share"] > 0.10:
-        warn = html.Div(f"Breaks the study's limit: {m['extreme_share']:.0%} of retirees had an extreme cut "
-                        f"(50%+ below plan) or ran out, above the 10% allowed.",
+    if m["boot_run_out"] > model.MAX_RUN_OUT + 0.0005:
+        warn = html.Div(f"Above the recommended plan's risk target: {m['boot_run_out']:.1%} of 5,000 "
+                        f"reshuffled-history retirements run out of money (target: at most 2%).",
                         style={"background": "#fbeae6", "color": BAD, "padding": "8px 12px", "borderRadius": 6,
                                "marginBottom": 10, "fontSize": 13})
     return tiles, warn, F.spending_paths(r, ref), F.pain_levels(r, ref), F.by_start_year(r)
