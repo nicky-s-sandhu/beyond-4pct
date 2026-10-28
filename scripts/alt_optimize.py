@@ -37,6 +37,9 @@ REC = alt.Alt(kind="guard", stocks0=0.8, intl=0.28, rate=0.061, drift=-0.025, gb
 
 # family: (base Alt, [(field, lo, hi)])
 FAMILIES = {
+    "Our rule, floor tuned": (REC, [("rate", .04, .08), ("drift", -.04, 0), ("gband", 0, .3),
+                                   ("cut_step", .002, .1), ("raise_step", 0, .15), ("stocks0", .3, 1),
+                                   ("intl", 0, .3), ("floor", 0, 1)]),
     "Recommended rule, re-tuned": (REC, [("rate", .04, .08), ("drift", -.04, 0), ("gband", 0, .3),
                                          ("cut_step", .002, .05), ("raise_step", 0, .15), ("stocks0", .3, 1),
                                          ("intl", 0, .3)]),
@@ -129,12 +132,12 @@ def build(base, spec, x):
 
 
 def optimise(D, base, spec, smooth=None, seed=1, maxiter=250, legacy=50.0, protect=False, boot=False, popsize=20,
-             max_below=None):
+             max_below=None, max_out=0.05):
     def f(x):
         a = build(base, spec, x)
         _, m = D.run(a)
         if boot:
-            return -m["ce"] + 50 * violations_boot(m, len(D.starts), legacy=legacy, max_below=max_below)
+            return -m["ce"] + 50 * violations_boot(m, len(D.starts), max_out=max_out, legacy=legacy, max_below=max_below)
         return -m["ce"] + 50 * violations(m, smooth, legacy=legacy, protect=protect)
     bounds = [(lo, hi) for _, lo, hi in spec]
     # start from the base strategy's own values (so a re-tune can never end below the recommended plan)
@@ -167,6 +170,7 @@ def main():
     ap.add_argument("--split", action="store_true")
     ap.add_argument("--protect", action="store_true", help="also match the recommended plan's smoothness")
     ap.add_argument("--boot", type=int, default=0, help="tune on this many bootstrapped retirements instead")
+    ap.add_argument("--max-out", type=float, default=0.05, help="(boot) max share that runs out")
     ap.add_argument("--max-below", type=float, default=None, help="(boot) max share ever spending < $3.90")
     ap.add_argument("--name", default="main")
     a = ap.parse_args()
@@ -186,7 +190,7 @@ def main():
             import alt_robust as ar
             Db = ar.bootstrap(n=a.boot, seed=11)
             best = optimise(Db, base, spec, seed=a.seed, maxiter=a.maxiter, legacy=a.legacy, boot=True, popsize=12,
-                            max_below=a.max_below)
+                            max_below=a.max_below, max_out=a.max_out)
         else:
             best = optimise(Dtr if a.split else D, base, spec, a.smooth, a.seed, a.maxiter, a.legacy, a.protect)
         out, m = D.run(best)
@@ -195,7 +199,7 @@ def main():
         if a.boot:
             mb = Db.run(best)[1]
             r["boot_train"] = {k: v for k, v in mb.items() if not isinstance(v, np.ndarray)}
-            r["violation"] = violations_boot(mb, a.boot, legacy=a.legacy, max_below=a.max_below)
+            r["violation"] = violations_boot(mb, a.boot, max_out=a.max_out, legacy=a.legacy, max_below=a.max_below)
         if a.split:
             r["train"] = Dtr.run(best)[1]["ce"]
             r["test"] = Dte.run(best)[1]["ce"]
