@@ -143,6 +143,24 @@ The weak point was the floor: $45,750 per $1M, never cut, is above the roughly $
 has supported as spending that never falls, and buying it as a real guarantee (a 30-year TIPS ladder
 at about 2%) would cost more than the whole portfolio.
 
+**Bengen's 4% rule out of history.** The same reshuffled retirements, run with Bengen's exact rule (fixed real
+spending, 50/50 US stocks and bonds), turn 4% from a rate that never failed into one that survives about 95%
+of the time (`scripts/bengen_bootstrap.py`).
+
+| 50/50 US stocks and bonds | Real history (69) | Reshuffled (5,000) |
+|---|---|---|
+| Ran out at 4% | 0% | **4.9%** |
+| Rate that survives 99% / 95% / 90% of the time | 4.24% / 4.33% / 4.58% | 3.38% / **4.02%** / 4.41% |
+| Typical retiree's highest rate | 6.41% | 6.19% |
+| Worst case | 4.16% (1966) | 2.59% |
+
+![Highest fixed real withdrawal rate that lasted 30 years, across 5,000 reshuffled-history retirements](docs/img/bengen_bootstrap.png)
+
+- To fail no more than 1 time in 100, the rate drops to about 3.4%.
+- 50–75% stocks is still the safest mix: at 4%, 12.2% ran out with 25% stocks, 4.4% with 60%, 6.7% with 100%.
+- The answer depends on how history is reshuffled: 4% fails 2.9% of the time with 20-year runs of real years,
+  4.9% with 10-year runs and 7.2% with single random years, so roughly 3–7%.
+
 **Strategies from the literature.** On the same engine and score: amortization rules (Bogleheads' ABW
 and VPW, TPAW-style), a CAPE-aware amortization rule and Early Retirement Now's CAPE rule, Vanguard's
 dynamic spending rule, a rising-stock glidepath, and a TIPS-ladder floor with stock upside. Several
@@ -172,6 +190,7 @@ python scripts/alt_optimize.py --boot 2000 --max-out 0.02 --families "Our rule, 
 python scripts/alt_robust.py final         # fees, reshuffled history, other settings
 python scripts/alt_charts.py               # charts in output/alt/
 python scripts/plan_summary.py             # the table above
+python scripts/bengen_bootstrap.py         # Bengen's 4% rule on reshuffled history
 ```
 
 Sources: Blanchett, "Exploring the Retirement Consumption Puzzle", *Journal of Financial Planning*

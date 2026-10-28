@@ -249,6 +249,21 @@ The earlier plan was tuned on the same 69 overlapping retirements it was scored 
 
 The weak point was the floor. $45,750 per $1 million, never cut, is above the roughly $40,000 that history has supported as spending that never falls, and buying it as a real guarantee (a 30-year TIPS ladder at about 2% real) would cost more than the whole portfolio.
 
+**Bengen's 4% rule out of history.** The same reshuffled retirements, run with Bengen's exact rule (fixed real spending, 50/50 US stocks and bonds), turn 4% from a rate that never failed into one that survives about 95% of the time (`scripts/bengen_bootstrap.py`).
+
+| 50/50 US stocks and bonds | Real history (69) | Reshuffled (5,000) |
+| --- | --- | --- |
+| Ran out at 4% | 0% | **4.9%** |
+| Rate that survives 99% / 95% / 90% of the time | 4.24% / 4.33% / 4.58% | 3.38% / **4.02%** / 4.41% |
+| Typical retiree's highest rate | 6.41% | 6.19% |
+| Worst case | 4.16% (1966) | 2.59% |
+
+![Highest fixed real withdrawal rate that lasted 30 years, across 5,000 reshuffled-history retirements](img/bengen_bootstrap.png)
+
+- To fail no more than 1 time in 100, the rate drops to about 3.4%.
+- 50–75% stocks is still the safest mix: at 4%, 12.2% ran out with 25% stocks, 4.4% with 60%, 6.7% with 100%.
+- The answer depends on how history is reshuffled: 4% fails 2.9% of the time with 20-year runs of real years, 4.9% with 10-year runs and 7.2% with single random years, so roughly 3–7%.
+
 **Strategies from the literature.** On the same engine and score we tested amortization rules (Bogleheads' ABW and VPW, [TPAW](https://pwlcapital.com/episode-340-ben-mathew-the-lifecycle-model-vs-safe-withdrawal-rates-swr/)-style), a CAPE-aware amortization rule and [Early Retirement Now's CAPE rule](https://earlyretirementnow.com/2022/10/12/dynamic-withdrawal-rates-based-on-the-shiller-cape-swr-series-part-54/amp), [Vanguard's dynamic spending rule](https://plansponsor.com/vanguard-tests-approach-decumulation-dynamic-spending-rule), a [rising-stock glidepath](https://earlyretirementnow.com/swr19), and a TIPS-ladder floor with stock upside. Each was tuned twice: on the 69 real retirements, and on 2,000 reshuffled ones, then scored on 5,000 fresh reshuffled retirements.
 
 ![Scores in real history vs across reshuffled history, by strategy](img/history_vs_bootstrap.png)
@@ -328,6 +343,7 @@ The Python project (pandas, numpy, matplotlib) regenerates every number and char
 | `scripts/alt_optimize.py` | Recommended plan and the alternative strategies, tuned on history or reshuffled history (`--boot 2000 --max-out 0.02`) |
 | `scripts/alt_robust.py`, `scripts/alt_charts.py` | Stress tests (fees, reshuffled history, other settings) and charts |
 | `scripts/plan_summary.py` | The recommended-plan comparison table |
+| `scripts/bengen_bootstrap.py` | Bengen's 4% rule on reshuffled history: failure rate and safe rates by stock share |
 | `app/dashboard.py` | Interactive dashboard for tuning the recommended plan |
 
 Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 25% international in the experiment scripts (`--intl 0` for US-only).
