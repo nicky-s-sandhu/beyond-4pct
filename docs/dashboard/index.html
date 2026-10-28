@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Withdrawal Plan Explorer</title>
+<meta name="description" content="Tune a retirement withdrawal plan and see how it would have done in every 30-year U.S. retirement since 1928 and across 5,000 retirements reshuffled from real history.">
+<meta name="color-scheme" content="light">
+<style>
+  :root {
+    --ink: #0b0b0b; --muted: #52514e; --grid: #e5e4df; --surface: #ffffff; --panel: #fbfbfa;
+    --accent: #2a78d6; --bad: #a23b2a; --good: #1d7a3a; --warn-bg: #fbeae6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--ink);
+         font: 14px/1.45 Inter, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--grid); }
+  header h1 { font-size: 22px; margin: 0; }
+  header p { color: var(--muted); font-size: 13px; margin: 4px 0 0; max-width: 980px; }
+  header a { color: var(--accent); }
+  .layout { display: flex; flex-wrap: wrap; align-items: flex-start; }
+  .sidebar { flex: 0 0 330px; padding: 16px 20px; background: var(--panel); border-right: 1px solid var(--grid);
+             position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+  .main { flex: 1 1 600px; min-width: 0; padding: 14px 20px 24px; }
+  h2 { font-size: 18px; margin: 0 0 8px; }
+  h3 { font-size: 14px; margin: 20px 0 10px; color: var(--accent); }
+  .hint { color: var(--muted); font-size: 12px; }
+  .sidebar select, .sidebar button, .pick select { font: inherit; width: 100%; padding: 8px; border: 1px solid var(--grid);
+                   border-radius: 6px; background: white; color: var(--ink); }
+  .sidebar button { margin: 8px 0 4px; cursor: pointer; }
+  .sidebar button:hover { border-color: var(--muted); }
+  .ctl { margin-bottom: 14px; }
+  .ctl .top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ctl label { font-weight: 500; }
+  .ctl output { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+  .ctl output.changed { color: var(--accent); }
+  .ctl input[type=range] { width: 100%; margin: 6px 0 0; accent-color: var(--accent); }
+  .radio label { display: block; font-size: 13px; font-weight: 400; margin: 3px 0; }
+  .radio .title { font-weight: 500; margin-bottom: 4px; }
+  .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .tile { padding: 10px 12px; border: 1px solid var(--grid); border-radius: 8px; background: white; }
+  .tile .k { font-size: 12px; color: var(--muted); }
+  .tile .v { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tile .d { font-size: 11px; color: var(--muted); }
+  .tile .d.good { color: var(--good); } .tile .d.bad { color: var(--bad); }
+  .tile .v.bad { color: var(--bad); }
+  .warn { background: var(--warn-bg); color: var(--bad); padding: 8px 12px; border-radius: 6px; margin-bottom: 10px;
+          font-size: 13px; }
+  .chart { width: 100%; }
+  .pick { margin: 8px 0; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .pick select { width: auto; padding: 4px 8px; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 12px; }
+  footer a { color: var(--accent); }
+  #loading { padding: 40px 0; color: var(--muted); }
+  .jump { display: none; margin-bottom: 10px; color: var(--accent); }
+  @media (max-width: 1100px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) {
+    header { padding: 12px 16px; }
+    .sidebar { flex: 1 1 100%; position: static; max-height: none; border-right: none;
+               border-bottom: 1px solid var(--grid); padding: 12px 16px; }
+    .main { flex: 1 1 100%; padding: 12px 16px; order: -1; }
+    .jump { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Withdrawal plan explorer</h1>
+  <p>Tune the recommended plan and see how it would have done for every 30-year retirement starting 1928–1996,
+    and how often it would run out across 5,000 retirements reshuffled from real history. Dollar figures are real
+    spending per $100 of starting portfolio (multiply by 10,000 for $1 million).
+    <a href="../beyond-the-4pct-rule.html">Read the study</a> ·
+    <a href="https://github.com/nicky-s-sandhu/beyond-4pct">Code and data</a></p>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="controls">
+    <h2>Settings</h2>
+    <div class="hint" style="margin-bottom:8px">Start from a preset, then tune.</div>
+    <select id="preset" aria-label="Preset"></select>
+    <button id="reset" type="button">Reset to recommended plan</button>
+    <button id="share" type="button">Copy a link to these settings</button>
+  </aside>
+  <main class="main">
+    <a class="jump" href="#controls">Change the settings ↓</a>
+    <div id="loading">Loading data…</div>
+    <div id="warning"></div>
+    <div id="tiles" class="tiles"></div>
+    <div id="paths" class="chart"></div>
+    <div id="pain" class="chart"></div>
+    <div id="years" class="chart"></div>
+    <div class="pick"><span>Explore one retiree, starting in</span><select id="year" aria-label="Start year"></select></div>
+    <div id="retiree" class="chart"></div>
+    <footer>
+      Historical backtest of U.S. stocks and bonds with developed-market stocks, 1928–2025: Damodaran (S&amp;P 500,
+      Treasuries), U.S. CPI, MSCI World ex USA from 1970 and, for 1928–69, an index derived from the
+      Jordà-Schularick-Taylor Macrohistory Database (CC BY-NC-SA 4.0). Spending path from Blanchett (2014). No fees or
+      taxes. Not financial advice. Charts by Plotly.js (MIT).
+    </footer>
+  </main>
+</div>
+<script src="vendor/plotly-3.7.0.min.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

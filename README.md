@@ -212,7 +212,12 @@ Outputs land in `output/`: `results.md`, `safemax_30yr_50_50.csv`, and three cha
 Options: `--timing start|end` (default `end`), `--bonds intermediate|10y` (default `intermediate`).
 
 ## Interactive dashboard
-Tune the recommended plan and watch all 69 historical retirements update live (Dash + Plotly; each change re-simulates in a few milliseconds).
+**Try it online: [nicky-s-sandhu.github.io/beyond-4pct/dashboard](https://nicky-s-sandhu.github.io/beyond-4pct/dashboard/)**
+
+The online version is a static page (`docs/dashboard/`) that runs the simulation in your browser: a JavaScript
+port of the Python engine, checked against it by `tests/test_web_engine.py`, with the data exported by
+`scripts/export_web_data.py` (rerun it after changing the data or the recommended plan). Settings can be shared
+as a link. The original Dash version runs locally:
 ```bash
 pip install -e .
 pip install -r app/requirements.txt
