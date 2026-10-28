@@ -44,6 +44,9 @@ class Alt:
     # guard rule
     rate: float = 0.04
     drift: float = 0.0
+    curve: str = ""                # "blanchett": planned real change by age from Blanchett (2014), replaces drift
+    start_age: int = 65
+    expenditure: float = 75000.0   # household spending ($/yr) for Blanchett's equation
     gband: float = 0.2
     cut_step: float = 0.0
     raise_step: float = 0.0
@@ -68,6 +71,12 @@ class Alt:
     def as_dict(self):
         return asdict(self)
 
+    def drifts(self, T):
+        """Planned real change applied going into each year (index 0 unused)."""
+        if self.curve == "blanchett":
+            return np.array([0.0] + [blanchett_change(self.start_age + t - 1, self.expenditure) for t in range(1, T)])
+        return np.array([0.0] + [self.drift] * (T - 1))
+
     def stock_path(self, T):
         if self.stocks1 is None:
             return np.full(T, self.stocks0)
@@ -78,6 +87,13 @@ class Alt:
     def ladder_cost(self, T=30):
         y = self.ladder_yield
         return self.ladder * float(np.sum((1 + y) ** -np.arange(1, T + 1)))
+
+
+def blanchett_change(age, expenditure=75000.0):
+    """Real change in spending from `age` to age + 1: Blanchett (2014), 'Exploring the Retirement Consumption
+    Puzzle', Journal of Financial Planning 27(5), equation 1. Averages about -1%/yr from 65 to 95, smallest
+    at the start and end of retirement (the 'spending smile'), steepest around age 78."""
+    return 0.00008 * age ** 2 - 0.0125 * age - 0.00661 * np.log(expenditure) + 0.546
 
 
 def _annuity(r, g, n):
@@ -103,6 +119,7 @@ def simulate(a: Alt, S_r, B_r, infl, cape=None):
     prev = np.zeros(n)                      # last year's total real spending
     first = None
     hi_g, lo_g = a.rate * (1 + a.gband), a.rate * (1 - a.gband)
+    dr = a.drifts(T)
     for t in range(T):
         if t > 0:
             price = price * (1 + infl[:, t - 1])
@@ -113,7 +130,7 @@ def simulate(a: Alt, S_r, B_r, infl, cape=None):
             if t == 0:
                 spend = np.full(n, a.rate)
             else:
-                spend = prev * (1 + a.drift)
+                spend = prev * (1 + dr[t])
                 if a.cut_step > 0 or a.raise_step > 0:
                     with np.errstate(divide="ignore", invalid="ignore"):
                         wr = np.where(w_real > 0, spend / np.where(w_real > 0, w_real, 1), np.inf)
@@ -182,12 +199,12 @@ def metrics(out, tilt=0.0, gamma=3.0, weights=None, subsistence=0.01):
     ran = out["depleted"]
     low = np.where(ran, 0.0, R.min(axis=1))
     # unplanned give-back: shortfall versus the best year carried forward along the planned tilt
-    k = np.arange(T)
-    adj = R / (1 + tilt) ** k
+    path = np.cumprod(1 + np.asarray(tilt, float)) if np.ndim(tilt) else (1 + tilt) ** np.arange(T)
+    adj = R / path
     best = np.maximum.accumulate(adj, axis=1)
     giveback = (1 - adj / best).max(axis=1)
     yoy = R[:, 1:] / np.where(R[:, :-1] > 0, R[:, :-1], 1) - 1
-    unpl = yoy - tilt
+    unpl = yoy - (np.asarray(tilt, float)[1:] if np.ndim(tilt) else tilt)
     return {
         "ce": ce * 100,
         "ran_out": int(ran.sum()),

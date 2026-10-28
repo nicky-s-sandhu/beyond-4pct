@@ -40,6 +40,13 @@ FAMILIES = {
     "Our rule, floor tuned": (REC, [("rate", .04, .08), ("drift", -.04, 0), ("gband", 0, .3),
                                    ("cut_step", .002, .1), ("raise_step", 0, .15), ("stocks0", .3, 1),
                                    ("intl", 0, .3), ("floor", 0, 1)]),
+    "Our rule, floor tuned, Blanchett spending curve": (
+        replace(REC, curve="blanchett"), [("rate", .04, .08), ("gband", 0, .3), ("cut_step", .002, .1),
+                                          ("raise_step", 0, .15), ("stocks0", .3, 1), ("intl", 0, .3),
+                                          ("floor", 0, 1)]),
+    "Our rule, floor tuned, 1% yearly decline": (
+        replace(REC, drift=-0.01), [("rate", .04, .08), ("gband", 0, .3), ("cut_step", .002, .1),
+                                    ("raise_step", 0, .15), ("stocks0", .3, 1), ("intl", 0, .3), ("floor", 0, 1)]),
     "Recommended rule, re-tuned": (REC, [("rate", .04, .08), ("drift", -.04, 0), ("gband", 0, .3),
                                          ("cut_step", .002, .05), ("raise_step", 0, .15), ("stocks0", .3, 1),
                                          ("intl", 0, .3)]),
@@ -96,7 +103,8 @@ class Data:
     def run(self, a: alt.Alt):
         S = (1 - a.intl) * self.US + a.intl * self.INTL
         out = alt.simulate(a, S, self.B, self.I, self.K)
-        return out, alt.metrics(out, tilt=a.drift if a.kind == "guard" else a.tilt, weights=self.w)
+        tilt = (a.drifts(out["reals"].shape[1]) if a.curve else a.drift) if a.kind == "guard" else a.tilt
+        return out, alt.metrics(out, tilt=tilt, weights=self.w)
 
 
 def violations(m, smooth=None, p5=4.575, legacy=50.0, protect=False):
