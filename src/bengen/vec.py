@@ -28,6 +28,9 @@ class Params:
     drift: float = 0.0          # planned real change in spending per year (years 1-10)
     drift2: float | None = None # years 11-20 (None = same as drift)
     drift3: float | None = None # years 21-30 (None = same as drift2)
+    curve: str = ""             # "blanchett": planned change by age (Blanchett 2014), replaces drift/drift2/drift3
+    start_age: int = 65
+    expenditure: float = 75000.0  # household spending ($/yr) used in Blanchett's equation
     cash: float = 0.0           # cash share (taken from bonds)
     bucket: bool = False        # spend cash then bonds in downturns (else static cash)
     threshold: float = 0.10     # downturn = stocks this far below peak
@@ -39,6 +42,8 @@ class Params:
 
     def drifts(self, T):
         """Per-year planned real change applied when moving from year t-1 to t (t = 0..T-1)."""
+        if self.curve == "blanchett":
+            return np.array([0.0] + [blanchett_change(self.start_age + t - 1, self.expenditure) for t in range(1, T)])
         d2 = self.drift if self.drift2 is None else self.drift2
         d3 = d2 if self.drift3 is None else self.drift3
         return np.array([0.0] + [self.drift if t < 10 else d2 if t < 20 else d3 for t in range(1, T)])
@@ -46,6 +51,13 @@ class Params:
     def plan(self, T):
         """Planned real spending path per $1 start: rate x cumulative drift."""
         return self.rate * np.cumprod(1 + self.drifts(T))
+
+
+def blanchett_change(age, expenditure=75000.0):
+    """Real change in spending from `age` to age + 1: Blanchett (2014), 'Exploring the Retirement Consumption
+    Puzzle', Journal of Financial Planning 27(5), equation 1. About -1%/yr on average from 65 to 95; gentlest
+    early and late in retirement (the 'spending smile'), steepest around age 78."""
+    return 0.00008 * age ** 2 - 0.0125 * age - 0.00661 * np.log(expenditure) + 0.546
 
 
 def survival_weights(T=30, start_age=65, who="couple", path=None):

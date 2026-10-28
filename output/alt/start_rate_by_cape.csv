@@ -1,0 +1,33 @@
+cape,rule,start_rate
+17.0,Bengen 4% (50/50 US),4.0
+17.0,Recommended plan,6.1
+17.0,Guardrails (recommended family),6.0902819226640235
+17.0,"Guardrails, valuation-aware start",6.791596209465962
+17.0,"Amortisation, smoothed",5.716925104827878
+17.0,"Amortisation + valuations (CAPE), smoothed",6.831734361939293
+17.0,"Amortisation + CAPE, risk-based guardrails",6.969719904691489
+17.0,"Amortisation + CAPE, smoothed, rising-equity glidepath",6.627046861091329
+25.0,Bengen 4% (50/50 US),4.0
+25.0,Recommended plan,6.1
+25.0,Guardrails (recommended family),6.0902819226640235
+25.0,"Guardrails, valuation-aware start",5.600325074112066
+25.0,"Amortisation, smoothed",5.716925104827878
+25.0,"Amortisation + valuations (CAPE), smoothed",5.369232565392331
+25.0,"Amortisation + CAPE, risk-based guardrails",5.377346858462214
+25.0,"Amortisation + CAPE, smoothed, rising-equity glidepath",5.310512490952313
+30.0,Bengen 4% (50/50 US),4.0
+30.0,Recommended plan,6.1
+30.0,Guardrails (recommended family),6.0902819226640235
+30.0,"Guardrails, valuation-aware start",5.178416547007561
+30.0,"Amortisation, smoothed",5.716925104827878
+30.0,"Amortisation + valuations (CAPE), smoothed",4.884578992783166
+30.0,"Amortisation + CAPE, risk-based guardrails",4.8490743987067075
+30.0,"Amortisation + CAPE, smoothed, rising-equity glidepath",4.871545970323002
+40.0,Bengen 4% (50/50 US),4.0
+40.0,Recommended plan,6.1
+40.0,Guardrails (recommended family),6.0902819226640235
+40.0,"Guardrails, valuation-aware start",4.65103088812693
+40.0,"Amortisation, smoothed",5.716925104827878
+40.0,"Amortisation + valuations (CAPE), smoothed",4.30745777038573
+40.0,"Amortisation + CAPE, risk-based guardrails",4.22084748773034
+40.0,"Amortisation + CAPE, smoothed, rising-equity glidepath",4.346136254136467

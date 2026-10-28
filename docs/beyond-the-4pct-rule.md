@@ -1,6 +1,6 @@
 # Beyond the 4% Rule: A Historical Backtest
 
-Nicky Sandhu · October 25, 2026
+Nicky Sandhu · October 25, 2026 · updated October 28, 2026
 
 ## Summary
 
@@ -22,7 +22,7 @@ Each row adds one change to the row above. Spending is in today's dollars per $1
 
 The price of the higher start is variable income. For the 8% plan, the unluckiest 5% of retirees reach the floor by year 6 and stay there, and typical spending drifts down over time. A realistic target is probably 1–1.5 points below these optimized figures.
 
-**Recommended plan.** Measured by how retirees actually experience spending, the 8% plan cuts too deep: 45% of retirees end up 50% below plan. After searching many alternatives (see [Experiments that didn't make the cut](#experiments-that-didnt-make-the-cut)), the plan we recommend starts at 6.1%, plans for real spending to fall 2.5% a year, and never lets spending go below 75% of the first year. Each year it cuts 5% or raises up to 13.6%, depending on the withdrawal rate. Typical spending is $6.57 a year in the first decade, 64% more than Bengen's $4, and only 1 of 69 historical retirees ran out (the 1929 start, in year 26). Late-life long-term care is best funded from a separate pot. Details in [Recommended plan](#recommended-plan-declining-spending-with-a-75-floor).
+**Recommended plan.** Measured by how retirees actually experience spending, the 8% plan cuts too deep: 45% of retirees end up 50% below plan. The plan we now recommend spends the way retirees actually do (about 1% less each year after inflation, following Blanchett's 2014 research), never more than 10% above that path, and never below $27,300 per $1 million saved. It starts at $65,000 per $1 million (6.5%) with 80% stocks, and only 2% of 5,000 retirements reshuffled from real history run out, against 13.7% for our earlier 6.1% plan with a 75% floor. That earlier plan was tuned too closely to the 69 historical retirements; see [Testing beyond history](#testing-beyond-history-why-the-plan-changed). Details in [Recommended plan](#recommended-plan-spend-like-retirees-do-cap-the-good-years).
 
 ## Method and data
 
@@ -208,36 +208,57 @@ Why it barely helps:
 
 This matches the published research. [Estrada (2018)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth) found buckets did worse than a static mix across 21 countries, and [Woerheide and Nanigan](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/) found cash buffers raised failure rates. [Early Retirement Now](https://earlyretirementnow.com/2021/09/14/bucket-strategies-swr-series-part-48/) found buckets help only with 6–10+ years of spending in cash, set up at a market peak. A bucket's main value is behavioural: not having to sell stocks in a crash, at almost no cost.
 
-## Recommended plan: declining spending with a 75% floor
+## Recommended plan: spend like retirees do, cap the good years
 
-The recommended plan trades some early spending for almost no big drops: typical spending of $6.57 a year in years 1–10, no retiree's spending ever more than 25% below the first year, and 1 of 69 running out.
+The recommended plan keeps the chance of running out near 2% while spending follows the pattern retirees actually show. Per $1 million saved, in today's dollars:
 
-**The rule**, per $100 of starting portfolio:
+1. **Start** at $65,000 (a 6.5% withdrawal) with 80% stocks, 30% of them international, and 20% bonds.
+2. **Plan** for spending to follow [Blanchett's (2014)](https://www.financialplanningassociation.org/article/journal/MAY14-exploring-retirement-consumption-puzzle) curve for a household spending about $75,000 a year: about −1% a year after inflation on average, gentlest in the 60s and late 80s and steepest around age 78, 27% lower after 30 years. Household data show real spending falling 0.96% a year from 60 to 90; [J.P. Morgan's](https://www.planadviser.com/research-finds-slowdown-in-spending-during-retirement/) data on 4.7 million households show it more than 30% lower at 85 than at 60.
+3. **Adjust** against the 6.5% starting withdrawal rate: if planned spending is more than 7.9% of the current portfolio (22% above the start), cut it 8.5%; if less than 5.1% (22% below), raise it up to 15%.
+4. **Cap:** never spend more than 10% above the planned path.
+5. **Floor:** never below $27,300 (42% of the first year). Money left over is the reserve for late-life long-term care.
 
-1. **Start** at $6.08 (a 6.1% withdrawal) with 80% stocks, 28% of them international, and 20% bonds.
-2. **Plan** for real spending to fall 2.5% a year: each year's planned spending is last year's raised by inflation, minus 2.5%.
-3. **Adjust** against the starting withdrawal rate: if planned spending is more than 6.1% of the current portfolio, cut it 5%; if less, raise it up to 13.6%.
-4. **Floor:** spending never goes below 75% of the first year in real terms ($4.56). Pay for late-life long-term care from a separate fund rather than from this portfolio.
+![Spending across 5,000 reshuffled-history retirements: earlier plan vs recommended plan](img/plan_compare.png)
 
-The band is so narrow (±0.2%) that the rule acts nearly every year: about 45% of years bring a cut and 33% a raise. Because the plan declines 2.5% a year, it falls below the floor around year 12, after which the floor sets the minimum.
+*Reshuffled history: 5,000 synthetic 30-year retirements stitched from random runs of real years (10 on average) from 1928–2025, with stocks, bonds and inflation moving together. They include many bad sequences that never happened but could have.*
 
-![Cut severity and decade spending for declining-spending plans with a 75% floor](img/recommended_pain.png)
+| Per $1M saved | Recommended plan | Earlier plan (6.1%, 75% floor) | Bengen 4% |
+| --- | --- | --- | --- |
+| First-year spending | $65,000 | $61,000 | $40,000 |
+| Floor (never below) | $27,300 | $45,750 | none |
+| Typical spending, year 1 / 10 / 20 / 30 | $65,000 / $59,800 / $56,100 / $52,100 | $61,000 / $62,600 / $59,500 / $50,700 | $40,000 flat |
+| Ran out: 69 real retirements (no fee / 0.25% / 0.5% fee) | 0 / 0 / 0 | 1 / 6 / 9 | 0 / 0 / 1 |
+| Ran out: reshuffled history (no fee / 0.25% fee) | **2.0% / 2.8%** | 13.7% / 16.3% | 4.9% / 6.2% |
+| Ever spend below $30,000 (reshuffled) | 23% | 14% | 5% |
+| Score, reshuffled history ($ per $100) | $4.87 | $5.00 | $3.92 |
+| Typical balance at year 30 (reshuffled) | $1.09M | $0.73M | $1.23M |
 
-| Plan | Score | Start | Typical yrs 1–10 / 11–20 / 21–30 | Ran out (of 69) | Give back ≥30% from best year |
-| --- | --- | --- | --- | --- | --- |
-| Bengen 4% | $4.00 | 4.0% | $4.00 / $4.00 / $4.00 | 0 | 0% |
-| Previous 8% plan | $5.73 | 8.0% | $7.42 / $6.31 / $5.42 | 0 | 100% |
-| 75% floor, raises ≤5% | $5.83 | 6.2% | $6.26 / $6.26 / $6.21 | 5 | 20% |
-| 75% floor, raises ≤10% | $5.91 | 6.1% | $6.35 / $6.35 / $5.72 | 4 | 49% |
-| **Recommended: 75% floor, raises ≤15%** | **$6.01** | **6.1%** | **$6.57 / $6.52 / $6.01** | **1** | 84% |
+*Typical = median retiree. Score: certainty-equivalent spending with risk aversion 3, each year weighted by the chance that at least one of a 65-year-old couple is alive ([SSA 2022 period life table](https://www.ssa.gov/oact/STATS/table4c6_2022_TR2025.html)).*
 
-*Score: certainty-equivalent spending with risk aversion 3, each year weighted by the chance that at least one of a 65-year-old couple is alive ([SSA 2022 period life table](https://www.ssa.gov/oact/STATS/table4c6_2022_TR2025.html)); it rewards spending that is high, steady and early. Optimised under three hard rules: international at most 30% of stocks, at most 10% of retirees cut 50%+ below plan or running out, and typical spending never rising from one decade to the next. Best of three search runs.*
+- **A lower floor is what makes it safe.** The earlier plan promised never to fall below $45,750 and drained the account in about 1 retirement in 7 when history didn't repeat itself exactly. With the floor at $27,300, about 1 retiree in 4 has a lean stretch below $30,000 after a bad start, but only 1 in 50 runs out.
+- **The cap keeps the smile.** Without it, raises in good markets pushed typical spending up over time, against the declining pattern; capped at 10% above the path, typical spending follows the curve down, and the plan can start $7,000 higher than an uncapped version.
+- **The cost is a slightly lower score.** Good-year money stays invested, so the score is a little below the earlier plan's ($4.87 vs $5.00), and the typical retiree ends with about as much as they started with.
 
-![Spending over 30 years for the previous 8% plan and the declining plans](img/recommended_paths.png)
+## Testing beyond history: why the plan changed
 
-- **Bigger raises make the plan safer, not riskier.** Raises build a cushion in good years. With raises capped at 5% or 10%, the floor blocks the cuts that would have saved the 1929, 1937, 1965 and 1966 retirees, and 4–5 run out late in retirement.
-- **The cost is give-backs.** 84% of retirees at some point spend 30% less than their best year, as raises are trimmed back toward the declining plan. Cuts below the starting level stop at 25%, because of the floor.
-- **It is sensitive to its exact settings.** It uses nearly the whole allowance of failures, so only about one in five small random nudges keeps every limit; round the start rate down in practice. The overall shape holds up when the search is rerun for a single person, risk aversion 2 or 5, or pessimistic international data. With US stocks only, the best start drops to 5.5%.
+The earlier plan was tuned on the same 69 overlapping retirements it was scored on, which hold only about three truly independent 30-year periods. Three checks showed it was fitted too closely:
+
+- **Fees:** a 0.25% yearly fee raised its run-outs from 1 to 6 of 69 (the 1929 and 1960s starts).
+- **Reshuffled history:** 13.7% of 5,000 reshuffled retirements ran out.
+- **Split sample:** the same rule tuned on 1928–61 starts ran out for 10 of the 35 later retirees.
+
+The weak point was the floor. $45,750 per $1 million, never cut, is above the roughly $40,000 that history has supported as spending that never falls, and buying it as a real guarantee (a 30-year TIPS ladder at about 2% real) would cost more than the whole portfolio.
+
+**Strategies from the literature.** On the same engine and score we tested amortization rules (Bogleheads' ABW and VPW, [TPAW](https://pwlcapital.com/episode-340-ben-mathew-the-lifecycle-model-vs-safe-withdrawal-rates-swr/)-style), a CAPE-aware amortization rule and [Early Retirement Now's CAPE rule](https://earlyretirementnow.com/2022/10/12/dynamic-withdrawal-rates-based-on-the-shiller-cape-swr-series-part-54/amp), [Vanguard's dynamic spending rule](https://plansponsor.com/vanguard-tests-approach-decumulation-dynamic-spending-rule), a [rising-stock glidepath](https://earlyretirementnow.com/swr19), and a TIPS-ladder floor with stock upside. Each was tuned twice: on the 69 real retirements, and on 2,000 reshuffled ones, then scored on 5,000 fresh reshuffled retirements.
+
+![Scores in real history vs across reshuffled history, by strategy](img/history_vs_bootstrap.png)
+
+- **History flatters.** CAPE amortization (+9%) and a rising glidepath (+8%) beat the earlier plan in real history, then fell below it out of history and ran out in about 20% of reshuffled retirements.
+- **With a hard floor, our rule wins.** Tuned on reshuffled history, our rule (planned path, cuts and raises outside a band, floor) beat amortization, CAPE amortization and percent-of-portfolio rules given the same protection.
+- **Without a hard floor, amortization scores higher.** About 7% more, and fewer run out (2.8%), but a third of retirees spend below $39,000 at some point. Adding CAPE gained only about 1.5% more, not worth the valuation-model risk. This matches [Kitces and Income Lab](https://www.kitces.com/blog/guyton-klinger-guardrails-retirement-income-rules-risk-based/) on the value of risk-based adjustments over fixed guardrails.
+- **Glidepaths and TIPS ladders add little here.** A robustly tuned glidepath added about 0.4%; a TIPS ladder can't fund a useful floor at today's real yields.
+
+**How the plan was set.** All settings, including the floor, were tuned on 2,000 reshuffled retirements to maximise the score with at most 2% running out, and checked on 5,000 fresh ones, real history and fees. Caps of 1%, 2%, 3% and 5% were tried: 2% gave most of the safety without pushing the floor too low (at 1% it falls to about $21,000–24,000), and looser caps barely raised the score. The spending path was then fixed to Blanchett's curve and the cap added, as above.
 
 ## Experiments that didn't make the cut
 
@@ -256,7 +277,12 @@ Each idea below was tested on the same 69 retirements and set aside; the chart p
 | Spending smile, big raises | Plan declines by decade; cuts ≤5%, raises up to 32% | 91% of retirees give back 30%+ of their best year |
 | Spending smile, tiny both ways | Cuts and raises both ≤5% | Lower early spending ($6.59) and 22% of retirees 30%+ below plan |
 | Mirror smile | Plan dips for 20 years, then rises at the same rate | Typical spending stayed flat; the late rise ran 2 retirees out of money |
-| 75% floor with small raises | As recommended, raises ≤5% or ≤10% | 4–5 retirees ran out late; small raises never build a cushion |
+| 75% floor with small raises | 75% floor, raises ≤5% or ≤10% | 4–5 retirees ran out late; small raises never build a cushion |
+| Earlier recommended plan | 6.1% start, −2.5%/yr plan, 75% floor, cut 5% / raise ≤13.6% | Tuned too closely to history: 13.7% ran out in reshuffled history, 6 of 69 with a 0.25% fee |
+| Rising-stock glidepath | 50–70% stocks rising to 95–100% | +8% in real history; out of history +0.4% at best, and history-tuned versions ran out in 20% |
+| CAPE-aware amortization | Spend what amortizes the portfolio at a valuation-based return | +9% in real history; history-tuned version ran out in 21% of reshuffled retirements |
+| Amortization, no hard floor | TPAW/ABW-style, smoothed | +7% out of history, but a third of retirees spend below $39,000 at some point |
+| Smaller raises instead of a cap | Blanchett path, raises ≤5% | Raises still piled up: typical year-30 spending $65,000 against a planned $44,000 |
 
 ## Caveats and takeaways
 
@@ -264,7 +290,7 @@ The optimized rates fit one history and should be read as an upper bound, not a 
 
 **Caveats**
 
-- **In-sample fit.** 69 overlapping periods hold only a handful of independent bad sequences; the best settings are partly tuned to them.
+- **In-sample fit.** 69 overlapping periods hold only a handful of independent bad sequences. The recommended plan is tuned on reshuffled history to reduce this, but reshuffling breaks the tendency of returns to even out over decades and can't create crashes worse than 1928–2025.
 - **US and developed markets only.** Results are for a retiree spending US dollars over 1928–2025; they may not carry over to other countries or to the future.
 - **Data proxies.** Bonds are a T-bill/10-year blend; international returns splice JST (1928–69) to MSCI (1970 on).
 - **No fees or taxes.** A 0.5–1% annual cost would lower every rate.
@@ -278,8 +304,8 @@ The optimized rates fit one history and should be read as an upper bound, not a 
 3. Hold roughly 70–80% stocks, with about a quarter abroad.
 4. Front-load only by letting the minimum fall too; a ceiling is an estate decision, not a safety tool.
 5. Avoid leverage. A cash bucket is harmless but adds little; hold one for peace of mind, not a higher rate.
-6. For the smoothest experience, use the recommended plan: start near 6%, plan a 2.5% annual real decline, cut 5% or raise up to about 14% each year, and never go below 75% of the first year. Keep a separate fund for long-term care.
-7. A realistic starting rate under these rules is roughly 6.5–7%, 1–1.5 points below the optimized 8%.
+6. Use the recommended plan: start at 6.5%, let planned spending follow retirees' observed pattern (about −1% a year), never more than 10% above it or below 42% of the first year, and cut 8.5% or raise up to 15% when the withdrawal rate moves 22% from the start. The leftover funds long-term care.
+7. Test a plan beyond the history it was tuned on. A floor that history alone supports can fail 1 time in 7 out of sample, and every 0.25% of fees matters.
 
 ## Reproducing the results
 
@@ -299,6 +325,10 @@ The Python project (pandas, numpy, matplotlib) regenerates every number and char
 | `scripts/experiment_map.py` | Every strategy tried on one chart: early spending vs big drops |
 | `scripts/smooth_optimize.py`, `smile_optimize.py` (+ charts) | The smooth-score and spending-smile experiments |
 | `scripts/build_intl.py` | Rebuilds the international return series from the JST dataset |
+| `scripts/alt_optimize.py` | Recommended plan and the alternative strategies, tuned on history or reshuffled history (`--boot 2000 --max-out 0.02`) |
+| `scripts/alt_robust.py`, `scripts/alt_charts.py` | Stress tests (fees, reshuffled history, other settings) and charts |
+| `scripts/plan_summary.py` | The recommended-plan comparison table |
+| `app/dashboard.py` | Interactive dashboard for tuning the recommended plan |
 
 Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 25% international in the experiment scripts (`--intl 0` for US-only).
 
@@ -314,6 +344,15 @@ Defaults: intermediate-bond proxy, year-end withdrawals, ±20% guardrail band, 2
 - [Kitces, Research Reveals Cash Reserve Strategies Don't Work Unless You're a Good Market Timer](https://www.kitces.com/blog/research-reveals-cash-reserve-strategies-dont-work-unless-youre-a-good-market-timer/)
 - [Estrada, "Does the Bucket Approach Destroy Wealth?" (Advisor Perspectives)](https://www.advisorperspectives.com/articles/2019/01/07/does-the-bucket-approach-destroy-wealth)
 - [Social Security Administration, Actuarial Life Table (2022 period, 2025 Trustees Report)](https://www.ssa.gov/oact/STATS/table4c6_2022_TR2025.html)
+- David Blanchett, ["Exploring the Retirement Consumption Puzzle"](https://www.financialplanningassociation.org/article/journal/MAY14-exploring-retirement-consumption-puzzle), Journal of Financial Planning, May 2014
+- [J.P. Morgan, Retirement by the Numbers (PlanAdviser summary)](https://www.planadviser.com/research-finds-slowdown-in-spending-during-retirement/)
+- [Kitces, Guyton-Klinger vs risk-based guardrails](https://www.kitces.com/blog/guyton-klinger-guardrails-retirement-income-rules-risk-based/)
+- [Early Retirement Now, Dynamic withdrawal rates based on the Shiller CAPE (Part 54)](https://earlyretirementnow.com/2022/10/12/dynamic-withdrawal-rates-based-on-the-shiller-cape-swr-series-part-54/amp) and [Equity glidepaths (Part 19)](https://earlyretirementnow.com/swr19)
+- [Advisor Perspectives, Flexible Withdrawal Strategies Using Certainty-Equivalent Spending](https://advisorperspectives.com/articles/2021/03/22/beyond-the-4-rule-flexible-withdrawal-strategies-using-certainty-equivalent-spending)
+- [White Coat Investor, Amortization-based withdrawal vs safe withdrawal rates](https://www.whitecoatinvestor.com/amortization-based-withdrawal-vs-safe-withdrawal-rates/)
+- [Plansponsor, Vanguard's dynamic spending rule](https://plansponsor.com/vanguard-tests-approach-decumulation-dynamic-spending-rule)
+- [Morningstar, What's a safe retirement withdrawal rate for 2026?](https://www.morningstar.com/retirement/whats-safe-retirement-withdrawal-rate-2026)
+- [Robert Shiller, CAPE data](http://www.econ.yale.edu/~shiller/data.htm)
 - [Kitces on Blanchett's retirement spending smile](https://www.kitces.com/?p=14475) and [safe withdrawal rates with decreasing spending](https://www.kitces.com/blog/safe-withdrawal-rates-with-decreasing-retirement-spending/)
 
 ### Licence

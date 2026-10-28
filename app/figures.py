@@ -37,6 +37,9 @@ def spending_paths(r, ref=None):
                                            "$%{customdata[1]:.2f}<extra></extra>"))
     fig.add_trace(go.Scatter(x=yrs, y=r.plan, name="Plan", line=dict(color=MUTED, width=1.4, dash="dot"),
                              hovertemplate="Year %{x}: plan $%{y:.2f}<extra></extra>"))
+    if r.params.ceiling > 0:
+        fig.add_trace(go.Scatter(x=yrs, y=r.plan * r.params.ceiling, name="Cap", line=dict(color=MUTED, width=1),
+                                 hovertemplate="Year %{x}: cap $%{y:.2f}<extra></extra>"))
     if r.floor.any():
         fig.add_trace(go.Scatter(x=yrs, y=r.floor, name="Floor", line=dict(color=INK, width=1, dash="dash"),
                                  hovertemplate="Year %{x}: floor $%{y:.2f}<extra></extra>"))
@@ -52,7 +55,9 @@ def spending_paths(r, ref=None):
                              hovertemplate="Year %{x}: median $%{y:.2f}<extra></extra>"))
     fig.update_xaxes(title_text="Year of retirement", dtick=5)
     fig.update_yaxes(title_text="Real spending per $100 saved ($)", rangemode="tozero")
-    return _base(fig, "Spending over 30 years (real $ per $100 of starting portfolio)", 430)
+    fig = _base(fig, "Spending over 30 years (real $ per $100 of starting portfolio)", 460)
+    fig.update_layout(legend=dict(orientation="h", y=-0.26, x=0), margin=dict(b=100))
+    return fig
 
 
 def pain_levels(r, ref=None):
@@ -121,6 +126,9 @@ def retiree(r, year):
                          hovertemplate="Year %{x}: $%{y:.2f}<extra></extra>"), row=1, col=1)
     fig.add_trace(go.Scatter(x=yrs, y=r.plan, name="Plan", line=dict(color=MUTED, dash="dot"),
                              hovertemplate="Year %{x}: plan $%{y:.2f}<extra></extra>"), row=1, col=1)
+    if r.params.ceiling > 0:
+        fig.add_trace(go.Scatter(x=yrs, y=r.plan * r.params.ceiling, name="Cap", line=dict(color=MUTED, width=1),
+                                 hovertemplate="Year %{x}: cap $%{y:.2f}<extra></extra>"), row=1, col=1)
     if r.floor.any():
         fig.add_trace(go.Scatter(x=yrs, y=r.floor, name="Floor", line=dict(color=INK, width=1, dash="dash"),
                                  hovertemplate="Year %{x}: floor $%{y:.2f}<extra></extra>"), row=1, col=1)
