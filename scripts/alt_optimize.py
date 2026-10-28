@@ -178,6 +178,8 @@ def main():
     ap.add_argument("--split", action="store_true")
     ap.add_argument("--protect", action="store_true", help="also match the recommended plan's smoothness")
     ap.add_argument("--boot", type=int, default=0, help="tune on this many bootstrapped retirements instead")
+    ap.add_argument("--set", default="", help="override base fields, e.g. ceiling=1.1")
+    ap.add_argument("--raise-max", type=float, default=None, help="upper bound for raise_step / max_raise")
     ap.add_argument("--max-out", type=float, default=0.05, help="(boot) max share that runs out")
     ap.add_argument("--max-below", type=float, default=None, help="(boot) max share ever spending < $3.90")
     ap.add_argument("--name", default="main")
@@ -194,6 +196,11 @@ def main():
     for fam in fams:
         t0 = time.time()
         base, spec = FAMILIES[fam]
+        if a.set:
+            base = replace(base, **{k: float(v) for k, v in (kv.split("=") for kv in a.set.split(","))})
+        if a.raise_max is not None:
+            spec = [(f, lo, min(hi, a.raise_max)) if f in ("raise_step", "max_raise") else (f, lo, hi)
+                    for f, lo, hi in spec]
         if a.boot:
             import alt_robust as ar
             Db = ar.bootstrap(n=a.boot, seed=11)

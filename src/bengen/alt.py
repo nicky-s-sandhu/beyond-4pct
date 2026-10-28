@@ -64,6 +64,7 @@ class Alt:
     max_cut: float = 1.0
     max_raise: float = 1.0
     floor: float = 0.0             # share of year-1 total spending, fixed real (all kinds)
+    ceiling: float = 0.0           # guard: never above ceiling x the planned path (year 1 x drifts); 0 = none
     # floor-and-upside
     ladder: float = 0.0
     ladder_yield: float = 0.015
@@ -120,6 +121,7 @@ def simulate(a: Alt, S_r, B_r, infl, cape=None):
     first = None
     hi_g, lo_g = a.rate * (1 + a.gband), a.rate * (1 - a.gband)
     dr = a.drifts(T)
+    plan_f = np.cumprod(1 + dr)
     for t in range(T):
         if t > 0:
             price = price * (1 + infl[:, t - 1])
@@ -164,6 +166,8 @@ def simulate(a: Alt, S_r, B_r, infl, cape=None):
             first = total.copy()
         if a.floor > 0:
             total = np.maximum(total, a.floor * first)
+        if a.ceiling > 0 and a.kind == "guard":
+            total = np.minimum(total, a.ceiling * first * plan_f[t])
         port_spend = np.maximum(total - ladder_inc, 0.0)
         # returns, then end-of-year withdrawal (nominal, in start-of-year prices as in vec.py)
         W = W * (1 + s * S_r[:, t] + (1 - s) * B_r[:, t])
