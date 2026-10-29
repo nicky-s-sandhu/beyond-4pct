@@ -1,0 +1,5 @@
+Does the slow bend add anything over simply buying more when cheap? (no bend: 50% or 65% normally, 100% when cheap)
+  bills 50% normally, 100% when cheap: SAFEMAX 4.60 (starts 1950-93: 4.60), median MWR 6.02, wealth 2023 retired 1995/2000/2005/2010: $121, $24, $72, $102
+  bills 65% normally, 100% when cheap: SAFEMAX 4.38 (starts 1950-93: 4.38), median MWR 6.28, wealth 2023 retired 1995/2000/2005/2010: $186, $26, $92, $133
+  bonds 50% normally, 100% when cheap: SAFEMAX 4.31 (starts 1950-93: 4.31), median MWR 5.96, wealth 2023 retired 1995/2000/2005/2010: $221, $67, $97, $120
+  bonds 65% normally, 100% when cheap: SAFEMAX 4.18 (starts 1950-93: 4.18), median MWR 6.25, wealth 2023 retired 1995/2000/2005/2010: $279, $61, $114, $148
