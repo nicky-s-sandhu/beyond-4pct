@@ -1,0 +1,11 @@
+safe,rule,settings,SAFEMAX %
+bills,Best static stock share,55% stocks,4.111851734671217
+bills,Pfau-Kitces 30/45/60,60% cheap / 45% fair / 30% expensive,4.349861659737346
+bills,"Optimised shares, 2/3 and 4/3 thresholds",100% / 55% / 5%,4.9034274193643315
+bills,Optimised shares and thresholds,"100% / 60% / 0%, cheap < 0.85x, dear > 1.33x median",4.924249840711945
+bills,Optimised glidepath + overlay,"50%→90% over 30 yrs, ±30%",4.749948750728819
+bonds,Best static stock share,95% stocks,3.8098328399687014
+bonds,Pfau-Kitces 30/45/60,60% cheap / 45% fair / 30% expensive,3.8777335505120725
+bonds,"Optimised shares, 2/3 and 4/3 thresholds",100% / 40% / 40%,4.386045737927682
+bonds,Optimised shares and thresholds,"100% / 10% / 55%, cheap < 0.75x, dear > 1.25x median",4.562064369542602
+bonds,Optimised glidepath + overlay,"70%→70% over 10 yrs, ±30%",4.2099634592466195
