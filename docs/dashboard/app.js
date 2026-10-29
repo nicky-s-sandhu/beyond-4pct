@@ -73,7 +73,8 @@
     const slider = ([id, label, lo, hi, step, help, unit]) => {
       const d = document.createElement("div");
       d.className = "ctl";
-      d.innerHTML = `<div class="top"><label for="${id}">${label}</label><output id="${id}-out"></output></div>` +
+      d.innerHTML = `<div class="top"><span class="lab"><label for="${id}">${label}</label>${Help.icon(id, label)}</span>` +
+        `<output id="${id}-out"></output></div>` +
         (help ? `<div class="hint">${help}</div>` : "") +
         `<input type="range" id="${id}" min="${lo}" max="${hi}" step="${step}">`;
       const inp = d.querySelector("input");
@@ -85,7 +86,7 @@
       const [title, opts] = RADIOS[id];
       const d = document.createElement("div");
       d.className = "ctl radio";
-      d.innerHTML = `<div class="title">${title}</div>` + opts.map(([v, l]) =>
+      d.innerHTML = `<div class="title">${title}${Help.icon(id, title)}</div>` + opts.map(([v, l]) =>
         `<label><input type="radio" name="${id}" value="${v}"> ${l}</label>`).join("");
       d.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { state[id] = inp.value; schedule(); }));
       return d;
@@ -102,6 +103,8 @@
     ["bonds", "intl_series", "who"].forEach(id => box.appendChild(radio(id)));
     box.appendChild(slider(["gamma", "Risk aversion (how much cuts count)", 1.5, 6, 0.5, "Used only for the smooth-spending score", ""]));
 
+    $("preset-help").innerHTML = Help.icon("preset");
+    $("year-help").innerHTML = Help.icon("year");
     const sel = $("preset");
     Object.keys(DATA.presets).forEach(k => { const o = document.createElement("option"); o.value = o.textContent = k; sel.appendChild(o); });
     sel.addEventListener("change", () => applyPreset(sel.value));
@@ -157,9 +160,12 @@
     const better = (d > 0) === (higherBetter !== false);
     return [(d > 0 ? "+" : "−") + fmt(Math.abs(d)) + " vs recommended", better ? "good" : "bad"];
   }
+  const TILE_HELP = { "Smooth-spending score": "t_score", "Typical spending, yrs 1–10": "t_typ1",
+    "Typical spending, yrs 11–20": "t_typ2", "Typical spending, yrs 21–30": "t_typ3", "Ran out, real history": "t_hist",
+    "Ran out, reshuffled history": "t_boot", "Gave back ≥30% from best year": "t_give", "Median ending balance": "t_end" };
   function tile(k, v, d, vClass) {
     const [txt, cls] = Array.isArray(d) ? d : [d || "", ""];
-    return `<div class="tile"><div class="k">${k}</div><div class="v ${vClass || ""}">${v}</div><div class="d ${cls}">${txt}</div></div>`;
+    return `<div class="tile"><div class="k">${k}${TILE_HELP[k] ? Help.icon(TILE_HELP[k], k) : ""}</div><div class="v ${vClass || ""}">${v}</div><div class="d ${cls}">${txt}</div></div>`;
   }
 
   function refSettings() {
@@ -170,6 +176,7 @@
     const r = ENGINE.run(state), ref = ENGINE.run(refSettings()), m = r.m, rm = ref.m;
     const pts = v => v.toFixed(v < 10 ? 1 : 0) + " pts";
     const over = m.boot_run_out > DATA.max_run_out + 0.0005;
+    Help.hideIfDetached();
     $("tiles").innerHTML = [
       tile("Smooth-spending score", money(m.ce), delta(m.ce, rm.ce, money)),
       tile("Typical spending, yrs 1–10", money(m.typical_1_10), delta(m.typical_1_10, rm.typical_1_10, money)),

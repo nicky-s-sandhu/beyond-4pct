@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorer Help</title>
+<meta name="description" content="How to use the withdrawal plan explorer: what each setting does, how to read the results, and what the model leaves out.">
+<meta name="color-scheme" content="light">
+<style>
+  :root { --ink: #0b0b0b; --muted: #52514e; --grid: #e5e4df; --panel: #fbfbfa; --accent: #2a78d6; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); font: 15px/1.6 Inter, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--grid); }
+  header a { color: var(--accent); font-size: 14px; }
+  main { max-width: 820px; margin: 0 auto; padding: 8px 20px 48px; }
+  h1 { font-size: 26px; margin: 18px 0 6px; }
+  h2 { font-size: 19px; margin: 34px 0 8px; padding-top: 6px; border-top: 1px solid var(--grid); }
+  h3 { font-size: 15px; margin: 22px 0 6px; color: var(--accent); }
+  p, li { max-width: 72ch; }
+  .lead { font-size: 16px; color: #2b2a27; }
+  a { color: var(--accent); }
+  nav.toc { background: var(--panel); border: 1px solid var(--grid); border-radius: 8px; padding: 10px 16px; margin: 16px 0; }
+  nav.toc ol { margin: 4px 0; padding-left: 20px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 4px; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 7px 8px; border-bottom: 1px solid var(--grid); }
+  th { font-weight: 600; background: var(--panel); }
+  td:first-child { width: 30%; font-weight: 500; }
+  dl.controls dt { font-weight: 600; margin-top: 14px; }
+  dl.controls dd { margin: 2px 0 0; }
+  .rec { color: var(--accent); font-weight: 500; }
+  ol.steps li { margin: 6px 0; }
+  .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 10px 0; }
+  .flow div { border: 1px solid var(--grid); border-radius: 8px; padding: 8px 10px; background: var(--panel); font-size: 13.5px; }
+  .flow b { display: block; color: var(--accent); }
+  .note { background: var(--panel); border-left: 3px solid var(--accent); padding: 8px 12px; margin: 12px 0; }
+  @media (max-width: 640px) {
+    main { padding: 4px 16px 40px; } header { padding: 12px 16px; }
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<header><a href="./">← Back to the explorer</a></header>
+<main>
+<h1>How to use the withdrawal plan explorer</h1>
+<p class="lead">The explorer lets you try a retirement spending plan against every 30-year retirement in U.S. history since
+1928, and against 5,000 more built from that history, and see how spending would have gone year by year.</p>
+
+<nav class="toc" aria-label="Contents"><ol>
+  <li><a href="#quick">Quick start</a></li>
+  <li><a href="#rule">How the spending rule works</a></li>
+  <li><a href="#results">Reading the results</a></li>
+  <li><a href="#settings">Every setting explained</a></li>
+  <li><a href="#ideas">Key ideas</a></li>
+  <li><a href="#limits">What the explorer leaves out</a></li>
+  <li><a href="#tips">Tips</a></li>
+</ol></nav>
+
+<h2 id="quick">Quick start</h2>
+<ol class="steps">
+  <li><b>Start with the recommended plan.</b> The page opens on it. The tiles at the top summarize how it did.</li>
+  <li><b>Change one setting at a time.</b> Move a slider in the Settings panel; everything recalculates instantly. Values you
+    have changed from the recommended plan turn blue.</li>
+  <li><b>Read the difference.</b> Every tile shows how your plan compares with the recommended one, in green when it is
+    better and red when it is worse. A red banner appears if more than 2% of reshuffled retirements run out of money.</li>
+  <li><b>Look at the charts.</b> They show spending for the typical and unlucky retiree, how deep the cuts were, which start
+    years were hardest, and any single retiree you pick.</li>
+  <li><b>Unsure what a setting does?</b> Hover over its <b>(?)</b> icon for a moment to peek, or tap or click it to pin the
+    explanation open. Close it with ×, the Escape key or a click elsewhere.</li>
+  <li><b>Share or start over.</b> "Copy a link to these settings" makes a link that reopens your exact scenario. "Reset" goes
+    back to the recommended plan. Presets load other complete plans for comparison.</li>
+</ol>
+<p>All amounts are in today's dollars per $100 saved. Multiply by 10,000 for a $1 million portfolio: $6.50 means $65,000 a year.</p>
+
+<h2 id="rule">How the spending rule works</h2>
+<p>In year one you spend the starting withdrawal rate times your portfolio. Every January after that, four steps set the year's
+spending, all after inflation:</p>
+<div class="flow" role="list">
+  <div role="listitem"><b>1. Plan</b>Move last year's spending along the planned path (by default, retirees' observed pattern of
+    about −1% a year).</div>
+  <div role="listitem"><b>2. Check</b>Divide planned spending by today's portfolio. If that rate is far above the starting rate,
+    cut; far below, raise. In between, change nothing.</div>
+  <div role="listitem"><b>3. Cap</b>Never spend more than the cap above the planned path.</div>
+  <div role="listitem"><b>4. Floor</b>Never spend less than the floor, a fixed share of year-one spending.</div>
+</div>
+<p>The portfolio is rebalanced to your stock and bond mix each year, and the year's spending is withdrawn at year end. A
+retirement <b>runs out</b> if the portfolio cannot pay the year's spending; after that, spending from the portfolio is zero.</p>
+
+<h2 id="results">Reading the results</h2>
+<h3>Tiles</h3>
+<table id="tile-table"><thead><tr><th>Tile</th><th>What it tells you</th></tr></thead><tbody></tbody></table>
+<h3>Charts</h3>
+<table>
+  <thead><tr><th>Chart</th><th>What it shows</th></tr></thead>
+  <tbody>
+    <tr><td>Spending over 30 years</td><td>Each year's spending across the 69 historical retirements: the middle retiree (thick
+      blue line), the range from the 10th to the 90th percentile (shaded), the unluckiest retiree (dashed red), and the plan,
+      cap and floor. The grey dashed line is the recommended plan's middle retiree, for comparison.</td></tr>
+    <tr><td>Deepest spending cut</td><td>Each retiree is placed by the deepest cut they lived through, measured two ways:
+      below the plan, and below their own best year so far. Bars for your plan sit above the recommended plan's.</td></tr>
+    <tr><td>Lowest yearly spending by start year</td><td>The leanest year for each retirement start from 1928 to 1996.
+      Retirements that ran out are marked ×. Starts in 1929 and the mid-1960s are usually the hardest.</td></tr>
+    <tr><td>One retiree</td><td>Pick a start year to see that retiree's spending each year, with the plan, cap and floor, and
+      their portfolio balance underneath.</td></tr>
+  </tbody>
+</table>
+<p>Hover over any chart for exact values. Use the chart's toolbar to zoom or download it as an image.</p>
+
+<h2 id="settings">Every setting explained</h2>
+<p>The same explanations appear when you hover over or tap a setting's (?) icon.</p>
+<div id="settings-list"></div>
+
+<h2 id="ideas">Key ideas</h2>
+<dl class="controls">
+  <dt>Real (today's) dollars</dt>
+  <dd>All amounts are adjusted for inflation, so $65,000 in year 20 buys what $65,000 buys today.</dd>
+  <dt>Withdrawal rate</dt>
+  <dd>Spending divided by the portfolio. The plan compares the current withdrawal rate with the starting rate to decide
+    whether to cut or raise.</dd>
+  <dt>The 69 historical retirements</dt>
+  <dd>One 30-year retirement starting each January from 1928 to 1996, using actual returns and inflation. They overlap heavily,
+    so they contain only a few truly different bad stretches.</dd>
+  <dt>Reshuffled history</dt>
+  <dd>5,000 extra 30-year retirements, each stitched together from runs of real consecutive years (10 years long on average)
+    picked at random from 1928–2025. Stocks, bonds and inflation from the same year stay together. They test how a plan does
+    on sequences of good and bad years that history could have produced but didn't. A plan tuned only on real history can
+    look much safer than it is; see the <a href="../beyond-the-4pct-rule.html">study</a>.</dd>
+  <dt>Smooth-spending score</dt>
+  <dd>The steady yearly amount a retiree would value as much as the plan's actual ups and downs. It is higher for plans that
+    spend more, more steadily and earlier, and much lower for plans with lean years or that run out. Use it to compare plans,
+    not as a spending figure.</dd>
+  <dt>Typical</dt>
+  <dd>The middle (median) retiree: half did better, half did worse.</dd>
+</dl>
+
+<h2 id="limits">What the explorer leaves out</h2>
+<ul>
+  <li><b>Fees and taxes.</b> None are charged. A 0.25% yearly fee raises the recommended plan's run-out rate from about 2% to
+    about 3% in reshuffled history.</li>
+  <li><b>Other income.</b> Social Security, pensions and annuities are not included. They make any portfolio plan safer.</li>
+  <li><b>Lifespan.</b> Every retirement lasts 30 years. Living longer is covered only by the money left at the end.</li>
+  <li><b>The future.</b> Results come from 1928–2025 U.S. and developed-market returns. The future may be better or worse than
+    anything in that record.</li>
+  <li><b>Your situation.</b> The explorer is an educational tool, not financial advice. Talk to a qualified adviser before
+    making decisions.</li>
+</ul>
+
+<h2 id="tips">Tips</h2>
+<ul>
+  <li><b>Compare against a preset.</b> Load the earlier plan or Bengen 4% to see why the recommended plan was chosen.</li>
+  <li><b>Watch two tiles together.</b> "Typical spending, years 1–10" shows the reward; "Ran out, reshuffled history" shows
+    the risk.</li>
+  <li><b>Raise the floor carefully.</b> A higher floor feels safer but is the most common way to make a plan run out.</li>
+  <li><b>On a phone,</b> results come first and the settings follow; use "Change the settings" at the top to jump down.</li>
+  <li><b>Keyboard:</b> Tab to a (?) icon and press Enter to open its help; Escape closes it.</li>
+</ul>
+<p><a href="./">← Back to the explorer</a> · <a href="../beyond-the-4pct-rule.html">Read the study</a> ·
+  <a href="https://github.com/nicky-s-sandhu/beyond-4pct">Code and data</a></p>
+</main>
+<script src="help.js"></script>
+<script>
+  (function () {
+    var H = Help.HELP;
+    var groups = [
+      ["Getting started", ["preset", "reset", "share"]],
+      ["Spending", ["rate", "curve", "drift", "floor", "ceiling", "floor_mode"]],
+      ["Yearly adjustments", ["band", "cut_step", "raise_step"]],
+      ["Portfolio", ["stocks", "intl"]],
+      ["Cash bucket (optional)", ["cash", "threshold", "max_years", "refill_years"]],
+      ["Data and scoring", ["bonds", "intl_series", "who", "gamma"]],
+      ["Charts", ["year"]]
+    ];
+    var html = "";
+    groups.forEach(function (g) {
+      html += "<h3>" + g[0] + "</h3><dl class=\"controls\">";
+      g[1].forEach(function (k) {
+        var h = H[k];
+        html += "<dt id=\"" + k + "\">" + h[0] + "</dt><dd>" + h[1] + (h[2] ? " <span class=\"rec\">" + h[2] + ".</span>" : "") + "</dd>";
+      });
+      html += "</dl>";
+    });
+    document.getElementById("settings-list").innerHTML = html;
+    var rows = "";
+    ["t_score", "t_typ1", "t_typ2", "t_typ3", "t_hist", "t_boot", "t_give", "t_end"].forEach(function (k) {
+      rows += "<tr><td>" + H[k][0] + "</td><td>" + H[k][1] + "</td></tr>";
+    });
+    document.querySelector("#tile-table tbody").innerHTML = rows;
+  })();
+</script>
+</body>
+</html>
