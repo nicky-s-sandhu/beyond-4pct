@@ -218,6 +218,9 @@ The recommended plan keeps the chance of running out near 2% while spending foll
 4. **Cap:** never spend more than 10% above the planned path.
 5. **Floor:** never below $27,300 (42% of the first year). Money left over is the reserve for late-life long-term care.
 
+A practical guide to running the rule each January, with the planned change for every age and two worked retirements,
+is in [Following the recommended plan, year by year](following-the-plan.md).
+
 ![Spending across 5,000 reshuffled-history retirements: earlier plan vs recommended plan](img/plan_compare.png)
 
 *Reshuffled history: 5,000 synthetic 30-year retirements stitched from random runs of real years (10 on average) from 1928–2025, with stocks, bonds and inflation moving together. They include many bad sequences that never happened but could have.*

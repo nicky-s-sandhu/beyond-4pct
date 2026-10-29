@@ -19,6 +19,9 @@ Per $1 million saved, in today's dollars:
 4. Never spend more than **10% above the planned path**, and never less than **$27,300** (42% of year 1).
    Money left over is the reserve for late-life long-term care.
 
+**Following it each year:** [a step-by-step January routine, the planned change for every age, and two worked
+retirements (2000 and 1990)](docs/following-the-plan.md).
+
 ![Spending across 5,000 reshuffled-history retirements: earlier plan vs recommended plan](docs/img/plan_compare.png)
 
 | Per $1M saved | Recommended plan | Earlier plan (6.1%, 75% floor) | Bengen 4% |
