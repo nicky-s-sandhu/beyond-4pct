@@ -25,7 +25,19 @@ def load(path=None) -> pd.DataFrame:
     med = cape.expanding().median()               # inception-to-date median (NaNs before 1881 are skipped)
     d["cape_median"] = med
     d["cape_rel"] = cape / med
+    # "normal" as the average of the last 10 Januaries' CAPE (this one included; nothing from the future)
+    d["cape_avg10"] = cape.rolling(10).mean()
+    d["cape_rel10"] = cape / d["cape_avg10"]
     return d
+
+
+def ramp_shares(rel, s_min, s_max, s_mid, width):
+    """Stock share that slides with valuation: s_mid when CAPE equals its 10-year average, falling linearly to s_min
+    as CAPE rises `width` (e.g. 0.3 = 30%) above it, and rising linearly to s_max as it falls `width` below it."""
+    dev = rel - 1.0
+    up = s_mid - (s_mid - s_min) * np.clip(dev / width, 0, 1)
+    down = s_mid + (s_max - s_mid) * np.clip(-dev / width, 0, 1)
+    return np.where(dev >= 0, up, down)
 
 
 @dataclass
@@ -66,9 +78,9 @@ class Strategy:
         return np.clip(s, 0.0, 1.0)
 
 
-def windows(d: pd.DataFrame, starts, T=30, safe="bills"):
+def windows(d: pd.DataFrame, starts, T=30, safe="bills", rel="cape_rel"):
     take = lambda col: np.array([d[col].loc[y:y + T - 1].values for y in starts])
-    return take("real_stocks"), take(f"real_{safe}"), take("cape_rel")
+    return take("real_stocks"), take(f"real_{safe}"), take(rel)
 
 
 def path_returns(strategy: Strategy, S, B, rel):

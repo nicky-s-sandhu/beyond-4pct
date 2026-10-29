@@ -1,0 +1,54 @@
+bills done
+bonds done
+
+In sample, retirements starting 1890-1993
+ safe                                                                       settings                                 rule  SAFEMAX %  worst start  median MWR %  median wealth at 4%  avg stocks %  avg stocks since 1995 %  median MWR, 1980-93 starts %
+bills                                                                     60% stocks                            Fixed 60%       4.09         1966          5.76               110.24         60.00                    60.00                          7.35
+bills                                                                     55% stocks              Best single stock share       4.11         1966          5.61                95.67         55.00                    55.00                          7.09
+bills                       60% cheap / 45% fair / 30% expensive (vs median to date)                 Pfau-Kitces 60/45/30       4.35         1937          5.55                90.72         44.69                    32.03                          6.36
+bills                       100% cheap / 55% fair / 5% expensive (vs median to date) Optimised 3 levels vs median to date       4.90         1906          6.09               156.42         52.96                    11.77                          6.26
+bills 100% max ← 35% at normal → 0% min, full swing at ±50% from the 10-year average     Sliding vs 10-year average (new)       4.42         1966          5.31                71.73         40.19                    31.25                          5.29
+bonds                                                                     60% stocks                            Fixed 60%       3.73         1966          5.74               110.59         60.00                    60.00                          8.51
+bonds                                                                     95% stocks              Best single stock share       3.81         1966          6.92               242.11         95.00                    95.00                          9.27
+bonds                       60% cheap / 45% fair / 30% expensive (vs median to date)                 Pfau-Kitces 60/45/30       3.88         1965          5.62                93.77         44.69                    32.03                          7.87
+bonds                      100% cheap / 40% fair / 40% expensive (vs median to date) Optimised 3 levels vs median to date       4.39         1965          5.85               151.82         52.02                    40.00                          7.90
+bonds 100% max ← 65% at normal → 0% min, full swing at ±50% from the 10-year average     Sliding vs 10-year average (new)       3.95         1966          6.27               142.03         56.38                    45.67                          7.28
+
+Out of sample
+test                                        fit 1890-1941, test 1942-1993  fit 1942-1993, test 1890-1941  walk-forward, starts 1950-1993
+safe  rule                                                                                                                              
+bills Best single stock share                                        3.98                           3.68                            3.98
+      Fixed 60%                                                      4.09                           4.24                            4.09
+      Optimised 3 levels vs median to date                           4.84                           4.88                            4.84
+      Pfau-Kitces 60/45/30                                           4.43                           4.35                            4.43
+      Sliding vs 10-year average (new)                               4.16                           4.50                            4.16
+bonds Best single stock share                                        3.79                           3.78                            3.79
+      Fixed 60%                                                      3.73                           4.22                            3.73
+      Optimised 3 levels vs median to date                           4.28                           4.53                            4.28
+      Pfau-Kitces 60/45/30                                           3.88                           4.34                            3.88
+      Sliding vs 10-year average (new)                               3.77                           4.37                            3.77
+
+Out of sample, median MWR %
+test                                        fit 1890-1941, test 1942-1993  fit 1942-1993, test 1890-1941  walk-forward, starts 1950-1993
+safe  rule                                                                                                                              
+bills Best single stock share                                        7.47                           4.68                            7.13
+      Fixed 60%                                                      6.63                           5.47                            6.40
+      Optimised 3 levels vs median to date                           6.10                           5.98                            5.71
+      Pfau-Kitces 60/45/30                                           5.80                           5.29                            5.72
+      Sliding vs 10-year average (new)                               6.32                           5.47                            6.18
+bonds Best single stock share                                        7.86                           6.41                            7.37
+      Fixed 60%                                                      6.92                           5.48                            6.57
+      Optimised 3 levels vs median to date                           6.90                           5.70                            6.89
+      Pfau-Kitces 60/45/30                                           6.16                           5.29                            6.08
+      Sliding vs 10-year average (new)                               5.84                           6.02                            5.43
+Jan 2026: CAPE 39.6 is 1.20x its 10-year average -> bills rule holds 21% stocks
+Jan 2026: CAPE 39.6 is 1.20x its 10-year average -> bonds rule holds 38% stocks
+
+Window sensitivity: in sample starts 1910-1993, walk-forward starts 1950-1993
+ safe normal = average of                                                                        settings  in-sample SAFEMAX %  walk-forward SAFEMAX %  fixed 60% same starts %  Jan 2026 CAPE vs normal  Jan 2026 stocks %
+bills            10 years  100% max ← 35% at normal → 0% min, full swing at ±50% from the 10-year average                 4.42                    4.08                     4.09                     1.20              20.71
+bills            20 years 100% max ← 30% at normal → 15% min, full swing at ±50% from the 20-year average                 4.62                    4.00                     4.09                     1.42              17.36
+bills            30 years 100% max ← 35% at normal → 10% min, full swing at ±50% from the 30-year average                 4.72                    4.33                     4.09                     1.36              16.97
+bonds            10 years  100% max ← 65% at normal → 0% min, full swing at ±50% from the 10-year average                 3.95                    3.80                     3.73                     1.20              38.47
+bonds            20 years 100% max ← 35% at normal → 35% min, full swing at ±50% from the 20-year average                 4.06                    3.85                     3.73                     1.42              35.00
+bonds            30 years 100% max ← 35% at normal → 35% min, full swing at ±50% from the 30-year average                 4.09                    3.81                     3.73                     1.36              35.00

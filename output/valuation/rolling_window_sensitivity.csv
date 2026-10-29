@@ -1,0 +1,7 @@
+safe,normal = average of,settings,in-sample SAFEMAX %,walk-forward SAFEMAX %,fixed 60% same starts %,Jan 2026 CAPE vs normal,Jan 2026 stocks %
+bills,10 years,"100% max ← 35% at normal → 0% min, full swing at ±50% from the 10-year average",4.424251852260155,4.076161720248797,4.091704744181905,1.2041058033951837,20.71259376233714
+bills,20 years,"100% max ← 30% at normal → 15% min, full swing at ±50% from the 20-year average",4.621872018844109,3.9987869896639245,4.091704744181905,1.4214781221431518,17.355656335705444
+bills,30 years,"100% max ← 35% at normal → 10% min, full swing at ±50% from the 30-year average",4.7161582796547385,4.329159362947456,4.091704744181905,1.3605481081575694,16.972594592121528
+bonds,10 years,"100% max ← 65% at normal → 0% min, full swing at ±50% from the 10-year average",3.9465612342608662,3.7985013848851596,3.7327216893946296,1.2041058033951837,38.46624555862612
+bonds,20 years,"100% max ← 35% at normal → 35% min, full swing at ±50% from the 20-year average",4.059757064428841,3.850034885556887,3.7327216893946296,1.4214781221431518,35.0
+bonds,30 years,"100% max ← 35% at normal → 35% min, full swing at ±50% from the 30-year average",4.090366839590394,3.810206235454233,3.7327216893946296,1.3605481081575694,35.0

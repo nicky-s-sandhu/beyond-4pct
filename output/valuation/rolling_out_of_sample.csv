@@ -1,0 +1,31 @@
+safe,test,rule,test SAFEMAX %,test median MWR %,settings
+bills,"fit 1890-1941, test 1942-1993",Fixed 60%,4.091704744181905,6.633592277310784,60%
+bills,"fit 1890-1941, test 1942-1993",Best single stock share,3.9768852323003556,7.473261341635043,80% stocks
+bills,"fit 1890-1941, test 1942-1993",Pfau-Kitces 60/45/30,4.4276769760967545,5.80197136611292,60% cheap / 45% fair / 30% expensive (vs median to date)
+bills,"fit 1890-1941, test 1942-1993",Optimised 3 levels vs median to date,4.8449834034762675,6.096486587368837,100% cheap / 55% fair / 0% expensive (vs median to date)
+bills,"fit 1890-1941, test 1942-1993",Sliding vs 10-year average (new),4.157645487517645,6.319599454209659,"100% max ← 45% at normal → 45% min, full swing at ±30% from the 10-year average"
+bills,"fit 1942-1993, test 1890-1941",Fixed 60%,4.239068237467098,5.473551291919218,60%
+bills,"fit 1942-1993, test 1890-1941",Best single stock share,3.6794556376919876,4.679613234419228,35% stocks
+bills,"fit 1942-1993, test 1890-1941",Pfau-Kitces 60/45/30,4.349861659737346,5.294485013685812,60% cheap / 45% fair / 30% expensive (vs median to date)
+bills,"fit 1942-1993, test 1890-1941",Optimised 3 levels vs median to date,4.880309197576089,5.977565725499671,100% cheap / 50% fair / 10% expensive (vs median to date)
+bills,"fit 1942-1993, test 1890-1941",Sliding vs 10-year average (new),4.500083516136607,5.466618732570316,"100% max ← 35% at normal → 0% min, full swing at ±50% from the 10-year average"
+bills,"walk-forward, starts 1950-1993",Fixed 60%,4.091704744181905,6.398184186411887,
+bills,"walk-forward, starts 1950-1993",Best single stock share,3.9768852323003556,7.133053777871373,re-fit each year
+bills,"walk-forward, starts 1950-1993",Pfau-Kitces 60/45/30,4.4276769760967545,5.715551038925589,
+bills,"walk-forward, starts 1950-1993",Optimised 3 levels vs median to date,4.8449834034762675,5.713032212477858,re-fit each year
+bills,"walk-forward, starts 1950-1993",Sliding vs 10-year average (new),4.157645487517645,6.183025228405825,re-fit each year
+bonds,"fit 1890-1941, test 1942-1993",Fixed 60%,3.7327216893946296,6.9162630239617755,60%
+bonds,"fit 1890-1941, test 1942-1993",Best single stock share,3.7932603589780927,7.858158707752894,80% stocks
+bonds,"fit 1890-1941, test 1942-1993",Pfau-Kitces 60/45/30,3.8777335505120725,6.155921937980335,60% cheap / 45% fair / 30% expensive (vs median to date)
+bonds,"fit 1890-1941, test 1942-1993",Optimised 3 levels vs median to date,4.282695708220645,6.899599494333845,100% cheap / 55% fair / 25% expensive (vs median to date)
+bonds,"fit 1890-1941, test 1942-1993",Sliding vs 10-year average (new),3.7727555637171526,5.8384005147300755,"100% max ← 35% at normal → 35% min, full swing at ±30% from the 10-year average"
+bonds,"fit 1942-1993, test 1890-1941",Fixed 60%,4.2171028584129955,5.483653028562231,60%
+bonds,"fit 1942-1993, test 1890-1941",Best single stock share,3.782382891875201,6.413149448563507,100% stocks
+bonds,"fit 1942-1993, test 1890-1941",Pfau-Kitces 60/45/30,4.341876952416034,5.286237437345918,60% cheap / 45% fair / 30% expensive (vs median to date)
+bonds,"fit 1942-1993, test 1890-1941",Optimised 3 levels vs median to date,4.526021974458862,5.696225033174948,100% cheap / 40% fair / 40% expensive (vs median to date)
+bonds,"fit 1942-1993, test 1890-1941",Sliding vs 10-year average (new),4.368285623191355,6.017045239726623,"100% max ← 65% at normal → 0% min, full swing at ±50% from the 10-year average"
+bonds,"walk-forward, starts 1950-1993",Fixed 60%,3.7327216893946296,6.572642905732263,
+bonds,"walk-forward, starts 1950-1993",Best single stock share,3.7932603589780927,7.37205889115253,re-fit each year
+bonds,"walk-forward, starts 1950-1993",Pfau-Kitces 60/45/30,3.8777335505120725,6.079000680275102,
+bonds,"walk-forward, starts 1950-1993",Optimised 3 levels vs median to date,4.282695708220645,6.890696363991854,re-fit each year
+bonds,"walk-forward, starts 1950-1993",Sliding vs 10-year average (new),3.7727555637171526,5.430967785860504,re-fit each year
