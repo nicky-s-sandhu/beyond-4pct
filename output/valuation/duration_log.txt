@@ -1,0 +1,60 @@
+bills done
+bonds done
+
+In sample, starts 1890-1993
+ safe                          rule  SAFEMAX %  worst start  median MWR %  median wealth at 4%  avg stocks %  avg stocks since 1995 %  median MWR 1980-93 starts %
+bills                     Fixed 60%       4.09         1966          5.76               110.24         60.00                    60.00                         7.35
+bills          Pfau-Kitces 60/45/30       4.35         1937          5.55                90.72         44.69                    32.03                         6.36
+bills    3 levels vs median to date       4.90         1906          6.09               156.42         52.96                    11.77                         6.26
+bills    Sliding vs 10-year average       4.42         1966          5.31                71.73         40.19                    31.25                         5.29
+bills Slow bend, 10-year ramp (new)       4.88         1937          6.22               196.14         55.49                     8.85                         6.64
+bills     Slow bend, ramp optimised       4.94         1906          6.27               196.70         59.27                    20.69                         6.56
+bonds                     Fixed 60%       3.73         1966          5.74               110.59         60.00                    60.00                         8.51
+bonds          Pfau-Kitces 60/45/30       3.88         1965          5.62                93.77         44.69                    32.03                         7.87
+bonds    3 levels vs median to date       4.39         1965          5.85               151.82         52.02                    40.00                         7.90
+bonds    Sliding vs 10-year average       3.95         1966          6.27               142.03         56.38                    45.67                         7.28
+bonds Slow bend, 10-year ramp (new)       4.46         1965          6.57               240.37         66.40                    11.58                         8.65
+bonds     Slow bend, ramp optimised       4.48         1965          6.80               268.65         74.88                    26.03                         8.46
+ safe                          rule                                                                                                                         settings
+bills                     Fixed 60%                                                                                                                       60% stocks
+bills          Pfau-Kitces 60/45/30                                                                         60% cheap / 45% fair / 30% expensive (vs median to date)
+bills    3 levels vs median to date                                                                         100% cheap / 55% fair / 5% expensive (vs median to date)
+bills    Sliding vs 10-year average                                                   100% max ← 35% at normal → 0% min, full swing at ±50% from the 10-year average
+bills Slow bend, 10-year ramp (new)  65% normally, bending to 0% after 10 elevated years (elevated = CAPE > 1.15x median; gradual recovery); 100% when cheap at once
+bills     Slow bend, ramp optimised  70% normally, bending to 20% after 5 elevated years (elevated = CAPE > 1.15x median; gradual recovery); 100% when cheap at once
+bonds                     Fixed 60%                                                                                                                       60% stocks
+bonds          Pfau-Kitces 60/45/30                                                                         60% cheap / 45% fair / 30% expensive (vs median to date)
+bonds    3 levels vs median to date                                                                        100% cheap / 40% fair / 40% expensive (vs median to date)
+bonds    Sliding vs 10-year average                                                   100% max ← 65% at normal → 0% min, full swing at ±50% from the 10-year average
+bonds Slow bend, 10-year ramp (new)  85% normally, bending to 0% after 10 elevated years (elevated = CAPE > 1.15x median; gradual recovery); 100% when cheap at once
+bonds     Slow bend, ramp optimised 100% normally, bending to 25% after 5 elevated years (elevated = CAPE > 1.15x median; gradual recovery); 100% when cheap at once
+
+Out of sample SAFEMAX %
+test                                        fit 1890-1941, test 1942-1993  fit 1942-1993, test 1890-1941  walk-forward, starts 1950-1993
+safe  rule                                                                                                                              
+bills Fixed 60%                                                      4.09                           4.24                            4.09
+      Optimised 3 levels vs median to date                           4.84                           4.88                            4.84
+      Pfau-Kitces 60/45/30                                           4.43                           4.35                            4.43
+      Sliding vs 10-year average (new)                               4.16                           4.50                            4.16
+      Slow bend, 10-year ramp (new)                                  5.10                           4.57                            5.10
+bonds Fixed 60%                                                      3.73                           4.22                            3.73
+      Optimised 3 levels vs median to date                           4.28                           4.53                            4.28
+      Pfau-Kitces 60/45/30                                           3.88                           4.34                            3.88
+      Sliding vs 10-year average (new)                               3.77                           4.37                            3.77
+      Slow bend, 10-year ramp (new)                                  4.43                           4.69                            4.43
+
+Out of sample median MWR %
+test                                        fit 1890-1941, test 1942-1993  fit 1942-1993, test 1890-1941  walk-forward, starts 1950-1993
+safe  rule                                                                                                                              
+bills Fixed 60%                                                      6.63                           5.47                            6.40
+      Optimised 3 levels vs median to date                           6.10                           5.98                            5.71
+      Pfau-Kitces 60/45/30                                           5.80                           5.29                            5.72
+      Sliding vs 10-year average (new)                               6.32                           5.47                            6.18
+      Slow bend, 10-year ramp (new)                                  6.64                           6.38                            6.29
+bonds Fixed 60%                                                      6.92                           5.48                            6.57
+      Optimised 3 levels vs median to date                           6.90                           5.70                            6.89
+      Pfau-Kitces 60/45/30                                           6.16                           5.29                            6.08
+      Sliding vs 10-year average (new)                               5.84                           6.02                            5.43
+      Slow bend, 10-year ramp (new)                                  7.06                           6.19                            7.08
+bills: stock share Jan 2020-2026 under the 10-year-ramp rule: {2020: 0, 2021: 0, 2022: 0, 2023: 0, 2024: 0, 2025: 0, 2026: 0}
+bonds: stock share Jan 2020-2026 under the 10-year-ramp rule: {2020: 0, 2021: 0, 2022: 0, 2023: 0, 2024: 0, 2025: 0, 2026: 0}

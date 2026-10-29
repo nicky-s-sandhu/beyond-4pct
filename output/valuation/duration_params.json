@@ -1,0 +1,42 @@
+{
+ "bills": {
+  "ramp 10": {
+   "s_min": 0.0,
+   "s_normal": 0.65,
+   "s_max": 1.0,
+   "hi": 1.15,
+   "decay": "gradual",
+   "ramp": 10,
+   "cheap_years": 0
+  },
+  "ramp optimised": {
+   "s_min": 0.2,
+   "s_normal": 0.7,
+   "s_max": 1.0,
+   "hi": 1.15,
+   "decay": "gradual",
+   "ramp": 5,
+   "cheap_years": 0
+  }
+ },
+ "bonds": {
+  "ramp 10": {
+   "s_min": 0.0,
+   "s_normal": 0.85,
+   "s_max": 1.0,
+   "hi": 1.15,
+   "decay": "gradual",
+   "ramp": 10,
+   "cheap_years": 0
+  },
+  "ramp optimised": {
+   "s_min": 0.25,
+   "s_normal": 1.0,
+   "s_max": 1.0,
+   "hi": 1.15,
+   "decay": "gradual",
+   "ramp": 5,
+   "cheap_years": 0
+  }
+ }
+}

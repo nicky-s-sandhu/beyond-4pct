@@ -123,3 +123,32 @@ def kp_strategies():
         out[f"{name} + valuation, bounded"] = Strategy(g.start, g.end, g.years, overlay=0.15, bounds=(0.30, 0.60))
         out[f"{name} + valuation, unbounded"] = Strategy(g.start, g.end, g.years, overlay=0.15)
     return out
+
+
+def elevated_run(rel: pd.Series, hi: float, decay: str = "reset") -> pd.Series:
+    """Years CAPE has been elevated (rel > hi) as of each January, the current one included.
+    decay = "reset": back to 0 the first January CAPE is not elevated; "gradual": falls by 1 a year instead."""
+    run, out = 0.0, {}
+    for y, r in rel.items():
+        if np.isnan(r):
+            out[y] = np.nan
+            continue
+        if r > hi:
+            run += 1
+        else:
+            run = 0.0 if decay == "reset" else max(run - 1, 0.0)
+        out[y] = run
+    return pd.Series(out)
+
+
+def duration_shares(run, rel, s_min, s_normal, s_max, ramp_years, lo=2 / 3, cheap_years=0, cheap_run=None):
+    """Stock share that bends slowly towards s_min the longer CAPE stays elevated: s_normal after 0 elevated years,
+    s_min after `ramp_years`. When CAPE is cheap (rel < lo) the share moves to s_max: at once (cheap_years = 0) or
+    over `cheap_years` consecutive cheap years (cheap_run counts them)."""
+    frac = np.clip(run / ramp_years, 0, 1)
+    s = s_normal - (s_normal - s_min) * frac
+    if cheap_years == 0:
+        s = np.where(rel < lo, s_max, s)
+    else:
+        s = np.where(rel < lo, s_normal + (s_max - s_normal) * np.clip(cheap_run / cheap_years, 0, 1), s)
+    return s

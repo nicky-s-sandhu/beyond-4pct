@@ -1,0 +1,9 @@
+Retirements not yet 30 years old: real wealth in Jan 2023 per $100 started, 4% fixed real withdrawals
+  bills retired 1995: slow bend $31, fixed 60% $163
+  bills retired 2000: slow bend $7, fixed 60% $26
+  bills retired 2005: slow bend $22, fixed 60% $86
+  bills retired 2010: slow bend $35, fixed 60% $122
+  bonds retired 1995: slow bend $123, fixed 60% $259
+  bonds retired 2000: slow bend $56, fixed 60% $63
+  bonds retired 2005: slow bend $45, fixed 60% $108
+  bonds retired 2010: slow bend $54, fixed 60% $138
