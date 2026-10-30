@@ -48,7 +48,7 @@ def frame(which="plan"):
                            "bonds": 0.5 * sh["bills"] + 0.5 * sh["bonds"]})
         sig = sr.signals()
     df["S"] = (1 - INTL) * df["stocks"] + INTL * df["intl"]
-    for k in ("cape", "ecy", "none"):
+    for k in ("cape", "ecy", "ecys", "none"):
         df[f"x_{k}"] = sig[f"x_{k}"].reindex(df.index).fillna(0.0)
     return df
 
@@ -57,14 +57,14 @@ class Set:
     """Reshuffled-history retirements (or historical windows) with their signals."""
     def __init__(self, df, idx):
         self.S, self.B, self.I = (df[k].values[idx] for k in ("S", "bonds", "inflation"))
-        self.X = {k: df[f"x_{k}"].values[idx] for k in ("cape", "ecy", "none")}
+        self.X = {k: df[f"x_{k}"].values[idx] for k in ("cape", "ecy", "ecys", "none")}
 
     @classmethod
     def boot(cls, df, years=None, n=N, seed=SEED, shift=0):
         d = df if years is None else df.loc[years[0]:years[1]]
         if shift:
             d = d.copy()
-            for k in ("cape", "ecy"):
+            for k in ("cape", "ecy", "ecys"):
                 d[f"x_{k}"] = np.roll(d[f"x_{k}"].values, shift)
         return cls(d, alt.bootstrap_index(len(d), n, 30, BLOCK, seed))
 

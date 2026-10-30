@@ -1,0 +1,9 @@
+best: ECYS: 85% normal, +0.375/-1.5, 0%-100% rate 7.42 ce 5.58
+best >=50%: ECYS: 80% normal, +0.5/-1, 50%-100% rate 7.20 ce 5.41
+split early->late fixed: Fixed 70% in 6.06/4.33 out 7.48/5.54
+split early->late Shiller ECY: ECYS: 100% normal, +6/-3, 0%-100% in 7.37/5.59 out 7.44/5.50
+split early->late Shiller ECY >=50%: ECYS: 100% normal, +0.5/-4, 50%-100% in 6.92/5.18 out 7.11/5.37
+split late->early fixed: Fixed 80% in 7.35/5.63 out 5.82/4.28
+split late->early Shiller ECY: ECYS: 95% normal, +4/-1.5, 0%-100%, speed 0.5 in 8.30/6.17 out 6.87/5.14
+split late->early Shiller ECY >=50%: ECYS: 75% normal, +6/-0.375, 50%-100% in 8.30/6.15 out 6.42/4.81
+placebo gains [-0.141, 0.097, 0.31, -0.141, 0.035, 0.101] vs real 0.663

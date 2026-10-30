@@ -9,6 +9,7 @@ x_t > 0 means stocks are cheap. Signals (all known in January of year t):
   "cape":  x = -ln(CAPE / median CAPE to date)                    (Pfau-Kitces style, continuous)
   "ecy":   x = (ECY - median ECY to date) / 8%, ECY = 1/CAPE - (10-yr Treasury yield - inflation over the past
            10 years), Shiller's excess CAPE yield (an equity risk premium measure)
+  "ecys":  as "ecy" but with Shiller's published ECY series (annualised past inflation; data/raw/shiller_ecy_jan.csv)
   "none":  x = 0 (a fixed mix, the baseline)
 
 The withdrawal engine is vec.simulate without the cash bucket, generalised to a stock share that varies by
@@ -68,6 +69,9 @@ def signals(extra_inflation: pd.Series | None = None) -> pd.DataFrame:
     ecy = 1 / cape - (gs10 - trail)
     out = pd.DataFrame({"cape": cape, "rel": rel, "x_cape": -np.log(rel), "ecy": ecy})
     out["x_ecy"] = (ecy - ecy.expanding(min_periods=10).median()) / 0.08
+    shl = pd.read_csv(ROOT / "data" / "raw" / "shiller_ecy_jan.csv").set_index("year")["ecy"].reindex(cape.index)
+    out["ecys"] = shl
+    out["x_ecys"] = (shl - shl.expanding(min_periods=10).median()) / 0.08
     out["x_none"] = 0.0
     return out
 
