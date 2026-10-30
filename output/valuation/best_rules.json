@@ -1,0 +1,38 @@
+{
+ "Fixed 80% (plan)": {
+  "signal": "none",
+  "c": 0.8,
+  "k_cheap": 0.0,
+  "k_dear": 0.0,
+  "lo": 0.0,
+  "hi": 1.0,
+  "speed": 1.0
+ },
+ "best cape": {
+  "signal": "cape",
+  "c": 0.7,
+  "k_cheap": 1.0,
+  "k_dear": 0.5,
+  "lo": 0.5,
+  "hi": 1.0,
+  "speed": 1.0
+ },
+ "best ecy": {
+  "signal": "ecy",
+  "c": 0.85,
+  "k_cheap": 0.375,
+  "k_dear": 1.5,
+  "lo": 0.0,
+  "hi": 1.0,
+  "speed": 1.0
+ },
+ "best cape, >=50%": {
+  "signal": "cape",
+  "c": 0.7,
+  "k_cheap": 1.0,
+  "k_dear": 0.5,
+  "lo": 0.5,
+  "hi": 1.0,
+  "speed": 1.0
+ }
+}

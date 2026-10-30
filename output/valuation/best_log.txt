@@ -1,0 +1,29 @@
+Best fixed: {'label': 'Fixed 80%', 'rate': 6.5, 'ce': 4.8710403068843675, 'typ_1_10': 6.290316417924738}
+Fixed 80% (the plan): {'rate': 6.5, 'ce': 4.8710403068843675, 'typ_1_10': 6.290316417924738}
+Best cape: {'label': 'CAPE: 70% normal, +1/-0.5, 50%-100%', 'rate': 7.0673828125, 'ce': 5.19347449071178, 'typ_1_10': 6.776794927548776, 'avg_stocks': 68.49680572896703}
+Best ecy: {'label': 'ECY: 85% normal, +0.375/-1.5, 0%-100%', 'rate': 7.422851562500002, 'ce': 5.564765939246466, 'typ_1_10': 7.1833977002172364, 'avg_stocks': 69.63485206852211}
+Best with stocks never below 50%: {'label': 'ECY: 80% normal, +0.5/-1, 50%-100%', 'rate': 7.1904296875, 'ce': 5.4118334721875145, 'typ_1_10': 6.958473525417642}
+split early -> late fixed Fixed 70% in 6.06/4.33 out 7.48/5.54
+split early -> late cape CAPE: 60% normal, +1/-1, 0%-100% in 6.97/5.11 out 6.03/4.27
+split early -> late ecy ECY: 80% normal, +0.375/-2, 0%-100% in 7.40/5.56 out 7.96/5.60
+split early -> late cape >=50% CAPE: 50% normal, +2/-2, 50%-100% in 6.75/5.02 out 7.61/5.31
+split late -> early fixed Fixed 80% in 7.35/5.63 out 5.82/4.28
+split late -> early cape CAPE: 100% normal, +1/-0.5, 0%-100% in 8.07/6.01 out 5.68/4.34
+split late -> early ecy ECY: 95% normal, +6/-1.5, 0%-100%, speed 0.5 in 8.30/6.14 out 6.85/5.14
+split late -> early cape >=50% CAPE: 100% normal, +0.5/-0.5, 50%-100% in 8.04/6.00 out 5.68/4.34
+placebo 20 gain CE -0.085 rate -0.18 CAPE: 80% normal, +0.5/-0, 0%-100%
+placebo 30 gain CE +0.030 rate -0.09 CAPE: 100% normal, +1/-0.5, 0%-100%
+placebo 40 gain CE +0.052 rate +0.05 CAPE: 70% normal, +1/-0, 0%-100%
+placebo 50 gain CE -0.141 rate -0.38 CAPE: 100% normal, +4/-0, 0%-100%
+placebo 60 gain CE -0.091 rate -0.11 CAPE: 90% normal, +0/-0.5, 50%-100%
+placebo 70 gain CE +0.001 rate +0.04 CAPE: 70% normal, +0.5/-0, 0%-100%
+real (same grid) gain CE +0.322
+LONG best fixed: {'label': 'Fixed 80%', 'rate': 6.199218749999999, 'ce': 4.70530364536675}
+LONG best cape: {'label': 'CAPE: 80% normal, +4/-0.5, 0%-100%', 'rate': 6.431640625, 'ce': 4.919239301952773, 'avg_stocks': 79.62069168211131}
+LONG best ecy: {'label': 'ECY: 80% normal, +6/-1.5, 0%-100%', 'rate': 6.636718750000001, 'ce': 5.1074059318019875, 'avg_stocks': 76.31217236722463}
+cross plan winner on long Fixed 80% rate 6.20 ce 4.71
+cross plan winner on long CAPE: 70% normal, +1/-0.5, 50%-100% rate 6.41 ce 4.88
+cross plan winner on long ECY: 85% normal, +0.375/-1.5, 0%-100% rate 6.60 ce 5.10
+cross long winner on plan Fixed 80% rate 6.50 ce 4.87
+cross long winner on plan CAPE: 80% normal, +4/-0.5, 0%-100% rate 6.90 ce 5.17
+cross long winner on plan ECY: 80% normal, +6/-1.5, 0%-100% rate 7.31 ce 5.52
