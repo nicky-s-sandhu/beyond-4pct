@@ -1,0 +1,87 @@
+
+walk-forward SAFEMAX %
+intl share                            0.0   0.3  change
+safe  rule                                             
+bills 3 levels vs median             4.84  4.79   -0.06
+      50% normally, 100% when cheap  4.60  5.02    0.42
+      Fixed 60%                      4.09  4.59    0.50
+      Fixed 75%                      4.01  4.63    0.62
+      Pfau-Kitces 60/45/30           4.43  4.74    0.31
+      Slow bend 0-100%               5.10  5.19    0.09
+      Slow bend 50-100%              4.60  4.98    0.38
+bonds 3 levels vs median             4.28  4.33    0.05
+      50% normally, 100% when cheap  4.31  4.68    0.38
+      Fixed 60%                      3.73  4.22    0.49
+      Fixed 75%                      3.78  4.40    0.61
+      Pfau-Kitces 60/45/30           3.88  4.13    0.25
+      Slow bend 0-100%               4.43  4.53    0.10
+      Slow bend 50-100%              4.30  4.71    0.41
+
+walk-forward median MWR %
+intl share                            0.0   0.3  change
+safe  rule                                             
+bills 3 levels vs median             5.71  6.14    0.42
+      50% normally, 100% when cheap  6.25  6.03   -0.22
+      Fixed 60%                      6.40  6.29   -0.11
+      Fixed 75%                      6.86  6.85   -0.01
+      Pfau-Kitces 60/45/30           5.72  5.63   -0.09
+      Slow bend 0-100%               6.29  6.31    0.02
+      Slow bend 50-100%              6.55  6.43   -0.11
+bonds 3 levels vs median             6.89  6.57   -0.32
+      50% normally, 100% when cheap  6.66  6.87    0.21
+      Fixed 60%                      6.57  6.81    0.24
+      Fixed 75%                      7.02  7.04    0.02
+      Pfau-Kitces 60/45/30           6.08  6.36    0.29
+      Slow bend 0-100%               7.08  7.09    0.01
+      Slow bend 50-100%              6.97  7.16    0.19
+
+SAFEMAX %
+intl share                            0.0   0.3  change
+safe  rule                                             
+bills 3 levels vs median             4.90  4.81   -0.09
+      50% normally, 100% when cheap  4.60  4.51   -0.09
+      Fixed 60%                      4.09  4.27    0.18
+      Fixed 75%                      4.01  4.46    0.45
+      Pfau-Kitces 60/45/30           4.35  4.21   -0.14
+      Slow bend 0-100%               4.88  4.83   -0.05
+      Slow bend 50-100%              4.60  4.77    0.17
+bonds 3 levels vs median             4.39  4.68    0.30
+      50% normally, 100% when cheap  4.31  4.47    0.16
+      Fixed 60%                      3.73  4.22    0.49
+      Fixed 75%                      3.78  4.40    0.61
+      Pfau-Kitces 60/45/30           3.88  4.13    0.25
+      Slow bend 0-100%               4.46  4.69    0.23
+      Slow bend 50-100%              4.31  4.69    0.38
+
+recent wealth avg
+intl share                              0.0     0.3  change
+safe  rule                                                 
+bills 3 levels vs median              38.45   50.06   11.60
+      50% normally, 100% when cheap   79.78   65.76  -14.03
+      Fixed 60%                       98.96   79.12  -19.84
+      Fixed 75%                      132.36  101.18  -31.19
+      Pfau-Kitces 60/45/30            56.04   48.87   -7.17
+      Slow bend 0-100%                23.65   22.66   -0.99
+      Slow bend 50-100%               83.87   69.31  -14.56
+bonds 3 levels vs median             110.95  119.80    8.85
+      50% normally, 100% when cheap  126.48  107.20  -19.27
+      Fixed 60%                      142.31  116.64  -25.67
+      Fixed 75%                      165.81  129.01  -36.80
+      Pfau-Kitces 60/45/30           105.85   95.02  -10.83
+      Slow bend 0-100%                69.41  106.09   36.68
+      Slow bend 50-100%              126.48  110.39  -16.08
+ safe                          rule                                                                                                         settings
+bills                     Fixed 60%                                                                                                              0.6
+bills                     Fixed 75%                                                                                                             0.75
+bills          Pfau-Kitces 60/45/30                                                                                                              NaN
+bills            3 levels vs median                                                                                  {"u": 1.0, "f": 0.65, "o": 0.2}
+bills              Slow bend 0-100% {"s_min": 0.0, "s_normal": 0.75, "s_max": 1.0, "hi": 1.15, "decay": "gradual", "ramp": 10.0, "cheap_years": 0.0}
+bills             Slow bend 50-100%  {"s_min": 0.5, "s_normal": 0.7, "s_max": 1.0, "hi": 1.15, "decay": "gradual", "ramp": 10.0, "cheap_years": 0.0}
+bills 50% normally, 100% when cheap    {"s_min": 0.5, "s_normal": 0.5, "s_max": 1.0, "hi": 1.15, "decay": "reset", "ramp": 10.0, "cheap_years": 0.0}
+bonds                     Fixed 60%                                                                                                              0.6
+bonds                     Fixed 75%                                                                                                             0.75
+bonds          Pfau-Kitces 60/45/30                                                                                                              NaN
+bonds            3 levels vs median                                                                                  {"u": 1.0, "f": 0.65, "o": 0.6}
+bonds              Slow bend 0-100% {"s_min": 0.45, "s_normal": 0.7, "s_max": 1.0, "hi": 1.15, "decay": "gradual", "ramp": 10.0, "cheap_years": 0.0}
+bonds             Slow bend 50-100%  {"s_min": 0.5, "s_normal": 0.7, "s_max": 1.0, "hi": 1.15, "decay": "gradual", "ramp": 10.0, "cheap_years": 0.0}
+bonds 50% normally, 100% when cheap    {"s_min": 0.5, "s_normal": 0.5, "s_max": 1.0, "hi": 1.15, "decay": "reset", "ramp": 10.0, "cheap_years": 0.0}

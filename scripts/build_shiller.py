@@ -38,6 +38,23 @@ def monthly():
     return d
 
 
+def intl_extended():
+    """Developed ex-US stocks in USD, calendar years: the repo's series (JST GDP-weighted 1928-69, MSCI World ex USA
+    1970+, see build_intl.py) extended back to 1871 with the same JST method (15 countries, local total return in USD,
+    weighted by prior-year real GDP; countries without data in a year are skipped)."""
+    d = pd.read_csv(JST, usecols=["year", "iso", "eq_tr", "xrusd", "rgdpmad", "pop"])
+    d = d[d.iso != "USA"].sort_values(["iso", "year"])
+    g = d.groupby("iso")
+    d["xr_prev"], d["w_prev"] = g.xrusd.shift(), g.rgdpmad.shift() * g["pop"].shift()
+    d["usd_ret"] = (1 + d.eq_tr) * d.xr_prev / d.xrusd - 1
+    d = d.dropna(subset=["usd_ret", "w_prev"])
+    d = d[d.year < 1928]
+    early = d.groupby("year").apply(lambda x: (x.w_prev / x.w_prev.sum() * x.usd_ret).sum(), include_groups=False)
+    n = d.groupby("year").size()
+    later = pd.read_csv(ROOT / "data" / "raw" / "intl_stocks.csv").set_index("year")["intl"] / 100
+    return pd.concat([early, later]).sort_index(), n
+
+
 def annual():
     m = monthly()
     jan = m[m["month"] == 1].set_index("year")
@@ -57,6 +74,10 @@ def annual():
     dam = pd.read_csv(ROOT / "data" / "raw" / "damodaran_returns.csv").set_index("year")["tbill_3m"] / 100
     out["bills"] = bills.reindex(out.index).fillna(dam.reindex(out.index))
     out["real_bills"] = (1 + out["bills"]) / (1 + out["inflation"]) - 1
+    # international stocks: calendar-year USD returns (Dec-Dec), used against Jan-Jan inflation (one month apart)
+    intl, _ = intl_extended()
+    out["intl"] = intl.reindex(out.index)
+    out["real_intl"] = (1 + out["intl"]) / (1 + out["inflation"]) - 1
     return out.dropna(subset=["inflation"])
 
 

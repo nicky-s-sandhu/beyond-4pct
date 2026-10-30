@@ -21,6 +21,13 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def load(path=None) -> pd.DataFrame:
     d = pd.read_csv(path or ROOT / "data" / "raw" / "shiller_annual.csv").set_index("year")
+    # Optional international share of stocks (env BENGEN_INTL, e.g. 0.3): US real returns blended with developed
+    # ex-US real returns, rebalanced yearly. The valuation signal stays the US CAPE.
+    import os
+    share = float(os.environ.get("BENGEN_INTL", "0") or 0)
+    d["real_stocks_us"] = d["real_stocks"]
+    if share > 0:
+        d["real_stocks"] = (1 - share) * d["real_stocks"] + share * d["real_intl"]
     cape = d["cape_jan"]
     med = cape.expanding().median()               # inception-to-date median (NaNs before 1881 are skipped)
     d["cape_median"] = med

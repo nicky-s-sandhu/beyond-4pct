@@ -106,3 +106,28 @@ def fifty():
     axes[0].legend(frameon=False, fontsize=8.5, loc="upper left")
     fig.suptitle("Slow bend with stocks held between 50% and 100%", x=0.01, ha="left", fontsize=12)
     fig.tight_layout(); fig.savefig(OUT / "duration50.png", dpi=150)
+
+
+def intl():
+    df = pd.read_csv(OUT / "intl_comparison.csv")
+    order = ["Fixed 60%", "Fixed 75%", "Pfau-Kitces 60/45/30", "3 levels vs median", "50% normally, 100% when cheap",
+             "Slow bend 50-100%", "Slow bend 0-100%"]
+    lab = {"Fixed 60%": "Fixed 60%", "Fixed 75%": "Fixed 75%", "Pfau-Kitces 60/45/30": "Pfau-Kitces\n60/45/30",
+           "3 levels vs median": "3 levels vs\nmedian", "50% normally, 100% when cheap": "50%, 100%\nwhen cheap",
+           "Slow bend 50-100%": "Slow bend\n50–100%", "Slow bend 0-100%": "Slow bend\n0–100%"}
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.4), sharey=True)
+    for ax, safe in zip(axes, ("bills", "bonds")):
+        s = df[df.safe == safe].pivot_table(index="rule", columns="intl share", values="walk-forward SAFEMAX %")
+        x = np.arange(len(order))
+        ax.bar(x - 0.19, [s.loc[r, 0.0] for r in order], 0.36, color=GHOST, label="US stocks only")
+        ax.bar(x + 0.19, [s.loc[r, 0.3] for r in order], 0.36, color=ACCENT, label="30% international")
+        for xi, r in zip(x, order):
+            ax.text(xi - 0.19, s.loc[r, 0.0] + 0.04, f"{s.loc[r, 0.0]:.2f}", ha="center", fontsize=7.5, color=MUTED)
+            ax.text(xi + 0.19, s.loc[r, 0.3] + 0.04, f"{s.loc[r, 0.3]:.2f}", ha="center", fontsize=7.5)
+        ax.set_xticks(x, [lab[r] for r in order], fontsize=8); ax.set_ylim(3, 5.6)
+        ax.set_title(f"Stocks + {safe}", loc="left", fontsize=11, color=INK); ax.grid(axis="y", color=GRID, lw=0.8)
+    axes[0].set_ylabel("Worst-case safe rate, walk-forward (%)")
+    axes[0].legend(frameon=False, fontsize=8.5, loc="upper left")
+    fig.suptitle("Adding 30% international stocks (walk-forward, retirements starting 1950–1993)", x=0.01, ha="left",
+                 fontsize=12)
+    fig.tight_layout(); fig.savefig(OUT / "intl_comparison.png", dpi=150)
