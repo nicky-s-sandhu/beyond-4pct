@@ -1,0 +1,3 @@
+fit,test,switch,static_choice,switch_rate_out,switch_ce_out,static_rate_out,static_ce_out
+1928-1976,1977-2025,"EW share 25% normal, +4 cheap / +4 dear",CW,7.286132812500002,5.7367712547907415,6.978515624999999,5.505278787768204
+1977-2025,1928-1976,"EW share 0% normal, +4 cheap / -4 dear",EW,5.0166015625,3.8544572554535113,4.8046875,3.7086647858664277

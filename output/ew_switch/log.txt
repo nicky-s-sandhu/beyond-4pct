@@ -1,0 +1,16 @@
+corr(ECY signal, EW-CW same year) 0.101  next 3 years 0.02
+  ECY well below median (x<-0.15): 38 years, mean EW-CW -0.68 pts/yr
+  near median: 25 years, mean EW-CW -0.73 pts/yr
+  well above median (x>0.15): 35 years, mean EW-CW +1.35 pts/yr
+US 1928-2025 geometric: cap weight 10.02 equal weight 9.87
+                                                              portfolio  rate    ce  ran_out_at_6.5  typ_1_10  p10_year  median_final  avg_ew
+0                                         100% stocks, all cap-weighted  6.12  4.73            3.38      6.04      3.49        196.19    0.00
+1                                       100% stocks, all equal-weighted  5.87  4.59            4.10      5.83      3.49        203.50  100.00
+2                                          100% stocks, 50/50 EW and CW  6.06  4.69            3.70      6.00      3.47        195.88   50.00
+3                                               Fixed 80% stocks (plan)  6.50  4.87            1.98      6.29      3.29        108.99    0.00
+4                                          ECY stock/bond rule, 50-100%  7.16  5.40            0.52      6.93      3.74        119.93    0.00
+5                   best switch: EW share 0% normal, +4 cheap / +0 dear  6.37  4.96            2.30      6.28      3.74        202.61   35.02
+6   best that goes EW when dear: EW share 0% normal, +4 cheap / -1 dear  6.31  4.90            2.56      6.22      3.70        200.52   47.69
+7  best that goes EW when cheap: EW share 0% normal, +4 cheap / +0 dear  6.37  4.96            2.30      6.28      3.74        202.61   35.02
+split 1928-1976->1977-2025: EW share 25% normal, +4 cheap / +4 dear out 7.29/5.74 vs all-CW 6.98/5.51
+split 1977-2025->1928-1976: EW share 0% normal, +4 cheap / -4 dear out 5.02/3.85 vs all-EW 4.80/3.71
